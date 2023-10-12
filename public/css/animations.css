@@ -1,0 +1,44 @@
+.topdownAnimated {
+    animation: fadeInTop 1s both;
+    -webkit-animation: fadeInTop 1s both;
+    -moz-animation: fadeInTop 1s  both;
+    -o-animation: fadeInTop 1s both;
+}
+
+ @keyframes fadeInTop{
+    0%{
+        opacity: 0;
+        -webkit-transform: translateY(-50px);
+    }
+    100%{
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+.leftRightAnimated{
+    animation: fadeSide 2s alternate;
+}
+
+@keyframes fadeSide{
+    0%,20%{
+        transform: scale(0);
+    }
+    40%{
+        transform: scale(1);
+    }
+
+}
+
+.fadeInAnimated{
+    animation: fadeIn 1s both;
+}
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
