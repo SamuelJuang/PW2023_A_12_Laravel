@@ -16,8 +16,9 @@
     }
 
     .mystyle{
-        border: solid 5px #0275d8;
+        animation: Border 1s infinite alternate;
     }
+
 
     .transform-active {
     background-color: #45CEE0;
