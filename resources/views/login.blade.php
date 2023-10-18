@@ -12,30 +12,36 @@
     <style>
         .form-control {
             border-radius: 10px;
-            border-color: #000000;
+            border-color: hsl(0, 0%, 0%);
         }
         body{
-            font-family: 'Poppins', sans-serif;}
+            object-fit: cover;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
     <div class="row align-items-center m-0">
         <div class="col-md-6">
-            <div class="container-fluid" style="padding: 150px;">
+            <div class="container-fluid px-5">
                 <div class="d-flex justify-content-center" style="padding: 30px;">
                     <img src="{{ asset('images/logo kereta api.svg') }}" alt="SVG" width="150px">
                 </div>
-                <form action="">
-                    <label class="form-label" for="login">Login</label>
-                    <input class="form-control" type="login" name="login" id="login">
-                    <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
-                    <input class="form-control" type="password" name="password" id="password">
-                    <p class="fw-light" style="color: #252525; font-size: 12px; padding-top: 10px;">Belum punya akun? <a href="/register" style="color:#252525;" class="fw-semibold">Register</a></p>
-                    <div class="d-grid gap-2" >
-                        <button class="btn btn-primary" style="border-radius: 10px" type="button">Login</button>
-                    </div>
-                </form>
+                <div class="px-5 mx-5">
+                    <form action="">
+                        <label class="form-label" for="login">Login</label>
+                        <input class="form-control" type="login" name="login" id="login">
+                        <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
+                        <input class="form-control" type="password" name="password" id="password">
+                        <p class="fw-light" style="color: #252525; font-size: 12px; padding-top: 10px;">Belum punya akun? <a href="/register" style="color:#252525;" class="fw-semibold">Register</a></p>
+                        <div class="d-grid gap-2" >
+                            <button class="btn btn-primary" style="border-radius: 10px" type="button">Login</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="col-md-6 p-0">

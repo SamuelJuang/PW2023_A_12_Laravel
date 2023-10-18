@@ -15,30 +15,36 @@
             border-color: #000000;
         }
         body{
-            font-family: 'Poppins', sans-serif;}
+            object-fit: cover;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
     <div class="row align-items-center m-0">
         <div class="col-md-6">
-            <div class="container-fluid" style="padding: 150px;">
+            <div class="container-fluid px-5">
                 <div class="d-flex justify-content-center" style="padding: 30px;">
                     <img src="{{ asset('images/logo kereta api.svg') }}" alt="SVG" width="150px">
                 </div>
+               <div class="px-5 mx-5">
                 <form action="">
-                    <label class="form-label" for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username" style="padding-top: 5px;">
-                    <label class="form-label" for="telp" style="padding-top: 10px;">Nomor Telepon</label>
-                    <input class="form-control" type="tel" name="telp" id="telp" style="padding-top: 5px;">
-                    <label class="form-label" for="email" style="padding-top: 10px;">Email</label>
-                    <input class="form-control" type="email" name="email" id="email" style="padding-top: 5px;">
-                    <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
-                    <input class="form-control" type="password" name="password" id="password" style="padding-top: 5px;">
-                    <div class="d-grid gap-2" style="padding-top: 20px;">
-                        <button class="btn btn-primary" style="border-radius: 10px" type="button">Register</button>
-                    </div>
-                </form>
+                        <label class="form-label" for="username">Username</label>
+                        <input class="form-control" type="text" name="username" id="username" style="padding-top: 5px;">
+                        <label class="form-label" for="telp" style="padding-top: 10px;">Nomor Telepon</label>
+                        <input class="form-control" type="tel" name="telp" id="telp" style="padding-top: 5px;">
+                        <label class="form-label" for="email" style="padding-top: 10px;">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" style="padding-top: 5px;">
+                        <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
+                        <input class="form-control" type="password" name="password" id="password" style="padding-top: 5px;">
+                        <div class="d-grid gap-2" style="padding-top: 20px;">
+                            <button class="btn btn-primary" style="border-radius: 10px" type="button">Register</button>
+                        </div>
+                    </form>
+               </div>
             </div>
         </div>
         <div class="col-md-6 p-0">
