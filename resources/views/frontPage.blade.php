@@ -63,9 +63,11 @@
             <input name="prodiDD" id="prodiDD" class="form-control reg" type="date"/>
         </div>
    </div>
-   <div class="row px-5 my-3 container-fluid">
-    <button class="btn btn-primary ms-auto" style="width: 15%;">
-        Cari
-    </button>
+   <div class="row container-fluid" style="margin-left: 81%; margin-top: 20px;">
+    <form action="{{ url('/ticketSearch') }}">
+        <button class="btn btn-primary ms-auto" style="width: 15%;" type="submit">
+            Cari
+        </button>
+    </form>
 </div>
 @endsection
