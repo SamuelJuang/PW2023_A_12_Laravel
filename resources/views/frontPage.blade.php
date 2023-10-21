@@ -13,7 +13,7 @@
     </div>
     <div class="row px-2">
         <div class="px-5">
-            <div class="btn-group float-end">
+            <div class="btn-group float-end" style="max-width: 40vh;">
                 <input type="number" class="form-control reg" placeholder="Adults" name="Adult" id="AdultNum" >
                 <input type="number" class="form-control reg" placeholder="Infants" name="Infants" id="infantNum">
             </div>
@@ -22,7 +22,7 @@
 
     <div class="px-4 py-3 row">
         <div class="col-3 ">
-            <div class="text-white">
+            <div class="text-white" style="margin-left: 10px;">
                 Stasiun Asal
             </div>
         </div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="text-white">
+            <div class="text-white" style="margin-left: 10px;">
                 Tanggal Keberangkatan
             </div>
         </div>
@@ -43,24 +43,24 @@
         </div>
        <div class="col-6">
             <div class="btn-group container-fluid">
-                <select name="prodiDD" id="prodiDD" class="form-select reg">
-                    <option selected value="">piilh prodi</option>
-                    <option value="Informatika">Informatika</option>
-                    <option value="Teknik Industri">Teknik Industri</option>
-                    <option value="Sistem Informasi">Sistem Informasi</option>
+                <select name="StasiunAsal" id="StasiunAsal" class="form-select reg">
+                    <option selected value="">Stasiun Asal</option>
+                    <option value="Stasiun Solo Balapa">Stasiun Solo Balapan</option>
+                    <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
+                    <option value="Stasiun Bandung">Stasiun Bandung</option>
                 </select>
-                <select name="prodiDD" id="prodiDD" class="form-select reg">
-                    <option selected value="">piilh prodi</option>
-                    <option value="Informatika">Informatika</option>
-                    <option value="Teknik Industri">Teknik Industri</option>
-                    <option value="Sistem Informasi">Sistem Informasi</option>
+                <select name="StasiunTujuan" id="StasiunTujuan" class="form-select reg">
+                    <option selected value="">Stasiun Tujuan</option>
+                    <option value="Stasiun Solo Balapan">Stasiun Solo Balapan</option>
+                    <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
+                    <option value="Stasiun Bandung">Stasiun Bandung</option>
                 </select>
             </div>
        </div>
        <div class="col-6">
         <div class="btn-group container-fluid">
-            <input name="prodiDD" id="prodiDD" class="form-control reg" type="date"/>
-            <input name="prodiDD" id="prodiDD" class="form-control reg" type="date"/>
+            <input name="TglDepart" id="TglDepart" class="form-control reg" type="date"/>
+            <input name="TglPulang" id="TglPulang" class="form-control reg" type="date"/>
         </div>
    </div>
    <div class="row container-fluid" style="margin-left: 81%; margin-top: 20px;">

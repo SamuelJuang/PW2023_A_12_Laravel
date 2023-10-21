@@ -45,12 +45,13 @@
 
 
 
-  @keyframes Border{
-    from {
-        box-shadow: 0 0 2px #fff, 0 0 3px #b6e1fa, 0 0 4px #91d0f5, 0 0 5px #79c3ee, 0 0 6px #54c0ff, 0 0 7px #32aef5, 0 0 8px #00a2ff;
-      }
-      
-      to {
-        box-shadow: 0 0 2px #fff, 0 0 3px #b6e1fa, 0 0 4px #91d0f5, 0 0 5px #79c3ee, 0 0 7px #54c0ff, 0 0 8px #32aef5, 0 0 9px #00a2ff;
-      }
+@keyframes Border{
+from {
+     box-shadow: 0 0 2px #fff, 0 0 3px #b6e1fa, 0 0 4px #91d0f5, 0 0 5px #79c3ee, 0 0 6px #54c0ff, 0 0 7px #32aef5, 0 0 8px #00a2ff;
     }
+    
+    to {
+     box-shadow: 0 0 2px #fff, 0 0 3px #b6e1fa, 0 0 4px #91d0f5, 0 0 5px #79c3ee, 0 0 7px #54c0ff, 0 0 8px #32aef5, 0 0 9px #00a2ff;
+    }
+}
+
