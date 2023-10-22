@@ -3,6 +3,34 @@
 @section('content')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <style>
+    .paymethodContainer input[type ="radio"]{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .paymethodContainer label {
+    display: inline-block;
+    padding: 10px 20px;
+    border: solid 1px black;
+    color: #0275d8;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    }
+    
+    .paymethodContainer input[type="radio"]:checked + label,
+    .paymethodContainer input[type="radio"]:hover + label {
+        background-color: #0275d8 !important;
+        color: white;
+        border-color: white;
+    }
+
+    .paymethodContainer input[type="radio"]:checked + label{
+        animation: Border 1s infinite alternate;
+    }
+    
     body{
         background-color: rgba(0, 0, 0, 0.6);
         background-blend-mode: darken;
@@ -16,6 +44,7 @@
     }
 
     .mystyle{
+        transition: all 0.2s;
         animation: Border 1s infinite alternate;
     }
 
@@ -27,28 +56,27 @@
     }   
   
     ::-webkit-scrollbar {
-        width: 5px;
-        }
+    width: 5px;
+    }
 
-        /* Track */
-        ::-webkit-scrollbar-track {
-        background: #292b2c;
-        }
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #292b2c;
+    }
 
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-        background: #0275d8;
-        border-radius: 10px;
-        }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #0275d8;
+    border-radius: 10px;
+    }
 
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-        background: #0275d8;
-        }
-        .container-md{
-            border: solid 2px black;
-        }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #0275d8;
+    }
 
+    
+    
 </style>
 <div class="container">
    <div class="container" style="width: 100%; height: 70vh; overflow-y: auto; margin-bottom: 5vh;">
@@ -195,9 +223,10 @@
                     </strong></p>
                 </div>
                 <div class="col-6">
-                    <div class="container-md rounded p-2" style="width: fit-content;">
+                    <div class="container-md rounded p-2 paymethodContainer" style="width: fit-content;">
                         <input type="radio" id="BCA" name="paymethod" value="BCA">
-                            <label for="BCA"> <svg xmlns="http://www.w3.org/2000/svg" width="45" height="20" viewBox="0 0 105 75" fill="none">
+                            <label for="BCA">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="30" viewBox="0 0 105 75" fill="none">
                                 <rect width="105" height="75" rx="4" fill="#0060AF"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.5967 44.6871C21.5967 43.6805 21.6082 40.9901 21.5819 40.6586C21.6049 36.6551 18.517 33.8309 16.5662 34.0511C15.2163 34.1615 14.0847 34.6804 13.4775 36.1731C12.9143 37.5642 13.4179 39.4145 15.2897 39.8487C17.291 40.315 18.46 40.703 19.3058 41.2503C20.3422 41.9203 21.1882 43.2006 21.2107 44.6887" fill="white"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7574 44.6881C20.764 43.3978 20 42.2569 19.0015 41.6438C18.1159 41.1019 16.9268 40.7461 15.0086 40.2873C14.4157 40.1443 13.7955 39.8267 13.6035 39.4219C13.0955 39.9043 13.0033 40.989 13.0926 41.6231C13.1965 42.3564 14.1058 43.5654 15.475 43.6128C16.3112 43.6444 17.3684 43.4431 17.8753 43.3416C18.7499 43.1635 20.1336 43.6799 20.3538 44.6865" fill="white"/>
@@ -216,7 +245,30 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M54.2152 27.6936C57.6644 27.7119 59.6135 29.4768 59.6135 32.0261C59.6135 34.3767 57.5579 36.457 55.3013 37.5328C57.6245 38.3381 57.8255 40.3143 57.8255 41.7123C57.8255 45.0903 54.2301 48.2464 49.5564 48.2464H39.3633L43.3393 33.7745L41.7061 33.7656L45.0447 27.6936C45.0447 27.6936 51.4103 27.6754 54.2152 27.6936ZM50.8296 36.0271C51.5431 36.0271 52.8029 35.8568 53.1178 34.5551C53.4629 33.1419 52.2807 33.1039 51.7136 33.1039L49.6872 33.0957L48.9805 36.0271H50.8296ZM47.9662 39.6592L47.0332 43.037H49.4195C50.358 43.037 51.6374 42.5976 51.9509 41.4984C52.2605 40.3962 51.3662 39.6592 50.431 39.6592H47.9662Z" fill="white"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M22.395 50.7724C18.8656 50.7724 15.2388 49.953 11.6167 48.3323L11.5278 48.2911L11.4853 48.2057C9.85983 44.9713 9 41.4339 9 37.9727C9 34.5166 9.82457 31.1303 11.451 27.9002L11.4959 27.8144L11.5865 27.7716C14.9372 26.2753 18.5415 25.5176 22.3032 25.5176C25.807 25.5176 29.5495 26.3611 33.1236 27.9617L33.2151 28.0002L33.2576 28.0876C34.914 31.3817 35.7876 34.9184 35.7876 38.3224C35.7876 41.7128 34.9488 45.1023 33.2902 48.3943L33.2467 48.4806L33.1545 48.5206C29.8548 49.993 26.1341 50.7724 22.395 50.7724ZM11.9525 47.8881C15.471 49.4486 18.9806 50.2364 22.3955 50.2364C26.0165 50.2364 29.6174 49.4903 32.8232 48.076C34.4155 44.8859 35.2227 41.6028 35.2227 38.3217C35.2227 35.027 34.3803 31.6002 32.7867 28.4029C29.3181 26.8659 25.6957 26.0508 22.3038 26.0508C18.662 26.0508 15.1713 26.7789 11.922 28.2155C10.3623 31.3461 9.56836 34.6268 9.56836 37.972C9.56836 41.3232 10.3932 44.7516 11.9525 47.8881Z" fill="white"/>
                             </svg>Bank BCA</label>
-                    </div>
+                    </div>        
+                </div>
+
+                <div class="col-6">
+                    <div class="container-md rounded p-2 paymethodContainer" style="width: fit-content;">
+                        <input type="radio" id="BRI" name="paymethod" value="BRI">
+                            <label for="BRI">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="30" viewBox="0 0 105 75" fill="none">
+                                    <rect width="105" height="75" rx="4" fill="#00529C"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.127 32.5371H36.1314C38.1579 32.5371 39.6687 33.4338 39.6687 35.3214C39.6687 36.7054 38.9684 37.4761 37.7518 37.8844V37.9156C39.2018 38.2152 39.9501 39.0018 39.9501 40.3379C39.9501 42.9651 37.6578 43.5152 35.7096 43.5152H31.127V32.5371ZM34.0234 36.8786H34.8348C35.7857 36.8786 36.7684 36.6426 36.7684 35.7139C36.7684 34.7085 35.8327 34.6133 34.8652 34.6133H34.0234V36.8786ZM34.0234 41.4392H34.8823C35.9413 41.4392 37.0478 41.2817 37.0478 40.1649C37.0478 38.9704 35.9105 38.8594 34.9126 38.8594H34.0234V41.4392Z" fill="white"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.754 32.5371H47.3084L51.5019 43.5152H48.3214L47.5114 41.1723H43.427L42.5692 43.5152H39.623L43.754 32.5371ZM45.5325 34.8018H45.4998L44.0977 39.0959H46.8255L45.5325 34.8018Z" fill="white"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M51.9082 32.5371H55.6026L59.2818 39.9927H59.3121L59.2661 32.5371H61.9171V43.5152H58.3157L54.5108 36.0131H54.4809L54.5739 43.5152H51.9082V32.5371Z" fill="white"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M62.9004 32.5371H65.7995V37.0208H65.8308L69.1034 32.5371H72.5966L68.5739 37.6484L72.9083 43.5152H69.2125L65.8308 38.5298H65.7995V43.5152H62.9004V32.5371Z" fill="white"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M76.502 32.5371H81.5064C83.5325 32.5371 85.0451 33.4338 85.0451 35.3214C85.0451 36.7054 84.3448 37.4761 83.1282 37.8844V37.9156C84.5778 38.2152 85.326 39.0018 85.326 40.3379C85.326 42.9651 83.0343 43.5152 81.0865 43.5152H76.502V32.5371ZM79.4023 36.8786H80.2123C81.1637 36.8786 82.1449 36.6426 82.1449 35.7139C82.1449 34.7085 81.2106 34.6133 80.2446 34.6133H79.4023V36.8786ZM79.4023 41.4392H80.2602C81.3193 41.4392 82.4267 41.2817 82.4267 40.1649C82.4267 38.9704 81.2889 38.8594 80.2911 38.8594H79.4023V41.4392Z" fill="white"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M85.9688 32.5371H91.1445C93.0771 32.5371 94.6524 33.4175 94.6524 35.306C94.6524 36.7685 93.9663 37.7437 92.5637 38.0735V38.1047C93.497 38.3569 93.5606 39.1899 94.1063 40.527L95.1667 43.5152H92.1428L91.5189 41.5347C90.9262 39.6471 90.5518 39.1741 89.4762 39.1741H88.8679V43.5152H85.9688V32.5371ZM88.8691 37.0988H89.6335C90.5688 37.0988 91.754 37.0667 91.754 35.8245C91.754 34.8029 90.7396 34.6133 89.6335 34.6133H88.8691V37.0988Z" fill="white"/>
+                                    <mask id="mask0_179_1449" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="6" y="27" width="93" height="23">
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M6 49.0586H98.8652V27H6V49.0586Z" fill="white"/>
+                                    </mask>
+                                    <g mask="url(#mask0_179_1449)">
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M95.9648 43.5152H98.864V32.5371H95.9648V43.5152Z" fill="white"/>
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M24.5103 27H9.33519C7.49322 27 6 28.5439 6 30.4487V30.4851V45.6109C6 47.497 7.4657 49.0304 9.28394 49.0586H24.5023C26.3447 49.0586 27.8384 47.5147 27.8384 45.6109L27.8455 30.4487C27.8455 28.5439 26.3528 27 24.5103 27ZM11.1394 47.2915L10.3114 47.3006C9.30926 47.3006 8.49693 46.47 8.49693 45.445L8.49219 45.299V31.2964L8.49741 30.5424C8.53489 29.5505 9.28174 28.752 10.2601 28.752H11.9432C13.4682 28.752 14.7052 30.09 14.7052 31.6688C14.7052 32.4491 14.402 33.1576 13.9109 33.6728L9.61673 38.0689L13.6414 42.2036C14.1604 42.7431 14.4741 43.4526 14.4741 44.2296C14.4741 45.9209 12.9809 47.2915 11.1394 47.2915ZM23.5122 47.2776L16.0086 47.2742C16.0086 47.2742 16.8764 45.3823 16.8764 44.2114C16.8764 42.7838 16.4029 41.508 15.6622 40.664L13.0957 38.0243L15.7154 35.2937C16.4949 34.5541 17.0131 33.2414 17.0131 31.7464C17.0131 30.5625 16.6885 29.5136 16.1661 28.752H17.9844C19.5099 28.752 20.7469 30.09 20.7469 31.6688C20.7469 32.4491 20.4441 33.1576 19.953 33.6728L15.741 38.0229L24.4892 47.0234C24.212 47.1996 23.8624 47.2776 23.5122 47.2776ZM25.3437 44.4678L19.0742 38.0213L22.0602 34.9594C22.6685 34.193 23.0538 33.0378 23.0538 31.7467C23.0538 30.5551 22.7245 29.4809 22.1973 28.7188L23.5339 28.759C24.5361 28.759 25.3484 29.591 25.3484 30.6155L25.3437 44.4678Z" fill="white"/>
+                                    </g>
+                                  </svg>Bank BRI</label>
+                    </div>        
                 </div>
             </div>  
           </div>
