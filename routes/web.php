@@ -147,3 +147,7 @@ Route::get('/logout', function(){
     }
     return redirect('/');
 });
+
+Route::get('/DetailTicket', function () {
+    return view('DetailTicket');
+});
