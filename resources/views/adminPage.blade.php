@@ -11,6 +11,39 @@
 <!-- Animations -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <style>
+    body{
+            overflow: hidden;
+            background-image: "{{asset('images/tempTrainStation.jpg')}}";
+            height: 100vh;
+            background-size: cover;
+            background-image: url('https://images.unsplash.com/photo-1495313196544-7d1adf4e628f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+            background-color: rgba(0, 0, 0, 0.6);
+            background-blend-mode: darken;
+            background-repeat: no-repeats;
+            font-family: 'Poppins';
+        }
+        hr {
+            border: 0;
+            clear:both;
+            display:block;
+            width: 100%;               
+            background-color:#ffffff;
+            height: 3px;
+            opacity: 100%;
+        }
+        footer {
+            font-size: small;
+            position:fixed;
+            left:0px;
+            bottom:0px;
+            height:30px;
+            width:100%;
+            opacity: 0.5;
+        }
+        .card{
+            font-family: Helvetica,sans-serif;
+            font-stretch: expanded;
+        }
     .adminPage{
         color: white;
     }
