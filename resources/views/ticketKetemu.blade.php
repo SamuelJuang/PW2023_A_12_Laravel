@@ -222,7 +222,7 @@
     </div>
     <div class="d-flex flex-row-reverse">
         <button class="btn btn-primary px-5 mx-3" disabled data-bs-toggle = "modal" data-bs-target = "#exampleModal" id="bayar">
-            bayar   
+            Bayar Tiket 
         </button>
     </div>
 </div>
@@ -231,37 +231,26 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-height: 500px;">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Pembayaran</h5>
+          <h5 class="modal-title" id="exampleModalLabel"><strong>Pembayaran</strong></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="d-flex justify-content-between flex-column">
-            <p><strong> NamaKereta - Jurusan</strong></p>
+            <p><strong> SAF-JAYA- Jogja</strong></p>
             <div class="row">
                 <div class="col-6">
-                    <p> ticket - kelas </p>
+                    <p> Ticket - Kelas </p>
+                    <strong>Total Pembayaran </strong>
                 </div>
                 <div class="col-6">
-                    <p> Rp.20.000</p>
+                    <p> Rp 20.000,-</p>
+                    <strong>Rp 20.000,-</strong>
                 </div>
+                <br>
                 <hr>
-                <div class="col-6">
-                    <strong>
-                        Total Payment 
-                    </strong>
-                </div>
-                <div class="col-6">
-                    <strong>
-                        Rp.X,XXX 
-                    </strong>
-                </div>
-                <br>
-                <br>
-                
                 <div class="col-12">
-                    <p><strong>
-                        Payment Method
-                    </strong></p>
+                    <strong>Metode Pembayaran</strong>
+                    <br>
                 </div>
                 <div class="col-6">
                     <div class="container rounded p-1 paymethodContainer" style="width: fit-content;">

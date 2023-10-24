@@ -105,7 +105,7 @@
         <form action="{{ url('/logout') }}">
             <button class="btn btn-danger ms-auto" style="width: 20%; border-radius: 15px;" type="submit">
                 Logout
-            </button>
+            </button> <a href="/adminPage">awikwok</a>
         </form>
     </div>
     <div class="mx-auto" style="width: 75%;">

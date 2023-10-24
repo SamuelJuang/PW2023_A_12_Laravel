@@ -6,10 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>SAF Kereta Api Online</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <style>
         body{
             overflow: hidden;
@@ -43,12 +40,13 @@
             font-family: Helvetica,sans-serif;
             font-stretch: expanded;
         }
+
     </style>
 </head>
 <body>
     <div class="mainInfo px-5">
         <nav class="navbar py-3 px-3 topdownAnimated" aria-label="First navbar example">    
-            <img src="{{asset('images/SAF Logo.svg')}}" alt="" class="navbar-brand" style="height: 7vh;">
+        <img src="{{asset('images/SAF Logo.svg')}}" alt="SAF logo"class="navbar-brand" style="height: 7vh;">
           <div class="d-flex justify-content-end px-3 py-2">
             @if (session()->has('user'))
               <a href="{{ url('/profile') }}">
@@ -60,12 +58,12 @@
             @else 
             <form action="{{ url('/login') }}">
                 <button class="btn btn-outline-light px-5 mx-3">
-                    login
+                    Login
                 </button>
               </form>
               <form action="{{ url('/register') }}">
                 <button class="btn btn-primary  px-5" type="submit">
-                    register
+                    Register
                 </button>
               </form>
             @endif  
