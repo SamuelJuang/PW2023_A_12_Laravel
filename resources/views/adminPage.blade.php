@@ -15,41 +15,41 @@
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
-        body {
-            overflow: hidden;
-            background-image: "{{asset('images/tempTrainStation.jpg')}}";
-            height: 100vh;
-            background-size: cover;
-            background-image: url('https://images.unsplash.com/photo-1495313196544-7d1adf4e628f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
-            background-color: rgba(0, 0, 0, 0.6);
-            background-blend-mode: darken;
-            background-repeat: no-repeats;
-        }
-        hr {
-            border: 0;
-            clear: both;
-            display: block;
-            width: 100%;
-            background-color: #ffffff;
-            height: 3px;
-            opacity: 100%;
-        }
+    body {
+        overflow: hidden;
+        background-image: "{{asset('images/tempTrainStation.jpg')}}";
+        height: 100vh;
+        background-size: cover;
+        background-image: url('https://images.unsplash.com/photo-1495313196544-7d1adf4e628f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
+        background-color: rgba(0, 0, 0, 0.6);
+        background-blend-mode: darken;
+        background-repeat: no-repeats;
+    }
+    hr {
+        border: 0;
+        clear: both;
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        height: 3px;
+        opacity: 100%;
+    }
 
 
-        footer {
-            font-size: small;
-            position: fixed;
-            left: 0px;
-            bottom: 0px;
-            height: 30px;
-            width: 100%;
-            opacity: 0.5;
-        }
+    footer {
+        font-size: small;
+        position: fixed;
+        left: 0px;
+        bottom: 0px;
+        height: 30px;
+        width: 100%;
+        opacity: 0.5;
+    }
 
-        .profile {
-            height: 20vh;
-        }
-        .transform-active {
+    .profile {
+        height: 20vh;
+    }
+    .transform-active {
     background-color: #45CEE0;
     height: 200px;
     width: 200px;
@@ -57,64 +57,40 @@
   
     ::-webkit-scrollbar {
         width: 5px;
-        }
+    }
 
         /* Track */
-        ::-webkit-scrollbar-track {
-        background: #292b2c;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-        background: #0275d8;
-        border-radius: 10px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-        background: #0275d8;
-        }
-        .container-md{
-            border: solid 2px black;
-        }
-        .star:hover{
-            opacity: 1;
-        }
-        p.card-title{
-            cursor: pointer;
-        }
-
-        .adminPage{
-        color: white;
+    ::-webkit-scrollbar-track {
+    background: #292b2c;
     }
-    .paymethodContainer input[type ="radio"]{
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #0275d8;
+    border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #0275d8;
+    }
+
+    .container-md{
+        border: solid 2px black;
+    }
+
+    .adminPage{
+    color: white;
     }
     .ticketSelectionContainer input[type ="radio"]{
         display: none;
         position: absolute;
         top: 0;
         left: 0;
-    }
+    } 
 
-    .paymethodContainer label {
-    display: inline-block;
-    padding: 10px 20px;
-    border: solid 1px black;
-    color: #0275d8;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    }
-    
-    .paymethodContainer input[type="radio"]:checked + label,
-    .paymethodContainer input[type="radio"]:hover + label {
-        background-color: #0275d8 !important;
-        color: white;
-        border-color: white;
+    .UserSelectionContainer input[type ="radio"]{
+        display: none;
     }
 
     .ticketSelectionContainer input[type ="radio"]:checked + label,
@@ -123,27 +99,16 @@
         animation: Border 1s infinite alternate;
     }
 
-    .paymethodContainer input[type="radio"]:checked + label{
+    .UserSelectionContainer input[type ="radio"]:checked + label,
+    .UserSelectionContainer input[type ="radio"]:hover + label
+    {
         animation: Border 1s infinite alternate;
     }
-    
+
     body{
         background-color: rgba(0, 0, 0, 0.6);
         background-blend-mode: darken;
     }
-    .transform {
-    -webkit-transition: all 2s ease;  
-    -moz-transition: all 2s ease;  
-    -o-transition: all 2s ease;  
-    -ms-transition: all 2s ease;  
-    transition: all 2s ease;
-    }
-
-    .mystyle{
-        transition: all 0.2s;
-        animation: Border 1s infinite alternate;
-    }
-
 
     .transform-active {
     background-color: #45CEE0;
@@ -169,29 +134,7 @@
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
     background: #0275d8;
-    }
-
-    /* Success Video CSS */
-    #darkenScreen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        display: none; 
-        /* sembunyiin dulu penggelapannya */
-    }
-
-    #videoContainer {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: none; 
-        /* ini juga di sembunyiin dulu */
-    }
-    
+    } 
     </style>
 </head>
 
@@ -212,12 +155,12 @@
         </div>
         <hr>
     </div>
-<div class="container">
-   <div class="container" style="width: 100%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+<div class="d-flex align-content-between">
+   <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
             <!-- Tickets -->
             @forelse ($ticket as $item)
-                    <div class="col-6 my-2 ticketSelectionContainer">
+                    <div class="col-12 my-2 ticketSelectionContainer mx-auto">
                         <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
                         <label for="{{ $item['id'] }}" style="border-radius:7px;">
                             <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
@@ -318,23 +261,59 @@
             @endforeach
         </div>
     </div>
-    <div class="d-flex flex-row-reverse">
-        <button onclick="redirectToTambahTiket()" class="btn btn-primary px-5 mx-3" id="tambah">
-            Tambah Tiket
-        </button>
-        <button onclick="redirectToEditTiket()" class="btn btn-primary px-5 mx-3"  id="edit" >
-            Edit Tiket 
-        </button>
+    <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+        <div class="row">
+        @forelse ($users as $item)
+                <div class="col-12 my-2 UserSelectionContainer mx-auto">
+                    <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
+                    <label for="{{ $item['username'] }}" style="border-radius:7px;">
+                        <div class="card " style="width: 30rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between text-primary">
+                                    <p class="card-title">
+                                        <strong>    
+                                            Username :{{ $item['username'] }}
+                                        </strong>
+                                    </p>
+                                    <p class="card-title">
+                                    <strong>
+                                        NoTelp : {{ $item['noTelp'] }}
+                                    </strong>
+                                    </p>    
+                                </div>
+                                <div class="d-flex justify-content-between" style="opacity: 100%;">
+                                    <p class="card-subtitle text-secondary">
+                                        {{ $item['email'] }}
+                                    </p>
+                                    <p class="card-subtitle text-success">
+                                        <strong>
+                                            Password : {{ $item['password'] }}
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+        @endforeach
+        </div>
     </div>
 </div>
-  <!-- endof modal -->
-
-  <!-- success payment animation -->
-<div id="darkenScreen"></div>
-<div id="videoContainer">
-    <dotlottie-player id="lottiePlayer" src="https://lottie.host/1f25b754-dfaf-4e88-955b-0b913c12c407/UXE2t7llC3.json" background="transparent" speed="0.8" style="width: 300px; height: 300px;" ></dotlottie-player>
-    <p class="text-white ms-5"><strong>Pembayaran Anda Berhasil!</strong></p>
+<div class="d-flex  justify-content-evenly">
+    <button onclick="redirectToTambahTiket()" class="btn btn-primary px-5" id="tambahTiket">
+        Tambah Tiket
+    </button>
+    <button onclick="redirectToEditTiket()" disabled class="btn btn-primary px-5 mx-3"  id="editTiket" >
+        Edit Tiket 
+    </button>
+    <button onclick="" class="btn btn-primary px-5 mx-3" id="tambahUser">
+        Tambah User
+    </button>
+    <button onclick="" disabled class="btn btn-primary px-5 mx-3"  id="editUser" >
+        Edit User
+    </button>
 </div>
+
  <script>
     function redirectToTambahTiket() {
         window.location.href = "/tambahTiket"; // Ganti dengan URL halaman login yang sesuai
@@ -353,6 +332,26 @@
                 var lottiePlayer = document.getElementById("lottiePlayer");
                 lottiePlayer.currentFrame = 0;
             }
-        });
+    });
+
+    function checkTickets() {
+    var element2 = document.getElementById("editTiket")
+    if ($("input[name='ticketSelection']:checked")) {
+        element2.disabled = false;
+    }
+    else {
+        element2.disabled = true;
+        }
+    }
+
+    function checkUser() {
+    var element2 = document.getElementById("editUser")
+    if ($("input[name='UserSelection']:checked")) {
+        element2.disabled = false;
+    }
+    else {
+        element2.disabled = true;
+        }
+    }
 </script>   
 </body>

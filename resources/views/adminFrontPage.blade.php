@@ -85,7 +85,7 @@
     <div class="container mx-5">
         <div class="d-flex align-content-between">
             <div class="container-fluid">
-                <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
+                <h3 class="text-white mt-4"><strong>Halaman Admin</strong></h3>
             </div>
             <div class="row container-fluid" style="margin-top: 3px;">
                 <form action="{{ url('/logout') }}">
@@ -97,8 +97,14 @@
         </div>
         <hr>
     </div>
-    <div class="">
+    <div class="d-flex justify-content-evenly">
+        <button class="btn btn-primary px-5 py-2">
+            Kelola Data pengguna
+        </button>
 
+        <button class="btn btn-primary px-5 py-2">
+            Kelola Data Ticket
+        </button>
     </div>
     <div class="row">
         <div class="col-sm-3">

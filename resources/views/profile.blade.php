@@ -113,10 +113,10 @@
     </div>
     <div class="container-fluid" style="width: 75%;">
         <div class="text-white">
-            <h2><strong class="fs-5" style="padding-top:0%;">Tiket Anda : </strong></h2>
+            <h4><strong class="fs-5" style="padding-top:0%;">Tiket Anda : </strong></h4>
         </div>
     </div>
-    <div class="container" style=" width: 75%; height: 37vh; overflow-y: auto; margin-bottom: 5vh;">
+    <div class="container" style=" width: 75%; height: 30vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
             @forelse ($ticket as $item)
                     <div class="col-6 my-2">

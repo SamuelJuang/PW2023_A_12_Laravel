@@ -14,7 +14,64 @@ use App\Http\Controllers\loginAuth;
 */
 
 Route::get('/', function () {
-    return view('frontPage');
+    if(session('user') == 'admin'){
+        return view('adminPage',
+    [
+        'ticket' =>[
+        [
+            'id' => 1,
+            'namakereta' => "SAF JAYA",
+            'kelas' => "Ekonomi - A",
+            'harga' => 20000,
+            'status' => "Available",
+            'rating' => 5,
+            'asal' => "Stasiun Balapan Solo",
+            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i") buat waktu
+            'tujuan' => "Stasiun Tugu Jogja",
+            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
+        ],
+        [
+            'id' => 2,
+            'namakereta' => "SAF JAYA 2",
+            'kelas' => "Bisnis - A",
+            'harga' => 50000,
+            'status' => "Available",
+            'rating' => 4,
+            'asal' => "Stasiun Balapan Solo",
+            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
+            'tujuan' => "Stasiun Tugu Jogja",
+            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
+        ],
+        [
+            'id' => 3,
+            'namakereta' => "SAF JAYA",
+            'kelas' => "Ekonomi - A",
+            'harga' => 20000,
+            'status' => "Available",
+            'rating' => 3,
+            'asal' => "Stasiun Balapan Solo",
+            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
+            'tujuan' => "Stasiun Tugu Jogja",
+            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
+        ],
+        [
+            'id' => 4,
+            'namakereta' => "SAF JAYA",
+            'kelas' => "Ekonomi - A",
+            'harga' => 20000,
+            'status' => "Available",
+            'rating' => 5,
+            'asal' => "Stasiun Balapan Solo",
+            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
+            'tujuan' => "Stasiun Tugu Jogja",
+            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
+        ],
+        ]
+    ]
+);
+    }else{
+        return view('frontPage');
+    }
 });
 
 Route::post("user", [loginAuth::class,'userLogin']);
@@ -153,10 +210,6 @@ Route::get('/DetailTicket', function () {
 });
 
 Route::get('/adminPage', function () {
-    return view('adminPage');
-});
-
-Route::get('/adminPage', function () {
     return view('adminPage',
     [
         'ticket' =>[
@@ -208,7 +261,37 @@ Route::get('/adminPage', function () {
             'tujuan' => "Stasiun Tugu Jogja",
             'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
         ],
-        ]
+    ],
+        'users'=>[
+            [
+                'id' => 1,
+                'username' => 'Sampjs',
+                'noTelp' => '081271231',
+                'email' => 'samuel@gmail.com',
+                'password' => '12345678',
+            ],
+            [
+                'id' => 2,
+                'username' => 'Agatha',
+                'noTelp' => '081312371',
+                'email' => 'agatha@gmail.com',
+                'password' => '12345678',
+            ],
+            [
+                'id' => 3,
+                'username' => 'Raff Gustafio',
+                'noTelp' => '081309123',
+                'email' => 'fio@gmail.com',
+                'password' => '12345678',
+            ],
+            [
+                'id' => 4,
+                'username' => 'hayo siapa',
+                'noTelp' => '081309123',
+                'email' => 'fio@gmail.com',
+                'password' => '12345678',
+            ],
+    ]
     ]
 );
 });

@@ -82,7 +82,7 @@
 </head>
 
 <body>
-    <a href=" {{url('/')}}">
+    <a href=" {{url('/ticketSearch')}}">
         <div class="vector">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 32px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
@@ -91,7 +91,7 @@
     </a>
     <div class="container-fluid" style="width: 75%;">
         <div class="text-white">
-            <h1><strong  style="padding-top:0%;">Review Kereta SAF Jaya</strong></h1>
+            <h1><strong>Review Kereta SAF Jaya</strong></h1>
         </div>
     </div>
     <div class="mx-auto" style="width: 75%;">
@@ -102,7 +102,7 @@
         <div class="row">
             @forelse ($ticket as $item)
                     <div class="col-6 my-2">
-                        <div class="card radio" style="max-width: 30rem; max-height: 17rem;">
+                        <div class="card radio" style="width: 100%; height: 15rem;">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between text-primary">
                                     <p class="card-title" onclick="ticketDetailRedirect()">
@@ -143,7 +143,7 @@
                                 </div>
                                 <br>
                                 <div class="d-flex" style="height: fit-content;">
-                                    <p class="fs-5"><strong>Deskripsi</strong></p>
+                                    <p><strong>Deskripsi</strong></p>
                                 </div>
                                 <p> {{$item['deskripsi']}}</p>
                             </div>
