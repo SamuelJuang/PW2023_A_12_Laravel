@@ -45,12 +45,13 @@
             font-family: Helvetica,sans-serif;
             font-stretch: expanded;
         }
+
     </style>
 </head>
 <body>
     <div class="mainInfo px-5">
         <nav class="navbar py-3 px-3 topdownAnimated" aria-label="First navbar example">    
-            <img src="{{asset('images/SAF Logo.svg')}}" alt="" class="navbar-brand" style="height: 7vh;">
+        <img src="{{asset('images/SAF Logo.svg')}}" alt="SAF logo"class="navbar-brand" style="height: 7vh;">
           <div class="d-flex justify-content-end px-3 py-2">
             @if (session()->has('user'))
               <a href="{{ url('/profile') }}">
@@ -62,12 +63,12 @@
             @else 
             <form action="{{ url('/login') }}">
                 <button class="btn btn-outline-light px-5 mx-3">
-                    login
+                    Login
                 </button>
               </form>
               <form action="{{ url('/register') }}">
                 <button class="btn btn-primary  px-5" type="submit">
-                    register
+                    Register
                 </button>
               </form>
             @endif  

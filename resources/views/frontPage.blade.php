@@ -44,13 +44,14 @@
        <div class="col-6">
             <div class="btn-group container-fluid">
                 <select name="StasiunAsal" id="StasiunAsal" class="form-select reg">
-                    <option selected value="">Stasiun Asal</option>
-                    <option value="Stasiun Solo Balapa">Stasiun Solo Balapan</option>
+                    <option value="" hidden>Stasiun Asal</option>
+                    <option value="Stasiun Solo Balapan">Stasiun Solo Balapan</option>
                     <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
                     <option value="Stasiun Bandung">Stasiun Bandung</option>
                 </select>
+
                 <select name="StasiunTujuan" id="StasiunTujuan" class="form-select reg">
-                    <option selected value="">Stasiun Tujuan</option>
+                    <option hidden>Stasiun Tujuan</option>
                     <option value="Stasiun Solo Balapan">Stasiun Solo Balapan</option>
                     <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
                     <option value="Stasiun Bandung">Stasiun Bandung</option>
@@ -70,7 +71,7 @@
     <form action="{{ url('/login') }}">
     @endif
         <button class="btn btn-primary ms-auto" style="width: 15%;" type="submit">
-            Cari
+            Cari Kereta
         </button>
     </form>
 </div>
