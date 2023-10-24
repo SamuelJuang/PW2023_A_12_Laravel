@@ -197,10 +197,23 @@
 
 <body>
 <br>
-<h1 class="adminPage"><strong>Halaman Admin</strong></h1>
-<hr>
+<div class="container mx-5">
+        <div class="d-flex align-content-between">
+            <div class="container-fluid">
+                <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
+            </div>
+            <div class="row container-fluid" style="margin-top: 3px;">
+                <form action="{{ url('/logout') }}">
+                    <button class="btn btn-danger float-end my-3 rounded px-5 mx-5" type="submit">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr>
+    </div>
 <div class="container">
-   <div class="container" style="width: 100%; height: 70vh; overflow-y: auto; margin-bottom: 5vh;">
+   <div class="container" style="width: 100%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
             <!-- Tickets -->
             @forelse ($ticket as $item)

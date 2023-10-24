@@ -115,7 +115,9 @@
         display: none; 
         /* ini juga di sembunyiin dulu */
     }
-    
+    .card-title{
+        cursor: pointer;
+    }
 </style>
 <div class="container">
    <div class="container" style="width: 100%; height: 70vh; overflow-y: auto; margin-bottom: 5vh;">
@@ -128,7 +130,7 @@
                             <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
-                                        <p class="card-title">
+                                        <p class="card-title" onclick="redirectToReviews()">
                                             <strong>    
                                                 {{ $item['namakereta'] }}
                                             </strong>
@@ -372,6 +374,9 @@
 
     function redirectHome(){
         window.location.href = "{{url('profile')}}";
+    }
+    function redirectToReviews(){
+        window.location.href = "{{url('reviewKereta')}}";
     }
 
     window.addEventListener("pageshow", function(event) {

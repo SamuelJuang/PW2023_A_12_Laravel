@@ -47,160 +47,34 @@
             opacity: 0.5;
         }
 
-        .profile {
-            height: 20vh;
-        }
-        .transform-active {
-    background-color: #45CEE0;
-    height: 200px;
-    width: 200px;
-    }   
-  
-    ::-webkit-scrollbar {
-        width: 5px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-        background: #292b2c;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-        background: #0275d8;
-        border-radius: 10px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-        background: #0275d8;
-        }
-        .container-md{
-            border: solid 2px black;
-        }
-        .star:hover{
-            opacity: 1;
-        }
-        p.card-title{
-            cursor: pointer;
-        }
-
         .adminPage{
         color: white;
     }
-    .paymethodContainer input[type ="radio"]{
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    .ticketSelectionContainer input[type ="radio"]{
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .paymethodContainer label {
-    display: inline-block;
-    padding: 10px 20px;
-    border: solid 1px black;
-    color: #0275d8;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    }
     
-    .paymethodContainer input[type="radio"]:checked + label,
-    .paymethodContainer input[type="radio"]:hover + label {
-        background-color: #0275d8 !important;
-        color: white;
-        border-color: white;
-    }
-
-    .ticketSelectionContainer input[type ="radio"]:checked + label,
-    .ticketSelectionContainer input[type ="radio"]:hover + label
-    {
-        animation: Border 1s infinite alternate;
-    }
-
-    .paymethodContainer input[type="radio"]:checked + label{
-        animation: Border 1s infinite alternate;
-    }
     
     body{
         background-color: rgba(0, 0, 0, 0.6);
         background-blend-mode: darken;
     }
-    .transform {
-    -webkit-transition: all 2s ease;  
-    -moz-transition: all 2s ease;  
-    -o-transition: all 2s ease;  
-    -ms-transition: all 2s ease;  
-    transition: all 2s ease;
-    }
-
-    .mystyle{
-        transition: all 0.2s;
-        animation: Border 1s infinite alternate;
-    }
-
-
-    .transform-active {
-    background-color: #45CEE0;
-    height: 200px;
-    width: 200px;
-    }   
-  
-    ::-webkit-scrollbar {
-    width: 5px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-    background: #292b2c;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-    background: #0275d8;
-    border-radius: 10px;
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-    background: #0275d8;
-    }
-
-    /* Success Video CSS */
-    #darkenScreen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        display: none; 
-        /* sembunyiin dulu penggelapannya */
-    }
-
-    #videoContainer {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: none; 
-        /* ini juga di sembunyiin dulu */
-    }
-    
-
     </style>
 </head>
 
 <body>
-<br>
-<h2 class="adminPage"><strong>Halaman Edit Tiket</strong></h2>
-<hr>
+    <div class="container mx-5">
+        <div class="d-flex align-content-between">
+            <div class="container-fluid">
+                <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
+            </div>
+            <div class="row container-fluid" style="margin-top: 3px;">
+                <form action="{{ url('/logout') }}">
+                    <button class="btn btn-danger float-end my-3 rounded px-5 mx-5" type="submit">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr>
+    </div>
 <div class="text-white px-2 mx-2">
     <form class="editTiketContainer" action="">
             <label class="form-label" for="username">Asal</label>

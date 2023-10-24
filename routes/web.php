@@ -217,6 +217,46 @@ Route::get('/rating', function () {
     return view('rating');
 });
 
+Route::get('/reviewKereta', function () {
+    return view('reviewKereta', [
+        'ticket' =>[
+        [
+            'id' => 1,
+            'nama' => "SAF JAYA Lover",
+            'kelas' => "Ekonomi",
+            'rating' => 5,
+            'deskripsi' => "Sangat menyenangkan!, saya sangat menikmati penjalanan!"
+        ],
+        [
+            'id' => 2,
+            'nama' => "SAF? bukan gueh",
+            'kelas' => "Bisnis",
+            'rating' => 3,
+            'deskripsi' => "mayan lah"
+        ],
+        [
+            'id' => 3,
+            'nama' => "Sampo",
+            'kelas' => "Ekonomi",
+            'rating' => 4,
+            'deskripsi' => "yes"
+        ],
+        [
+            'id' => 4,
+            'nama' => "random",
+            'kelas' => "Bisnis",
+            'rating' => 5,
+            'deskripsi' => "... enak"
+        ],
+        ]
+    ]);
+});
+
+Route::get('/adminFront', function () {
+    return view('adminFrontPage');
+});
+
+
 Route::get('/tambahTiket', function () {
     return view('tambahTiket');
 });
