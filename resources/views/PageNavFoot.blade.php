@@ -45,6 +45,9 @@
             font-family: Helvetica,sans-serif;
             font-stretch: expanded;
         }
+        .navbar-brand:hover{
+            animation: enlarge 1s ease-in-out;
+        }
 
     </style>
 </head>

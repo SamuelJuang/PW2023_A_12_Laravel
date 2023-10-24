@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Halaman Edit Tiket</title>
+    <title>Halaman Tambahkan Admin</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -77,95 +77,71 @@
             <hr class="dashed-hr mb-2" style="color: #252525;">
         </div>
         <div>
-            <p class="text-white fw-bold fs-5" style="margin-left: 10px;">Edit Tiket</p>
+            <p class="text-white fw-bold fs-5" style="margin-left: 10px;">Tambah Ticket Baru</p>
         </div>
     </div>
     <div class="text-white px-2 mx-2">
         <from class="editTiketContainer" action="">
             <div class="d-flex">
-            <div style="margin-left: 15%;">
+                <div style="margin-left: 15%;">
                     <label class="form-label" for="username">Nama Kereta</label>
-                    <input class="form-control text-white" value="SAF JAYA" type="text" name="asal" id="asal" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="text" name="asal" id="asal" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="kelas" style="padding-top: 10px;">Kelas Kereta</label>
-                    <input class="form-control text-white" value="Ekonomi" type="text" name="kelas" id="kelas" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="text" name="kelas" id="kelas" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="rating" style="padding-top: 10px;">Rating</label>
-                    <input class="form-control text-white" value="5" type="rating" name="rating" id="rating" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="rating" name="rating" id="rating" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tersedia" style="padding-top: 10px;">Ketersediaan</label>
-                    <input class="form-control text-white" value="50" type="number" name="tersedia" id="tersedia" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="number" name="tersedia" id="tersedia" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
                 <div style="margin-left: 20%;">
-                    <label class="form-label" for="asal">Stasiun Asal</label>
-                    <input class="form-control text-white" value="Stasiun Yogyakarta"  type="text" name="asal" id="asal" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="asal">Stasiun Awal</label>
+                    <input class="form-control text-white" type="text" name="asal" id="asal" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tujuan" style="padding-top: 10px;">Stasiun Tujuan</label>
-                    <input class="form-control text-white" value="Stasiun Solo Balapan" type="text" name="tujuan" id="tujuan" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="text" name="tujuan" id="tujuan" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tglDept" style="padding-top: 10px;">Tanggal Keberangkatan</label>
                     <input class="form-control text-white" type="datetime-local" name="tglDept" id="tglDept" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="harga" style="padding-top: 10px;">Harga</label>
-                    <input class="form-control text-white" value="100000" type="text" name="harga" id="harga" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="text" name="harga" id="harga" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
             </div>
         </from>
     </div>
     <div class="d-flex flex-row-reverse" style="margin-top: 20px; margin-right: 18%;">
-        <button onclick="editedTicket()" class="btn btn-primary px-4 mx-3" id="edit">
-            Edit Tiket
-        </button>
-        <button onclick="editedTicket()" class="btn btn-danger px-4 mx-3" id="hapus">
-            Hapus Tiket
+        <button onclick="addedTicket()" class="btn btn-primary px-4 mx-3" id="tambah">
+            Tambah Tiket
         </button>
     </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast1" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex" style="background-color: blue;">
+        <div id="liveToast" class="toast align-items-center bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex" style="background-color: green;">
             <div class="toast-body">
                 <span>
                     <i class="fa-solid fa-check"></i>
-                    Berhasil Mengubah Ticket
-                </span>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast2" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex" style="background-color: red;">
-            <div class="toast-body">
-                <span>
-                    <i class="fa-solid fa-check"></i>
-                    Berhasil Menghapus Ticket
+                    Berhasil Menambahkan Ticket
                 </span>
             </div>
             </div>
         </div>
     </div>
     <script>
-        const toastTrigger = document.getElementById('edit')
-        const toastLiveExample = document.getElementById('liveToast1')
-        if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample)
 
-            toast.show()
-        })
-        }
-        const toastTrigger2 = document.getElementById('hapus')
-        const toastLiveExample2 = document.getElementById('liveToast2')
-        if (toastTrigger2) {
-        toastTrigger2.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample2)
+    const toastTrigger = document.getElementById('tambah')
+    const toastLiveExample = document.getElementById('liveToast')
+    if (toastTrigger) {
+    toastTrigger.addEventListener('click', () => {
+        const toast = new bootstrap.Toast(toastLiveExample)
 
-            toast.show()
-        })
-        }
-        function editedTicket(){
-            setTimeout(redirectBack,1150);
-        }
-        
-        function redirectBack(){
-            window.location.href = "{{url('adminPage')}}";
-        }
+        toast.show()
+    })
+    }
+    function addedTicket(){
+        setTimeout(redirectBack,1150);
+    }
+    
+    function redirectBack(){
+        window.location.href = "{{url('adminPage')}}";
+    }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

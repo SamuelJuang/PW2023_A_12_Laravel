@@ -30,16 +30,12 @@
             Stasiun Tujuan
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-6">
         <div class="text-white" style="margin-left: 10px;">
             Tanggal Keberangkatan
         </div>
     </div>
-    <div class="col-3">
-        <div class="text-white">
-            Tanggal kembali
-        </div>
-    </div>
+    
     <div class="col-6">
         <div class="btn-group container-fluid">
             <select name="StasiunAsal" id="StasiunAsal" class="form-select reg">
@@ -57,10 +53,9 @@
             </select>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-4">
         <div class="btn-group container-fluid">
             <input name="TglDepart" id="TglDepart" class="form-control reg" type="date" />
-            <input name="TglPulang" id="TglPulang" class="form-control reg" type="date" />
         </div>
     </div>
     <div class="row container-fluid" style="margin-left: 81%; margin-top: 20px;">

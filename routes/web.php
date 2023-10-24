@@ -66,8 +66,38 @@ Route::get('/', function () {
             'tujuan' => "Stasiun Tugu Jogja",
             'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
         ],
-        ]
-    ]
+    ],
+    'users'=>[
+        [
+            'id' => 1,
+            'username' => 'Sampjs',
+            'noTelp' => '081271231',
+            'email' => 'samuel@gmail.com',
+            'password' => '12345678',
+        ],
+        [
+            'id' => 2,
+            'username' => 'Agatha',
+            'noTelp' => '081312371',
+            'email' => 'agatha@gmail.com',
+            'password' => '12345678',
+        ],
+        [
+            'id' => 3,
+            'username' => 'Raff Gustafio',
+            'noTelp' => '081309123',
+            'email' => 'fio@gmail.com',
+            'password' => '12345678',
+        ],
+        [
+            'id' => 4,
+            'username' => 'hayo siapa',
+            'noTelp' => '081309123',
+            'email' => 'fio@gmail.com',
+            'password' => '12345678',
+        ],
+]
+    ],
 );
     }else{
         return view('frontPage');
@@ -338,21 +368,15 @@ Route::get('/reviewKereta', function () {
 Route::get('/adminFront', function () {
     return view('adminFrontPage');
 });
-
-
-Route::get('/tambahTiket', function () {
-    return view('tambahTiket');
-});
-
 Route::get('/editTiket', function () {
     return view('editTiket');
 });
+
+
 Route::get('/editUser', function () {
     return view('editUser');
 });
-Route::get('/frontPage', function () {
-    return view('frontPage');
-});
-Route::get('/TambahAdmin', function () {
-    return view('TambahAdmin');
+
+Route::get('/addTicket', function () {
+    return view('addTicket');
 });

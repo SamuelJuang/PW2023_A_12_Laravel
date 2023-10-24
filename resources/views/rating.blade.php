@@ -103,7 +103,7 @@
 </head>
 
 <body>
-    <a href=" {{url('/')}}">
+    <a href=" {{url('/profile')}}">
         <div class="vector">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 32px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />

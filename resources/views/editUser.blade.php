@@ -60,7 +60,7 @@
 </head>
 
 <body>
-    <a href=" {{url('/register')}}">
+    <a href=" {{url('/adminPage')}}">
         <div class="vector mx-5">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 10px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
@@ -85,55 +85,79 @@
             <div class="d-flex">
                 <div style="margin-left: 15%;">
                     <label class="form-label" for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="email" style="padding-top: 10px;">Email</label>
-                    <input class="form-control" type="email" name="email" id="email" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label " for="email" style="padding-top: 10px;">Email</label>
+                    <input class="form-control text-white" value="12345678" type="email" name="email" id="email" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
                 <div style="margin-left: 20%;">
-                    <label class="form-label" for="username">Nomor Telepon</label>
-                    <input class="form-control" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="noTelp">Nomor Telepon</label>
+                    <input class="form-control text-white" value="081237563" type="text" name="noTelp" id="noTelp" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
-                    <input class="form-control" type="passeord" name="password" id="password" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" value="woawa" type="text" name="password" id="password" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
             </div>
         </from>
     </div>
     <div class="d-flex flex-row-reverse" style="margin-top: 20px; margin-right: 18%;">
-        <button onclick="redirectToEditTiket()" class="btn btn-primary px-4 mx-3" id="tambah">
+        <button onclick="editedTicket()" class="btn btn-primary px-4 mx-3" id="edit">
             Edit Tiket
         </button>
-        <button onclick="" class="btn btn-danger px-4 mx-3" id="tambah">
+        <button onclick="editedTicket()" class="btn btn-danger px-4 mx-3" id="hapus">
             Hapus Tiket
         </button>
     </div>
     </div>
-    <!-- endof modal -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast1" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex" style="background-color: blue;">
+            <div class="toast-body">
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Berhasil Mengubah User
+                </span>
+            </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- success payment animation -->
-    <div id="darkenScreen"></div>
-    <div id="videoContainer">
-        <dotlottie-player id="lottiePlayer" src="https://lottie.host/1f25b754-dfaf-4e88-955b-0b913c12c407/UXE2t7llC3.json" background="transparent" speed="0.8" style="width: 300px; height: 300px;"></dotlottie-player>
-        <p class="text-white ms-5"><strong>Berhasil mengedit tiket!</strong></p>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast2" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex" style="background-color: red;">
+            <div class="toast-body">
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Berhasil Menghapus User
+                </span>
+            </div>
+            </div>
+        </div>
     </div>
     <script>
-        function redirectToTambahTiket() {
-            window.location.href = "/tambahTiket";
-        }
+       const toastTrigger = document.getElementById('edit')
+        const toastLiveExample = document.getElementById('liveToast1')
+        if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
 
-        function redirectToEditTiket() {
-            window.location.href = "/editTiket";
+            toast.show()
+        })
         }
+        const toastTrigger2 = document.getElementById('hapus')
+        const toastLiveExample2 = document.getElementById('liveToast2')
+        if (toastTrigger2) {
+        toastTrigger2.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample2)
 
-        function redirectHome() {
-            window.location.href = "{{url('profile')}}";
+            toast.show()
+        })
         }
-
-        window.addEventListener("pageshow", function(event) {
-            if (event.persisted) {
-                var lottiePlayer = document.getElementById("lottiePlayer");
-                lottiePlayer.currentFrame = 0;
-            }
-        });
+        function editedTicket(){
+            setTimeout(redirectBack,1150);
+        }
+        
+        function redirectBack(){
+            window.location.href = "{{url('adminPage')}}";
+        }
     </script>
     <div class="row g-2">
         <div class="col-sm-3">

@@ -314,23 +314,20 @@
                 </button>
             </div>
         </div>
-        <div class="d-flex" style="margin-left: 148px;">
+        <div class="d-flex" style="margin-left: 300px;">
             <div>
-                <button onclick="" class="btn btn-primary px-5 mx-3" id="tambahUser" style="margin-left: 100px;">
-                    Tambah User
-                </button>
-            </div>
-            <div style="margin-left: 95px;">
-                <button onclick="" disabled class="btn btn-primary px-5 mx-3" id="editUser">
-                    Edit User
-                </button>
+               <form action="{{url('/editUser')}}">
+                    <button onclick="" disabled class="btn btn-primary px-5 mx-3" id="editUser">
+                        Edit User
+                    </button>
+               </form>
             </div>
         </div>
     </div>
 
     <script>
         function redirectToTambahTiket() {
-            window.location.href = "/tambahTiket"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/addTicket"; // Ganti dengan URL halaman login yang sesuai
         }
 
         function redirectToEditTiket() {

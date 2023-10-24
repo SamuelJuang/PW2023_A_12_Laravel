@@ -38,10 +38,10 @@
                 <div class="px-5 mx-5">
                     <form action="user" method="POST">
                         @csrf
-                        <label class="form-label" for="login">Username</label>
-                        <input class="form-control" type="login" name="user" id="login">
+                        <label class="form-label"for="login">Username</label>
+                        <input class="form-control" required type="login" name="user" id="login">
                         <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
-                        <input class="form-control" type="password" name="password" id="password">
+                        <input class="form-control" required  type="password" name="password" id="password">
                         <p class="fw-light" style="color: #252525; font-size: 12px; padding-top: 10px;">Belum punya akun? <a href="/register" style="color:#252525;" class="fw-semibold">Register</a></p>
                         <div class="d-grid gap-2" >
                             <button class="btn btn-primary" style="border-radius: 10px" type="submit">Login</button>
