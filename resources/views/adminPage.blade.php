@@ -1,17 +1,21 @@
-@extends('PageNavFoot')
+<!DOCTYPE html>
+<html lang="en">
 
-
-@section('content')
-<h5 class="adminPage"><strong>Admin Page</strong></h5>
-<hr>
-<!-- Lottie Player -->
-<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-<!-- JQuery -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<!-- Animations -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<style>
-    body{
+<head>
+    <!-- Lottie Player -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+    <!-- JQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Animations -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Halaman Admin</title>
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <style>
+        body {
             overflow: hidden;
             background-image: "{{asset('images/tempTrainStation.jpg')}}";
             height: 100vh;
@@ -20,31 +24,67 @@
             background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: darken;
             background-repeat: no-repeats;
-            font-family: 'Poppins';
         }
         hr {
             border: 0;
-            clear:both;
-            display:block;
-            width: 100%;               
-            background-color:#ffffff;
+            clear: both;
+            display: block;
+            width: 100%;
+            background-color: #ffffff;
             height: 3px;
             opacity: 100%;
         }
+
+
         footer {
             font-size: small;
-            position:fixed;
-            left:0px;
-            bottom:0px;
-            height:30px;
-            width:100%;
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            height: 30px;
+            width: 100%;
             opacity: 0.5;
         }
-        .card{
-            font-family: Helvetica,sans-serif;
-            font-stretch: expanded;
+
+        .profile {
+            height: 20vh;
         }
-    .adminPage{
+        .transform-active {
+    background-color: #45CEE0;
+    height: 200px;
+    width: 200px;
+    }   
+  
+    ::-webkit-scrollbar {
+        width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+        background: #292b2c;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: #0275d8;
+        border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #0275d8;
+        }
+        .container-md{
+            border: solid 2px black;
+        }
+        .star:hover{
+            opacity: 1;
+        }
+        p.card-title{
+            cursor: pointer;
+        }
+
+        .adminPage{
         color: white;
     }
     .paymethodContainer input[type ="radio"]{
@@ -152,7 +192,13 @@
         /* ini juga di sembunyiin dulu */
     }
     
-</style>
+    </style>
+</head>
+
+<body>
+<br>
+<h1 class="adminPage"><strong>Halaman Admin</strong></h1>
+<hr>
 <div class="container">
    <div class="container" style="width: 100%; height: 70vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
@@ -296,5 +342,4 @@
             }
         });
 </script>   
-
-@endsection
+</body>
