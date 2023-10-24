@@ -25,7 +25,6 @@
             background-blend-mode: darken;
             background-repeat: no-repeats;
         }
-
         hr {
             border: 0;
             clear: both;

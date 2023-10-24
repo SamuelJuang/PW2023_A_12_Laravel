@@ -45,10 +45,10 @@
             height: 20vh;
         }
         .transform-active {
-    background-color: #45CEE0;
-    height: 200px;
-    width: 200px;
-    }   
+        background-color: #45CEE0;
+        height: 200px;
+        width: 200px;
+        }   
   
     ::-webkit-scrollbar {
         width: 5px;
@@ -105,7 +105,7 @@
         <form action="{{ url('/logout') }}">
             <button class="btn btn-danger ms-auto" style="width: 20%; border-radius: 15px;" type="submit">
                 Logout
-            </button> <a href="/adminPage">awikwok</a>
+            </button>
         </form>
     </div>
     <div class="mx-auto" style="width: 75%;">
@@ -155,7 +155,7 @@
                                     <i class="fas fa-star fa-xs star" style="color: gold; opacity: 0.3;"></i>
                                             <?php }
                                     ?>
-                                    <a class="text-secondary my-1">
+                                    <a class="text-secondary my-1" href="{{url('/rating')}}">
                                         <small style="font-size: smaller;">
                                             berikan rating?
                                         </small>
