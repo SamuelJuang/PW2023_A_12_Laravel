@@ -347,3 +347,12 @@ Route::get('/tambahTiket', function () {
 Route::get('/editTiket', function () {
     return view('editTiket');
 });
+Route::get('/editUser', function () {
+    return view('editUser');
+});
+Route::get('/frontPage', function () {
+    return view('frontPage');
+});
+Route::get('/TambahAdmin', function () {
+    return view('TambahAdmin');
+});

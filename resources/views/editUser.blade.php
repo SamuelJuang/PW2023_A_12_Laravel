@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Halaman Edit Tiket</title>
+    <title>Halaman Edit User</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -60,7 +60,7 @@
 </head>
 
 <body>
-    <a href=" {{url('/adminFrontPage')}}">
+    <a href=" {{url('/register')}}">
         <div class="vector mx-5">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 10px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
@@ -70,38 +70,30 @@
     <div class="container ">
         <div class="d-flex align-content-between">
             <div class="container-fluid">
-                <h3 class="text-white mt-4"><strong>Halaman Admin</strong></h3>
+                <h3 class="text-white mt-4"><strong>Halaman User</strong></h3>
             </div>
         </div>
         <div>
             <hr class="dashed-hr mb-2" style="color: #252525;">
         </div>
         <div>
-            <p class="text-white fw-bold fs-5" style="margin-left: 10px;">Edit Tiket</p>
+            <p class="text-white fw-bold fs-5 mb-5" style="margin-left: 10px;">Edit User</p>
         </div>
     </div>
-    <div class="text-white px-2 mx-2">
+    <div class="text-white px-2 mx-5 mb-5">
         <from class="editTiketContainer" action="">
             <div class="d-flex">
                 <div style="margin-left: 15%;">
-                    <label class="form-label" for="username">Asal</label>
+                    <label class="form-label" for="username">Username</label>
                     <input class="form-control" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="telp" style="padding-top: 10px;">Kelas Kereta</label>
-                    <input class="form-control" type="text" name="telp" id="telp" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="rating" style="padding-top: 10px;">Rating</label>
+                    <label class="form-label" for="email" style="padding-top: 10px;">Email</label>
                     <input class="form-control" type="email" name="email" id="email" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="password" style="padding-top: 10px;">Ketersediaan</label>
-                    <input class="form-control" type="text" name="tersedia" id="password" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
                 <div style="margin-left: 20%;">
-                    <label class="form-label" for="username">Stasiun Awal</label>
+                    <label class="form-label" for="username">Nomor Telepon</label>
                     <input class="form-control" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="telp" style="padding-top: 10px;">Stasiun Tujuan</label>
-                    <input class="form-control" type="text" name="telp" id="telp" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="email" style="padding-top: 10px;">Jam Keberangkatan</label>
-                    <input class="form-control" type="email" name="email" id="email" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="password" style="padding-top: 10px;">Harga</label>
-                    <input class="form-control" type="text" name="tersedia" id="password" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
+                    <input class="form-control" type="passeord" name="password" id="password" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
             </div>
         </from>
