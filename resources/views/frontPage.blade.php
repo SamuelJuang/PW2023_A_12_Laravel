@@ -64,7 +64,11 @@
         </div>
    </div>
    <div class="row container-fluid" style="margin-left: 81%; margin-top: 20px;">
+    @if(session()->has('user'))
     <form action="{{ url('/ticketSearch') }}">
+    @else
+    <form action="{{ url('/login') }}">
+    @endif
         <button class="btn btn-primary ms-auto" style="width: 15%;" type="submit">
             Cari
         </button>
