@@ -238,7 +238,7 @@
 <div id="darkenScreen"></div>
 <div id="videoContainer">
     <dotlottie-player id="lottiePlayer" src="https://lottie.host/1f25b754-dfaf-4e88-955b-0b913c12c407/UXE2t7llC3.json" background="transparent" speed="0.8" style="width: 300px; height: 300px;" ></dotlottie-player>
-    <p class="text-white ms-5"><strong>Berhasil menambahkan tiket!</strong></p>
+    <p class="text-white ms-5"><strong>Berhasil tambah tiket!</strong></p>
 </div>
  <script>
     function redirectToTambahTiket() {
