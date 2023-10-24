@@ -155,7 +155,7 @@
                                     <i class="fas fa-star fa-xs star" style="color: gold; opacity: 0.3;"></i>
                                             <?php }
                                     ?>
-                                    <a class="text-secondary my-1">
+                                    <a class="text-secondary my-1" href="{{url('/rating')}}">
                                         <small style="font-size: smaller;">
                                             berikan rating?
                                         </small>

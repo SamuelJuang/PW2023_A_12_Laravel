@@ -10,6 +10,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
         body{
             overflow: hidden;
@@ -20,6 +21,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: darken;
             background-repeat: no-repeats;
+            font-family: 'Poppins';
         }
         hr {
             border: 0;
