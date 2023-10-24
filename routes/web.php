@@ -151,3 +151,7 @@ Route::get('/logout', function(){
 Route::get('/DetailTicket', function () {
     return view('DetailTicket');
 });
+
+Route::get('/rating', function () {
+    return view('rating');
+});
