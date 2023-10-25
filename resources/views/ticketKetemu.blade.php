@@ -236,7 +236,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-height: 500px;">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"><strong>Pembayaran</strong></h5>
+          <h5 class="modal-title text-primary" id="exampleModalLabel"><strong>Pembayaran</strong></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -253,7 +253,7 @@
                 </div>
                 <br>
                 <hr>
-                <div class="col-12">
+                <div class="col-12 text-primary">
                     <strong>Metode Pembayaran</strong>
                     <br>
                 </div>
