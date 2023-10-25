@@ -21,7 +21,7 @@
             height: 100vh;
             background-size: cover;
             background-image: url('https://images.unsplash.com/photo-1495313196544-7d1adf4e628f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
             background-blend-mode: darken;
             background-repeat: no-repeats;
         }
@@ -49,12 +49,6 @@
 
         .adminPage {
             color: white;
-        }
-
-
-        body {
-            background-color: rgba(0, 0, 0, 0.6);
-            background-blend-mode: darken;
         }
     </style>
 </head>
