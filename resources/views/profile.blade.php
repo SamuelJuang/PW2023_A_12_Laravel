@@ -8,6 +8,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
         body {
             overflow: hidden;
@@ -18,6 +19,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             background-blend-mode: darken;
             background-repeat: no-repeats;
+            font-family: 'Poppins';
         }
 
         hr {
@@ -101,12 +103,21 @@
             <h3 style="font-size: smaller;">+621234567890</h3>
         </div>
     </div>
-    <div class="row container-fluid" style="margin-left: 39%; margin-top: 3px;">
+    <div class="row" style="margin-top: 3px;">
+       <div class="col-6 d-flex justify-content-center">
+        <form action="{{url('/EditProfile')}}">
+            <button class="btn btn-primary p-2 px-5" style="border-radius: 15px;" type="submit">
+                Edit Profile
+            </button>
+        </form>
+       </div>
+       <div class="col-6 d-flex justify-content-center">
         <form action="{{ url('/logout') }}">
-            <button class="btn btn-danger ms-auto" style="width: 20%; border-radius: 15px;" type="submit">
+            <button class="btn btn-danger p-2 px-5" style="border-radius: 15px;" type="submit">
                 Logout
             </button>
         </form>
+    </div>
     </div>
     <div class="mx-auto" style="width: 75%;">
         <hr style="border: 1px solid;">

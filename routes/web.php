@@ -372,6 +372,9 @@ Route::get('/editTiket', function () {
     return view('editTiket');
 });
 
+Route::get('/EditProfile', function () {
+    return view('EditProfile');
+});
 
 Route::get('/editUser', function () {
     return view('editUser');

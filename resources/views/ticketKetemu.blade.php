@@ -1,6 +1,7 @@
 @extends('PageNavFoot')
 
 @section('content')
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <!-- Lottie Player -->
 <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 <!-- JQuery -->
