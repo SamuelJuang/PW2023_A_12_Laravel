@@ -70,7 +70,7 @@
     <div class="container ">
         <div class="d-flex align-content-between">
             <div class="container-fluid">
-                <h3 class="text-white mt-4"><strong>Halaman User</strong></h3>
+                <h3 class="text-white mt-4"><strong>Halaman Admin</strong></h3>
             </div>
         </div>
         <div>
