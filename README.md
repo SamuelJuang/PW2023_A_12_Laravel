@@ -1,5 +1,5 @@
 
-##Anggota Kelompok 12
+## Anggota Kelompok 12
 ## Samuel Juang
 ## Agatha Andrea Situngkir
 ## Raff Gustafio Fernando Lobo
