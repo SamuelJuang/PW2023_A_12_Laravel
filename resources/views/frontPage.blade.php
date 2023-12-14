@@ -17,15 +17,14 @@
     <div class="row px-2">
         <div class="px-5">
             <div class="btn-group float-end" style="max-width: 40vh;">
-                <input type="number" class="form-control reg" placeholder="Dewasa" name="Dewasa" id="DewasaNum" min=1 required>
-                <input type="number" class="form-control reg" placeholder="Bayi" name="Bayi" id="BayiNum" min=0>
+                <input type="number" class="form-control reg" placeholder="Penumpang" name="Dewasa" id="DewasaNum" min=1 required>
             </div>
         </div>
     </div>
 
     <div class="px-4 py-3 row">
         <div class="col-3 ">
-            <div class="text-white" style="margin-left: 10px;">
+            <div class="text-white" style="margin-left: 12px;">
                 Stasiun Asal
             </div>
         </div>
@@ -49,7 +48,7 @@
                     <option value="Stasiun Bandung">Stasiun Bandung</option>
                 </select>
 
-                <select name="StasiunTujuan" id="StasiunTujuan" class="form-select reg" required>
+                <select name="StasiunTujuan" id="StasiunTujuan" class="form-select reg" style="margin-left: 16px; " required>
                     <option value="" hidden>Stasiun Tujuan</option>
                     <option value="Stasiun Solo Balapan">Stasiun Solo Balapan</option>
                     <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
@@ -58,7 +57,7 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="btn-group container-fluid">
+            <div class="btn-group container-fluid w-300">
                 <input name="TglDepart" id="TglDepart" class="form-control reg" type="date" required/>
             </div>
         </div>

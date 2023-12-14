@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginAuth;
+use App\Http\Controllers\JadwalKeretaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -292,36 +293,47 @@ Route::get('/adminPage', function () {
             'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
         ],
     ],
-        'users'=>[
+        'stasiun'=>[
             [
                 'id' => 1,
-                'username' => 'Sampjs',
-                'noTelp' => '081271231',
-                'email' => 'samuel@gmail.com',
-                'password' => '12345678',
+                'namaStasiun' => 'Stasiun Solo Balapan',
+                'asalStasiun' => 'Solo',
+                'status' => 'New',
             ],
             [
                 'id' => 2,
-                'username' => 'Agatha',
-                'noTelp' => '081312371',
-                'email' => 'agatha@gmail.com',
-                'password' => '12345678',
+                'namaStasiun' => 'Stasiun Tugu',
+                'asalStasiun' => 'Yogyakarta',
+                'status' => 'New',
             ],
             [
                 'id' => 3,
-                'username' => 'Raff Gustafio',
-                'noTelp' => '081309123',
-                'email' => 'fio@gmail.com',
-                'password' => '12345678',
+                'namaStasiun' => 'Stasiun Bandung',
+                'asalStasiun' => 'Bandung',
+                'status' => 'New',
             ],
-            [
-                'id' => 4,
-                'username' => 'hayo siapa',
-                'noTelp' => '081309123',
-                'email' => 'fio@gmail.com',
-                'password' => '12345678',
-            ],
+    ],
+        'kereta'=>[
+        [
+            'id' => 1,
+            'namaKereta' => 'SAF JAYA',
+            'tipeKereta' => 'Ekonomi - A',
+            'status' => 'New',
+        ],
+        [
+            'id' => 2,
+            'namaKereta' => 'SAF JAYA',
+            'tipeKereta' => 'Bisnis - A',
+            'status' => 'New',
+        ],
+        [
+            'id' => 3,
+            'namaKereta' => 'SAF JAYA',
+            'tipeKereta' => 'Bisnis - A',
+            'status' => 'New',
+        ],
     ]
+
     ]
 );
 });
@@ -376,10 +388,23 @@ Route::get('/EditProfile', function () {
     return view('EditProfile');
 });
 
-Route::get('/editUser', function () {
-    return view('editUser');
+Route::get('/editStasiun', function () {
+    return view('editStasiun');
+});
+
+Route::get('/editKereta', function () {
+    return view('editKereta');
 });
 
 Route::get('/addTicket', function () {
     return view('addTicket');
 });
+
+Route::get('/addStasiun', function () {
+    return view('addStasiun');
+});
+
+Route::get('/addKereta', function () {
+    return view('addKereta');
+});
+
