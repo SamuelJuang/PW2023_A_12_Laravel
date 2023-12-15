@@ -139,7 +139,7 @@
 
 <body>
     <br>
-    <div class="container mx-5">
+    <div class="container mx-10">
         <div class="d-flex align-content-between">
             <div class="container-fluid">
                 <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
@@ -152,12 +152,26 @@
                 </form>
             </div>
         </div>
-        <hr>
+        <hr class="w-10 margin-bottom:10px;">
     </div>
     <div class="d-flex align-content-between">
         <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
             <div class="row">
-                <!-- Tickets -->
+                <div class="d-flex">
+                    <div class="d-flex">
+                        <h3 class="text-white mx-2"><strong>Jadwal</strong></h3>
+                            <div>
+                                <button onclick="redirectToTambahTiket()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                            </div>
+                            <div>
+                                <button onclick="redirectToEditTiket()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                            </div>
+                            <div>
+                                <button onclick="redirectToEditTiket()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
+                            </div>
+                    </div>
+                </div>
+                <!-- Jadwal -->
                 @forelse ($ticket as $item)
                 <div class="col-12 my-2 ticketSelectionContainer mx-auto">
                     <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
@@ -262,32 +276,87 @@
             </div>
         </div>
         <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+            <div class="d-flex" >
+                <h3 class="text-white mx-2"><strong>Stasiun</strong></h3>
+                <div>
+                    <button onclick="redirectToTambahStasiun()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                </div>
+                <div>
+                    <button onclick="redirectToEditStasiun()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                </div>
+                <div>
+                    <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
+                </div>
+            </div>
+            <div class="d-flex">
+            </div>
             <div class="row">
-                @forelse ($users as $item)
-                <div class="col-12 my-2 UserSelectionContainer mx-auto">
-                    <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
-                    <label for="{{ $item['username'] }}" style="border-radius:7px;">
+                @forelse ($stasiun as $item)
+                <div class="my-2 UserSelectionContainer mx-auto">
+                    <input type="radio" name="userSelection" id="{{ $item['namaStasiun'] }}" value="{{ $item['id'] }}">
+                    <label for="{{ $item['namaStasiun'] }}" style="border-radius:7px;">
                         <div class="card " style="width: 30rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between text-primary">
                                     <p class="card-title">
                                         <strong>
-                                            Username :{{ $item['username'] }}
-                                        </strong>
-                                    </p>
-                                    <p class="card-title">
-                                        <strong>
-                                            NoTelp : {{ $item['noTelp'] }}
+                                            {{ $item['namaStasiun'] }}
                                         </strong>
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-between" style="opacity: 100%;">
                                     <p class="card-subtitle text-secondary">
-                                        {{ $item['email'] }}
+                                        {{ $item['asalStasiun'] }}
                                     </p>
                                     <p class="card-subtitle text-success">
                                         <strong>
-                                            Password : {{ $item['password'] }}
+                                            {{ $item['status'] }}
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+            <div class="d-flex" >
+                <h3 class="text-white mx-2"><strong>Kereta Api</strong></h3>
+                <div>
+                    <button onclick="redirectToTambahKereta()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                </div>
+                <div>
+                    <button onclick="redirectToEditKereta()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                </div>
+                <div>
+                    <button onclick="redirectToEditKereta()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
+                </div>
+            </div>
+            <div class="d-flex">
+            </div>
+            <div class="row">
+                @forelse ($kereta as $item)
+                <div class="col-12 my-2 UserSelectionContainer mx-auto">
+                    <input type="radio" name="userSelection" id="{{ $item['namaKereta'] }}" value="{{ $item['id'] }}">
+                    <label for="{{ $item['namaKereta'] }}" style="border-radius:7px;">
+                        <div class="card " style="width: 30rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between text-primary">
+                                    <p class="card-title">
+                                        <strong>
+                                            {{ $item['namaKereta'] }}
+                                        </strong>
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-between" style="opacity: 100%;">
+                                    <p class="card-subtitle text-secondary">
+                                        {{ $item['tipeKereta'] }}
+                                    </p>
+                                    <p class="card-subtitle text-success">
+                                        <strong>
+                                            {{ $item['status'] }}
                                         </strong>
                                     </p>
                                 </div>
@@ -299,37 +368,30 @@
             </div>
         </div>
     </div>
-    <div class="d-flex">
-        <div class="d-flex">
-            <div>
-                <button onclick="redirectToTambahTiket()" class="btn btn-primary px-5" id="tambahTiket" style="margin-left: 60px;">
-                    Tambah Tiket
-                </button>
-            </div>
-            <div>
-                <button onclick="redirectToEditTiket()" disabled class="btn btn-primary px-5 " id="editTiket" style="margin-left: 125px;">
-                    Edit Tiket
-                </button>
-            </div>
-        </div>
-        <div class="d-flex" style="margin-left: 300px;">
-            <div>
-               <form action="{{url('/editUser')}}">
-                    <button onclick="" disabled class="btn btn-primary px-5 mx-3" id="editUser">
-                        Edit User
-                    </button>
-               </form>
-            </div>
-        </div>
-    </div>
 
     <script>
         function redirectToTambahTiket() {
             window.location.href = "/addTicket"; // Ganti dengan URL halaman login yang sesuai
         }
 
+        function redirectToTambahStasiun() {
+            window.location.href = "/addStasiun"; // Ganti dengan URL halaman login yang sesuai
+        }
+
+        function redirectToTambahKereta() {
+            window.location.href = "/addKereta"; // Ganti dengan URL halaman login yang sesuai
+        }
+
         function redirectToEditTiket() {
             window.location.href = "/editTiket"; // Ganti dengan URL halaman login yang sesuai
+        }
+
+        function redirectToEditStasiun() {
+            window.location.href = "/editStasiun"; // Ganti dengan URL halaman login yang sesuai
+        }
+
+        function redirectToEditKereta() {
+            window.location.href = "/editKereta"; // Ganti dengan URL halaman login yang sesuai
         }
 
         function redirectHome() {
