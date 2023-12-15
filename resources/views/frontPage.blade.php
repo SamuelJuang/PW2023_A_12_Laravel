@@ -6,6 +6,7 @@
 <form action="{{ url('/login') }}">
 @endif
     <div class="d-flex align-content-center fadeInAnimated">
+        
         <div class="mx-auto mt-4 text-white text-center">
             <h1><strong>Merajut Memori Bersama Kami.</strong></h1>
             <h5>Dengan fasilitas dan pelayanan yang anda dambakan</h5>

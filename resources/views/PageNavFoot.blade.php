@@ -53,10 +53,10 @@
 </head>
 <body>
     <div class="mainInfo px-5">
-        <nav class="navbar py-3 px-3 topdownAnimated" aria-label="First navbar example">    
+        <nav class="navbar py-3 px-3 topdownAnimated" aria-label="First navbar example">
         <img src="{{asset('images/SAF Logo.svg')}}" alt="SAF logo"class="navbar-brand" style="height: 7vh;">
           <div class="d-flex justify-content-end px-3 py-2">
-            @if (session()->has('user'))
+            @auth
               <a href="{{ url('/profile') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 79 79" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M53.8636 28.7273C53.8636 32.5367 52.3503 36.1902 49.6566 38.8839C46.9629 41.5776 43.3095 43.0909 39.5 43.0909C35.6905 43.0909 32.0371 41.5776 29.3434 38.8839C26.6497 36.1902 25.1364 32.5367 25.1364 28.7273C25.1364 24.9178 26.6497 21.2644 29.3434 18.5706C32.0371 15.8769 35.6905 14.3636 39.5 14.3636C43.3095 14.3636 46.9629 15.8769 49.6566 18.5706C52.3503 21.2644 53.8636 24.9178 53.8636 28.7273ZM46.6818 28.7273C46.6818 30.632 45.9252 32.4587 44.5783 33.8056C43.2315 35.1524 41.4047 35.9091 39.5 35.9091C37.5953 35.9091 35.7685 35.1524 34.4217 33.8056C33.0748 32.4587 32.3182 30.632 32.3182 28.7273C32.3182 26.8225 33.0748 24.9958 34.4217 23.649C35.7685 22.3021 37.5953 21.5455 39.5 21.5455C41.4047 21.5455 43.2315 22.3021 44.5783 23.649C45.9252 24.9958 46.6818 26.8225 46.6818 28.7273Z" fill="white"/>

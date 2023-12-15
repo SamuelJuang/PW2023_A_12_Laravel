@@ -35,17 +35,18 @@
                     <img src="{{ asset('images/logo kereta api.svg') }}" alt="SVG" width="150px">
                 </div>
                <div class="px-5 mx-5">
-                <form action="">
+                <form action="{{route('actionRegister')}}" method="POST">
+                        @csrf
                         <label class="form-label" for="username">Username</label>
                         <input class="form-control" required type="text" name="username" id="username" style="padding-top: 5px;">
                         <label class="form-label" for="telp" style="padding-top: 10px;">Nomor Telepon</label>
-                        <input class="form-control" required type="tel" name="telp" id="telp" style="padding-top: 5px;">
+                        <input class="form-control" required type="tel" name="no_telp" id="no_telp" style="padding-top: 5px;">
                         <label class="form-label" for="email" style="padding-top: 10px;">Email</label>
                         <input class="form-control" required type="email" name="email" id="email" style="padding-top: 5px;">
                         <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
                         <input class="form-control" required type="password" name="password" id="password" style="padding-top: 5px;">
                         <div class="d-grid gap-2" style="padding-top: 20px;">
-                            <button onclick="redirectToLoginPage()"  class="btn btn-primary" style="border-radius: 10px" type="button">Register</button>
+                            <button onclick="redirectToLoginPage()"  class="btn btn-primary" style="border-radius: 10px" type="submit">Register</button>
                         </div>
                     </form>
                </div>
