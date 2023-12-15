@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="text-white px-2 mx-2">
-        <from class="editTiketContainer" action="">
+        <form class="editTiketContainer" action="">
             <div class="d-flex">
                 <div style="margin-left: 15%;">
                     <label class="form-label" for="username">Nama Kereta</label>
@@ -95,7 +95,7 @@
                     <input class="form-control text-white" type="text" name="harga" id="harga" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
             </div>
-        </from>
+        </form>
     </div>
     <div class="d-flex flex-row-reverse" style="margin-top: 20px; margin-right: 18%;">
         <button onclick="addedTicket()" class="btn btn-primary px-4 mx-3" id="tambah">

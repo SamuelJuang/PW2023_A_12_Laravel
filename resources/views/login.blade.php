@@ -36,10 +36,15 @@
                     <img src="{{ asset('images/logo kereta api.svg') }}" alt="SVG" width="150px">
                 </div>
                 <div class="px-5 mx-5">
-                    <form action="user" method="POST">
+                    @if(session('error'))
+                    <div class="alert alert-danger">
+                        <b>Oops!</b> {{ session("error") }}
+                    </div>
+                    @endif
+                    <form action="{{ route('actionLogin') }}" method="POST">
                         @csrf
-                        <label class="form-label"for="login">Username</label>
-                        <input class="form-control" required type="login" name="user" id="login">
+                        <label class="form-label"for="login">Email</label>
+                        <input class="form-control" required type="login" name="email" id="email">
                         <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
                         <input class="form-control" required  type="password" name="password" id="password">
                         <p class="fw-light" style="color: #252525; font-size: 12px; padding-top: 10px;">Belum punya akun? <a href="/register" style="color:#252525;" class="fw-semibold">Register</a></p>

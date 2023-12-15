@@ -125,7 +125,7 @@
         <div class="row">
             <!-- Tickets -->
             @forelse ($ticket as $item)
-                    <div class="col-6 my-2 ticketSelectionContainer">
+                    <div class="col-md-12 col-lg-6 my-2 ticketSelectionContainer">
                         <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
                         <label for="{{ $item['id'] }}" style="border-radius:7px;">
                             <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">

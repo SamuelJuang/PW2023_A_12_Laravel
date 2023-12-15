@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\loginAuth;
 use App\Http\Controllers\JadwalKeretaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,7 +106,8 @@ Route::get('/', function () {
     }
 });
 
-Route::post("user", [loginAuth::class,'userLogin']);
+Route::get('/login', [LoginController::class , 'login'])->name('login');
+Route::post('actionLogin',[LoginController::class, 'actionLogin'])->name('actionLogin');
 
 Route::get('/ticketSearch', function () {
     return view('ticketKetemu',
@@ -165,9 +167,11 @@ Route::get('/ticketSearch', function () {
 });
 
 
-Route::get('/register', function () {
-    return view('register');
-});
+
+Route::get('register', [RegisterController::class, 'register'])->name('register');
+Route::post('register/action', [RegisterController::class, 'actionRegister'])->name('actionRegister');
+Route::get('register/verify/{verify_key}',[RegisterController::class, 'verify'])->name('verify');
+
 
 Route::get('/login', function () {
     return view('login');
