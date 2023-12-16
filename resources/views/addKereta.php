@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Halaman Edit User</title>
+    <title>Halaman Add Stasiun</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -71,34 +71,21 @@
             <hr class="dashed-hr mb-2" style="color: #252525;">
         </div>
         <div>
-            <p class="text-white fw-bold fs-5 mb-5" style="margin-left: 10px;">Edit User</p>
+            <p class="text-white fw-bold fs-5 mb-5" style="margin-left: 10px;">Tambah Kereta Api</p>
         </div>
     </div>
     <div class="text-white px-2 mx-5 mb-5">
         <from class="editTiketContainer" action="">
             <div class="d-flex">
                 <div style="margin-left: 15%;">
-                    <label class="form-label" for="username">Username</label>
+                    <label class="form-label" for="username">Nama Kereta api</label>
                     <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label " for="email" style="padding-top: 10px;">Email</label>
-                    <input class="form-control text-white" value="12345678" type="email" name="email" id="email" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                </div>
-                <div style="margin-left: 20%;">
-                    <label class="form-label" for="noTelp">Nomor Telepon</label>
-                    <input class="form-control text-white" value="081237563" type="text" name="noTelp" id="noTelp" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="password" style="padding-top: 10px;">Password</label>
-                    <input class="form-control text-white" value="woawa" type="text" name="password" id="password" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                </div>
-            </div>
         </from>
-    </div>
-    <div class="d-flex flex-row-reverse" style="margin-top: 20px; margin-right: 18%;">
-        <button onclick="editedTicket()" class="btn btn-primary px-4 mx-3" id="edit">
-            Edit User
-        </button>
-        <button onclick="editedTicket()" class="btn btn-danger px-4 mx-3" id="hapus">
-            Hapus User
-        </button>
+        <div class="d-flex flex-row-reverse justify-center align-content-center" style="margin-top: 10%; margin-right: 18%;">
+            <button onclick="editedTicket()" class="btn btn-primary px-5" id="edit">
+                Tambah Kereta 
+            </button>
+        </div>
     </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
@@ -107,7 +94,7 @@
             <div class="toast-body">
                 <span>
                     <i class="fa-solid fa-check"></i>
-                    Berhasil Mengubah User
+                    Berhasil Menambahkan Kereta Api
                 </span>
             </div>
             </div>
@@ -117,12 +104,6 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="liveToast2" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex" style="background-color: red;">
-            <div class="toast-body">
-                <span>
-                    <i class="fa-solid fa-check"></i>
-                    Berhasil Menghapus User
-                </span>
-            </div>
             </div>
         </div>
     </div>
