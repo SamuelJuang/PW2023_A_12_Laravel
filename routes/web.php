@@ -391,8 +391,8 @@ Route::get('register', [RegisterController::class, 'register'])->name('register'
 Route::get('editProfile', [UserController::class, 'edit'])->name('editProfile');
 Route::post('updateprofile/{id}',[UserController::class,'update'])->name('updateprofile');
 
-Route::get('/editStasiun', function () {
-    return view('editStasiun');
+Route::get('/editUser', function () {
+    return view('editUser');
 });
 
 Route::get('/editKereta', function () {
