@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,8 +106,11 @@ Route::get('/', function () {
     }
 });
 
+Route::get('/logout', [LoginController::class,'actionLogout'])->middleware('auth')->name('logout');
+
 Route::get('/login', [LoginController::class , 'login'])->name('login');
-Route::post('actionLogin',[LoginController::class, 'actionLogin'])->name('actionLogin');
+Route::post('/actionLogin',[LoginController::class, 'actionLogin'])->name('actionLogin');
+
 
 Route::get('/ticketSearch', function () {
     return view('ticketKetemu',
@@ -232,12 +236,6 @@ Route::get('/profile', function () {
     ]);
 });
 
-Route::get('/logout', function(){
-    if(session()->has('user')){
-        session()->pull('user');
-    }
-    return redirect('/');
-});
 
 Route::get('/DetailTicket', function () {
     return view('DetailTicket');
@@ -376,9 +374,10 @@ Route::get('/editTiket', function () {
     return view('editTiket');
 });
 
-Route::get('/EditProfile', function () {
-    return view('EditProfile');
-});
+Route::get('register', [RegisterController::class, 'register'])->name('register');
+
+Route::get('editProfile', [UserController::class, 'edit'])->name('editProfile');
+Route::post('updateprofile/{id}',[UserController::class,'update'])->name('updateprofile');
 
 Route::get('/editUser', function () {
     return view('editUser');

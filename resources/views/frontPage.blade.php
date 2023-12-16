@@ -1,6 +1,6 @@
 @extends('PageNavFoot')
 @section('content')
-@if(session()->has('user'))
+@auth
 <form action="{{ url('/ticketSearch') }}">
 @else
 <form action="{{ url('/login') }}">
@@ -18,8 +18,7 @@
     <div class="row px-2">
         <div class="px-5">
             <div class="btn-group float-end" style="max-width: 40vh;">
-                <input type="number" class="form-control reg" placeholder="Dewasa" name="Dewasa" id="DewasaNum" min=1 required>
-                <input type="number" class="form-control reg" placeholder="Bayi" name="Bayi" id="BayiNum" min=0>
+                <input type="number" class="form-control reg" placeholder="penumpang" name="jumlah" id="jumlah" min=1 required>
             </div>
         </div>
     </div>

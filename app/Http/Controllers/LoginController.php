@@ -33,14 +33,16 @@ class LoginController extends Controller
                 Session::flash('error','Akun Anda belum diverifikasi, silahkan cek email anda.');
                 return redirect('/login');
             }
+        }else if($request->input('email') == 'admin' && $request->input('password') == 'admin'){
+            return redirect('/admin'); // janlup admin route
         }else{
             Session::flash('error', 'Email atau password salah');
-            return redirect('login/');
+            return redirect('/login');
         }
     }
 
     public function actionLogout(){
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 }

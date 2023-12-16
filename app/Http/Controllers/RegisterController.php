@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Mail\AuthMail;
+use Illuminate\Validation\Rule;
 use Session;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -17,26 +19,53 @@ class RegisterController extends Controller
     }
 
     public function actionRegister(Request $request){
-        $str = Str::random(100);
-        $user = User::create([
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'email' => $request->email,
-            'no_telp' => $request->no_telp,
-            'verify_key' => $str,
+        $newData = $request->all();
+        $validate = Validator::make($newData,[
+            'username' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users', 'email'),
+            ],
+            'no_telp' => 'required|string|max:15',
         ]);
+        
+        if($validate->fails()){
+            Session::flash('error', $validate->errors()->first());
+            return redirect('register');
+        }
 
-        $details = [
-            'username' =>$request->username,
-            'website' => 'Atma Library',
-            'datetime' => date('Y-m-d H:i:s'),
-            'url' => request()->getHttpHost() . '/register/verify/' . $str
-        ];
+        $str = Str::random(100);
+    
+        try {
 
-        Mail::to($request->email)->send(new AuthMail($details));
+            $user = User::create([
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'email' => $request->email,
+                'no_telp' => $request->no_telp,
+                'verify_key' => $str,
+            ]);
+    
 
-        Session::flash('message','Link Verifikasi telah dikirim ke email anda. Silahkan cek email anda untuk mengaktifkan akun.');
-        return redirect('/');
+            $details = [
+                'username' => $request->username,
+                'website' => 'SAF Kereta Online',
+                'datetime' => date('Y-m-d H:i:s'),
+                'url' => request()->getHttpHost() . '/register/verify/' . $str,
+            ];
+    
+
+            Mail::to($request->email)->send(new AuthMail($details));
+
+            return redirect('/');
+        } catch (\Exception $e) {
+            Session::flash('error', $e->getMessage());
+            return redirect('register');
+        }
     }
 
     public function verify($verify_key){
