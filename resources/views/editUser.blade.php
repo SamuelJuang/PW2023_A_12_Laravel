@@ -92,7 +92,7 @@
                 <div style="margin-left: 20%;">
                     <label class="form-label" for="username">Nomor Telepon</label>
                     <input class="form-control" type="text" name="username" id="username" placeholder="Samuel Ganteng" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
-                    <label class="form-label" for="telp" style="padding-top: 10px;">Password</label>
+                    <label class="form-label" for="telp" style="padding-top: 10px;"> Password </label>
                     <input class="form-control" type="text" name="telp" id="telp" placeholder="SamuelGantengBanget" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
                 </div>
 
