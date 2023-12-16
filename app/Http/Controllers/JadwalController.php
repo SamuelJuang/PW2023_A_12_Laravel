@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Exception;
 
-class JadwalKeretaController extends Controller
+class JadwalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -60,5 +61,25 @@ class JadwalKeretaController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showByDate(String $berangkat, String $tiba, String $tgl)
+    {
+        try { 
+            $jadwal = jadwal::join(
+                'kereta', 'kereta.kode' , '=', 'jadwal.id_kereta'
+            )->where(
+                'jadwal.berangkat', '=', $berangkat
+            )->where(
+                'jadwal.tiba', '=', $tiba
+            )->where(
+                'jadwal.tanggal', '=', $tgl
+            )->get();
+            
+            if(!$jadwal) throw new \Exception("Jadwal tidak ditemukan");
+            }
+        catch(\Exception $e) {
+           
+        }
     }
 }

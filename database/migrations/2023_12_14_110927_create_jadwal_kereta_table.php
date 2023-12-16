@@ -8,7 +8,7 @@ class CreateJadwalKeretaTable extends Migration
 {
     public function up()
     {
-        Schema::create('jadwal_kereta', function (Blueprint $table) {
+        Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
             $table->string('asal');
             $table->string('tujuan');
@@ -23,6 +23,6 @@ class CreateJadwalKeretaTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('jadwal_kereta');
+        Schema::dropIfExists('jadwal');
     }
 }
