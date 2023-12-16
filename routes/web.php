@@ -403,8 +403,8 @@ Route::get('/addTicket', function () {
     return view('addTicket');
 });
 
-Route::get('/addStasiun', function () {
-    return view('addStasiun');
+Route::get('/addUser', function () {
+    return view('addUser');
 });
 
 Route::get('/addKereta', function () {
