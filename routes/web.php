@@ -391,8 +391,8 @@ Route::get('register', [RegisterController::class, 'register'])->name('register'
 Route::get('editProfile', [UserController::class, 'edit'])->name('editProfile');
 Route::post('updateprofile/{id}',[UserController::class,'update'])->name('updateprofile');
 
-Route::get('/editStasiun', function () {
-    return view('editStasiun');
+Route::get('/editUser', function () {
+    return view('editUser');
 });
 
 Route::get('/editKereta', function () {
@@ -403,8 +403,8 @@ Route::get('/addTicket', function () {
     return view('addTicket');
 });
 
-Route::get('/addStasiun', function () {
-    return view('addStasiun');
+Route::get('/addUser', function () {
+    return view('addUser');
 });
 
 Route::get('/addKereta', function () {
