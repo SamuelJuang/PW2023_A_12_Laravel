@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Jadwal extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $table = "jadwal";
 
     protected $fillable = [
         'asal',
@@ -18,4 +20,8 @@ class Jadwal extends Model
         'harga',
         'jumlah_kursi',
     ];
+
+    public function kereta() {
+        return $this->belongsTo(KeretaApi::class, 'id_kereta');
+    }
 }

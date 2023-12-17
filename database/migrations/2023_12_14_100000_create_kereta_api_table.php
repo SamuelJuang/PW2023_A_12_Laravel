@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stasiun_kereta', function (Blueprint $table) {
+        Schema::create('kereta_api', function (Blueprint $table) {
             $table->id();
-            $table->string('namaStasiun');
-            $table->string('asalStasiun');
-            $table->string('status');
-            $table->timestamps();
+            $table->string('namaKereta');
+            $table->string('tipeKereta');
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stasiun_kereta');
+        Schema::dropIfExists('kereta_api');
     }
 };

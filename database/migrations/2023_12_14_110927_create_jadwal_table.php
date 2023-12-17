@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJadwalKeretaTable extends Migration
+class CreateJadwalTable extends Migration
 {
     public function up()
     {
@@ -12,17 +12,20 @@ class CreateJadwalKeretaTable extends Migration
             $table->id();
             $table->string('asal');
             $table->string('tujuan');
-            $table->string('nama_kereta');
+            $table->unsignedBigInteger('id_kereta');
+            $table->foreign('id_kereta')->references('id')->on('kereta_api')->onDelete('cascade')->onUpdate('cascade');
             $table->string('kelas');
             $table->time('jam_berangkat');
             $table->integer('harga');
             $table->integer('jumlah_kursi');
-            $table->timestamps();
+            $table->dateTime('tanggal_pergi');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('jadwal');
+        Schema::dropIfExists('jadwals');
     }
+
+   
 }
