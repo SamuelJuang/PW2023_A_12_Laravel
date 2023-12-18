@@ -295,23 +295,23 @@ Route::get('/adminPage', function () {
             'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
         ],
     ],
-        'stasiun'=>[
+        'user'=>[
             [
                 'id' => 1,
-                'namaStasiun' => 'Stasiun Solo Balapan',
-                'asalStasiun' => 'Solo',
+                'username' => 'Fio',
+                'email' => 'fio@gmail.com',
                 'status' => 'New',
             ],
             [
                 'id' => 2,
-                'namaStasiun' => 'Stasiun Tugu',
-                'asalStasiun' => 'Yogyakarta',
+                'username' => 'Samuel',
+                'email' => 'samuel@gmail.com',
                 'status' => 'New',
             ],
             [
                 'id' => 3,
-                'namaStasiun' => 'Stasiun Bandung',
-                'asalStasiun' => 'Bandung',
+                'username' => 'Agatha',
+                'email' => 'agatha@gmail.com',
                 'status' => 'New',
             ],
     ],

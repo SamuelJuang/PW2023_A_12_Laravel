@@ -34,7 +34,7 @@ class LoginController extends Controller
                 return redirect('/login');
             }
         }else if($request->input('email') == 'admin' && $request->input('password') == 'admin'){
-            return redirect('/admin'); // janlup admin route
+            return redirect('/adminPage'); // janlup admin route
         }else{
             Session::flash('error', 'Email atau password salah');
             return redirect('/login');

@@ -83,19 +83,14 @@
     <div class="text-white px-2 mx-2">
         <from class="editTiketContainer" action="">
             <div class="d-flex">
-                <div style="margin-left: 15%;">
+                <div class="text-white" style="margin-left: 15%;">
                     <label class="form-label" for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Samuel" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="text" name="username" id="username" placeholder="" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="telp" style="padding-top: 10px;">Email</label>
-                    <input class="form-control" type="text" name="telp" id="telp" placeholder="Samuel@gamil.com" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input class="form-control text-white" type="text" name="telp" id="telp" placeholder="" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="telp" style="padding-top: 10px;">Password</label>
+                    <input class="form-control text-white" type="text" name="telp" id="telp" placeholder="" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
                 </div>
-                <div style="margin-left: 20%;">
-                    <label class="form-label" for="username">Nomor Telepon</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Samuel Ganteng" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
-                    <label class="form-label" for="telp" style="padding-top: 10px;"> Password </label>
-                    <input class="form-control" type="text" name="telp" id="telp" placeholder="SamuelGantengBanget" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
-                </div>
-
             </div>
         </from>
     </div>

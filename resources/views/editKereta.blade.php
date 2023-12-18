@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Halaman Tambahkan Admin</title>
+    <title>Halaman Edit Stasiun</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -21,7 +21,7 @@
             height: 100vh;
             background-size: cover;
             background-image: url('https://images.unsplash.com/photo-1495313196544-7d1adf4e628f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80');
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
             background-blend-mode: darken;
             background-repeat: no-repeats;
         }
@@ -50,17 +50,11 @@
         .adminPage {
             color: white;
         }
-
-
-        body {
-            background-color: rgba(0, 0, 0, 0.6);
-            background-blend-mode: darken;
-        }
     </style>
 </head>
 
 <body>
-    <a href=" {{url('/adminFrontPage')}}">
+    <a href="{{url('/adminPage')}}">
         <div class="vector mx-5">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 10px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
@@ -77,64 +71,79 @@
             <hr class="dashed-hr mb-2" style="color: #252525;">
         </div>
         <div>
-            <p class="text-white fw-bold fs-5" style="margin-left: 10px;">Tambahkan User</p>
+            <p class="text-white fw-bold fs-5 mb-5" style="margin-left: 10px;">Edit Kereta Api</p>
         </div>
     </div>
-    <div class="text-white px-2 mx-2">
+    <div class="text-white px-2 mx-5 mb-5">
         <from class="editTiketContainer" action="">
             <div class="d-flex">
                 <div style="margin-left: 15%;">
-                    <label class="form-label" for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Samuel" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="telp" style="padding-top: 10px;">Email</label>
-                    <input class="form-control" type="text" name="telp" id="telp" placeholder="Samuel@gamil.com" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                </div>
-                <div style="margin-left: 20%;">
-                    <label class="form-label" for="username">Nomor Telepon</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Samuel Ganteng" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
-                    <label class="form-label" for="telp" style="padding-top: 10px;">Password</label>
-                    <input class="form-control" type="text" name="telp" id="telp" placeholder="SamuelGantengBanget" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px; color: white;">
-                </div>
-
-            </div>
+                    <label class="form-label" for="username">Nama Kereta api</label>
+                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="username">Kelas</label>
+                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
         </from>
+        <div class="d-flex flex-row-reverse justify-center align-content-center" style="margin-top: 10%; margin-right: 18%;">
+            <button onclick="editedTicket()" class="btn btn-danger px-5 mx-5" id="hapus">
+                Hapus Kereta 
+            </button>
+            <button onclick="editedTicket()" class="btn btn-primary px-5" id="edit">
+                Edit Kereta 
+            </button>
+        </div>
     </div>
-    <div class="d-flex flex-row-reverse" style="margin-top: 20px; margin-right: 18%;">
-        <button onclick="redirectToEditTiket()" class="btn btn-primary px-4 mx-3" id="tambah">
-            Edit Tiket
-        </button>
-        <button onclick="" class="btn btn-danger px-4 mx-3" id="tambah">
-            Hapus Tiket
-        </button>
     </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast1" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex" style="background-color: blue;">
+            <div class="toast-body">
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Berhasil Mengubah Kereta Api
+                </span>
+            </div>
+            </div>
+        </div>
     </div>
-    <!-- endof modal -->
 
-    <!-- success payment animation -->
-    <div id="darkenScreen"></div>
-    <div id="videoContainer">
-        <dotlottie-player id="lottiePlayer" src="https://lottie.host/1f25b754-dfaf-4e88-955b-0b913c12c407/UXE2t7llC3.json" background="transparent" speed="0.8" style="width: 300px; height: 300px;"></dotlottie-player>
-        <p class="text-white ms-5"><strong>Berhasil mengedit tiket!</strong></p>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast2" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex" style="background-color: red;">
+            <div class="toast-body">
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Berhasil Menghapus Kereta Api
+                </span>
+            </div>
+            </div>
+        </div>
     </div>
     <script>
-        function redirectToTambahTiket() {
-            window.location.href = "/tambahTiket";
-        }
+       const toastTrigger = document.getElementById('edit')
+        const toastLiveExample = document.getElementById('liveToast1')
+        if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
 
-        function redirectToEditTiket() {
-            window.location.href = "/editTiket";
+            toast.show()
+        })
         }
+        const toastTrigger2 = document.getElementById('hapus')
+        const toastLiveExample2 = document.getElementById('liveToast2')
+        if (toastTrigger2) {
+        toastTrigger2.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample2)
 
-        function redirectHome() {
-            window.location.href = "{{url('profile')}}";
+            toast.show()
+        })
         }
-
-        window.addEventListener("pageshow", function(event) {
-            if (event.persisted) {
-                var lottiePlayer = document.getElementById("lottiePlayer");
-                lottiePlayer.currentFrame = 0;
-            }
-        });
+        function editedTicket(){
+            setTimeout(redirectBack,1150);
+        }
+        
+        function redirectBack(){
+            window.location.href = "{{url('/adminPage')}}";
+        }
     </script>
     <div class="row g-2">
         <div class="col-sm-3">

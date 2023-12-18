@@ -277,12 +277,12 @@
         </div>
         <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
             <div class="d-flex" >
-                <h3 class="text-white mx-2"><strong>Stasiun</strong></h3>
+                <h3 class="text-white mx-2"><strong>User</strong></h3>
                 <div>
-                    <button onclick="redirectToTambahStasiun()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                    <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
                 </div>
                 <div>
-                    <button onclick="redirectToEditStasiun()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                    <button onclick="redirectToEditUser()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
                 </div>
                 <div>
                     <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
@@ -291,22 +291,22 @@
             <div class="d-flex">
             </div>
             <div class="row">
-                @forelse ($stasiun as $item)
+                @forelse ($user as $item)
                 <div class="my-2 UserSelectionContainer mx-auto">
-                    <input type="radio" name="userSelection" id="{{ $item['namaStasiun'] }}" value="{{ $item['id'] }}">
-                    <label for="{{ $item['namaStasiun'] }}" style="border-radius:7px;">
+                    <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
+                    <label for="{{ $item['username'] }}" style="border-radius:7px;">
                         <div class="card " style="width: 30rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between text-primary">
                                     <p class="card-title">
                                         <strong>
-                                            {{ $item['namaStasiun'] }}
+                                            {{ $item['username'] }}
                                         </strong>
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-between" style="opacity: 100%;">
                                     <p class="card-subtitle text-secondary">
-                                        {{ $item['asalStasiun'] }}
+                                        {{ $item['email'] }}
                                     </p>
                                     <p class="card-subtitle text-success">
                                         <strong>
@@ -374,8 +374,8 @@
             window.location.href = "/addTicket"; // Ganti dengan URL halaman login yang sesuai
         }
 
-        function redirectToTambahStasiun() {
-            window.location.href = "/addStasiun"; // Ganti dengan URL halaman login yang sesuai
+        function redirectToTambahUser() {
+            window.location.href = "/addUser"; // Ganti dengan URL halaman login yang sesuai
         }
 
         function redirectToTambahKereta() {
@@ -392,6 +392,10 @@
 
         function redirectToEditKereta() {
             window.location.href = "/editKereta"; // Ganti dengan URL halaman login yang sesuai
+        }
+
+        function redirectToEditUser() {
+            window.location.href ="/editUser";
         }
 
         function redirectHome() {
