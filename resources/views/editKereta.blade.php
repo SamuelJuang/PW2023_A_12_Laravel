@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Halaman Edit Stasiun</title>
+    <title>Halaman Add Stasiun</title>
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <style>
@@ -54,7 +54,7 @@
 </head>
 
 <body>
-    <a href="{{url('/adminPage')}}">
+    <a href=" {{url('/adminPage')}}">
         <div class="vector mx-5">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 10px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
@@ -75,22 +75,21 @@
         </div>
     </div>
     <div class="text-white px-2 mx-5 mb-5">
-        <from class="editTiketContainer" action="">
+        <form class="editTiketContainer" action="{{route('updateKereta',['id' => $kereta->id])}}" id="edit" method="POST">
+            @csrf @method('PUT')
             <div class="d-flex">
                 <div style="margin-left: 15%;">
                     <label class="form-label" for="username">Nama Kereta api</label>
-                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="username">Kelas</label>
-                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-        </from>
-        <div class="d-flex flex-row-reverse justify-center align-content-center" style="margin-top: 10%; margin-right: 18%;">
-            <button onclick="editedTicket()" class="btn btn-danger px-5 mx-5" id="hapus">
-                Hapus Kereta 
-            </button>
-            <button onclick="editedTicket()" class="btn btn-primary px-5" id="edit">
-                Edit Kereta 
-            </button>
-        </div>
+                    <input class="form-control text-white" required value="{{old('namaKereta',$kereta->namaKereta)}}" type="text" name="namaKereta" id="namaKereta" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="username">Jenis Kereta</label>
+                    <input class="form-control text-white" required value="{{old('TipeKereta',$kereta->tipeKereta)}}" type="text" name="tipeKereta" id="tipeKereta" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <div class="d-flex flex-row-reverse justify-center align-content-center" style="margin-top: 10%; margin-right: 18%;">
+                        <button type="submit" class="btn btn-primary px-5" id="edit">
+                            Edit Kereta 
+                        </button>
+                    </div>
+        </form>
+       
     </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
@@ -99,7 +98,7 @@
             <div class="toast-body">
                 <span>
                     <i class="fa-solid fa-check"></i>
-                    Berhasil Mengubah Kereta Api
+                    Berhasil Menambahkan Kereta Api
                 </span>
             </div>
             </div>
@@ -109,40 +108,18 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="liveToast2" class="toast align-items-center  text-white" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex" style="background-color: red;">
-            <div class="toast-body">
-                <span>
-                    <i class="fa-solid fa-check"></i>
-                    Berhasil Menghapus Kereta Api
-                </span>
-            </div>
             </div>
         </div>
     </div>
     <script>
-       const toastTrigger = document.getElementById('edit')
+        const toastTrigger = document.getElementById('edit')
         const toastLiveExample = document.getElementById('liveToast1')
         if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
+        toastTrigger.addEventListener('submit', () => {
             const toast = new bootstrap.Toast(toastLiveExample)
 
             toast.show()
         })
-        }
-        const toastTrigger2 = document.getElementById('hapus')
-        const toastLiveExample2 = document.getElementById('liveToast2')
-        if (toastTrigger2) {
-        toastTrigger2.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample2)
-
-            toast.show()
-        })
-        }
-        function editedTicket(){
-            setTimeout(redirectBack,1150);
-        }
-        
-        function redirectBack(){
-            window.location.href = "{{url('/adminPage')}}";
         }
     </script>
     <div class="row g-2">

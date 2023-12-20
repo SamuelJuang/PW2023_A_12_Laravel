@@ -59,12 +59,60 @@ class UserController extends Controller
         return redirect('/profile');
     }
 
+    public function showToAdmin($id)
+    {
+        $user = User::find($id);
+        return view('editUser', compact('user'));
+    }
+
+    public function updateByAdmin(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $newData = $request->all();
+        $validate = Validator::make($newData, [
+            'username' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:15',
+            'profilePic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($validate->fails()) {
+            Session::flash('error', $validate->errors()->first());
+            return redirect()->route('adminPage');
+        }
+
+        $Newimage = $user->profilePic;
+
+        if ($request->hasFile('profilePic')) {
+            $gambar = $request->file('profilePic');
+            $TodayConcated = date('dmYhis', time());
+            $fileExtension = "." . $gambar->getClientOriginalExtension();
+            $unikGambar = $TodayConcated . $fileExtension;
+            $gambar->move(public_path('images'), $unikGambar);
+            $Newimage = $unikGambar;
+
+            if ($user->profilePic != null) {
+                $fileToUpdate = public_path('images/') . $user->profilePic;
+                if (file_exists($fileToUpdate)) {
+                    unlink($fileToUpdate);
+                }
+            }
+        }
+
+        $user->update([
+            'username' => $newData['username'],
+            'profilePic' => $Newimage,
+            'no_telp' => $newData['no_telp'],
+        ]);
+
+        return redirect()->route('adminPage');
+    }
+
     public function destroy($id)
     {
         $user = User::find($id);
         if (!$user) {
-            // User not found
-            return redirect()->back()->with('error', 'User not found.');
+            return redirect()->route('adminPage');
         }
         $user->delete();
 
@@ -74,6 +122,6 @@ class UserController extends Controller
                 unlink($fileToUpdate);
             }
         }
-        return redirect('/');
+        return redirect()->route('adminPage');
     }
 }

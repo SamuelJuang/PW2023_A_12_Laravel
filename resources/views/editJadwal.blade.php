@@ -62,45 +62,48 @@
             <hr class="dashed-hr mb-2" style="color: #252525;">
         </div>
         <div>
-            <p class="text-white fw-bold fs-5" style="margin-left: 10px;">Tambah jadwal Baru</p>
+            <p class="text-white fw-bold fs-5" style="margin-left: 10px;">Edit jadwal</p>
         </div>
     </div>
     <div class="text-white px-2 mx-2">
-        <form class="editTiketContainer" action="{{route('edi')}}" method="POST" id="formSubmit">
+        <form class="editTiketContainer" action="{{route('updateJadwal',['id' => $jadwal->id])}}" method="POST" id="formSubmit">
             @csrf @method('PUT')
             <div class="d-flex">
                 <!-- Sori aku bingung banget pake ini, mau pecah palakku liatnya -->
                 <div style="margin-left: 15%;">
                     <label class="form-label" for="username">Asal</label>
-                    <input required class="form-control text-white" type="text" name="asal" id="asal" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('asal',$jadwal->asal)}}" class="form-control text-white" type="text" name="asal" id="asal" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tujuan" style="padding-top: 10px;">Tujuan</label>
-                    <input required class="form-control text-white" type="text" name="tujuan" id="tujuan" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('tujuan',$jadwal->tujuan)}}" class="form-control text-white" type="text" name="tujuan" id="tujuan" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="jumlah_kursi" style="padding-top: 10px;">Jumlah kursi</label>
-                    <input required class="form-control text-white" type="number" name="jumlah_kursi" id="jumlah_kursi" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('jumlah_kursi',$jadwal->jumlah_kursi)}}" class="form-control text-white" type="number" name="jumlah_kursi" id="jumlah_kursi" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <select name="id_kereta" id="id_kereta" class="form-select mt-5">
-                        <option selected value="">Pilih Kereta!</option>
                         @forelse ($kereta as $kereta)
+                        @if($kereta->id == $jadwal->id_kereta)
+                        <option selected value="{{$kereta->id}}">{{$kereta->namaKereta}}</option>
+                        @else
                         <option value="{{$kereta->id}}">{{$kereta->namaKereta}}</option>
+                        @endif
                         @endforeach
                     </select>
 
                 </div>
                 <div style="margin-left: 20%;">
                     <label class="form-label" for="asal">kelas</label>
-                    <input required class="form-control text-white" type="text" name="kelas" id="kelas" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('kelas',$jadwal->kelas)}}" class="form-control text-white" type="text" name="kelas" id="kelas" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tujuan" style="padding-top: 10px;">jam Berangkat</label>
-                    <input required class="form-control text-white" type="time" name="jam_berangkat" id="jam_berangkat" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('jam_berangkat',$jadwal->jam_berangkat)}}" class="form-control text-white" type="time" name="jam_berangkat" id="jam_berangkat" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tujuan" style="padding-top: 10px;">jam Tiba</label>
-                    <input required class="form-control text-white" type="time" name="jam_tiba" id="jam_tiba" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('jam_berangkat',$jadwal->jam_tiba)}}" class="form-control text-white" type="time" name="jam_tiba" id="jam_tiba" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tglDept" style="padding-top: 10px;">Tanggal pergi</label>
-                    <input required class="form-control text-white" type="date" name="tanggal_pergi" id="tanggal_pergi" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('tanggal_pergi',$jadwal->tanggal_pergi)}}" class="form-control text-white" type="date" name="tanggal_pergi" id="tanggal_pergi" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="harga" style="padding-top: 10px;">Harga</label>
-                    <input required class="form-control text-white" type="text" name="harga" id="harga" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{old('harga',$jadwal->harga)}}" class="form-control text-white" type="text" name="harga" id="harga" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
             </div>
             <div class="d-flex flex-row-reverse" style="margin-top: 20px; margin-right: 18%;">
                 <button type="submit" class="btn btn-primary px-4 mx-3" id="tambah">
-                    Tambah jadwal
+                    Edit jadwal
                 </button>
             </div>
         </form>

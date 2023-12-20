@@ -138,6 +138,11 @@
 </head>
 
 <body>
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+    @endif
     <br>
     <div class="container mx-10 mb-5">
         <div class="d-flex align-content-between">
@@ -226,11 +231,11 @@
                                         </div>
                                         <form
                                             onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
+                                            action="{{route('deleteJadwal', ['id' => $item->id])}}"
                                             method="POST"
                                         >
                                             <a
-                                                href=""
+                                                href="{{route('editJadwal', ['id' => $item->id])}}"
                                                 ><i class="fa fa-pencil" style="color: blue;"></i></a
                                             >
                                             @csrf @method('DELETE')
@@ -251,11 +256,7 @@
         </div>
         <div>
             <div class="d-flex" style="margin-left: 22px;">
-                <h3 class="text-white mx-2"><strong>User</strong></h3>
-                <div>
-                    <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
-                </div>
-              
+                <h3 class="text-white mx-2"><strong>User</strong></h3>              
             </div>
             <div class="container-fluid ms-3" style="width: 100%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
                 <div class="row">
@@ -279,11 +280,11 @@
                                     </div>
                                     <form
                                             onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
+                                            action="{{route('deleteUser', $item->id)}}"
                                             method="POST"
                                         >
                                             <a
-                                                href=""
+                                                href="{{ route('editUser', $item->id) }}"
                                                 ><i class="fa fa-pencil" style="color: blue;"></i></a
                                             >
                                             @csrf @method('DELETE')
@@ -332,12 +333,12 @@
                                         
                                     </div>
                                     <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
+                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Kereta ini?');"
+                                            action="{{route('deleteKereta', $item->id)}}"
                                             method="POST"
                                         >
                                             <a
-                                                href=""
+                                                href="{{ route('editKereta', $item->id) }}"
                                                 ><i class="fa fa-pencil" style="color: blue;"></i></a
                                             >
                                             @csrf @method('DELETE')
@@ -362,12 +363,8 @@
             window.location.href ="{{ route('tambahJadwal') }}";
         }
 
-        function redirectToTambahUser() {
-            window.location.href = "/addUser";
-        }
-
         function redirectToTambahKereta() {
-            window.location.href = "/addKereta";
+            window.location.href = "{{ route('tambahKereta') }}";
         }
 
         function redirectToEditTiket() {
