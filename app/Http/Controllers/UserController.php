@@ -58,4 +58,22 @@ class UserController extends Controller
 
         return redirect('/profile');
     }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            // User not found
+            return redirect()->back()->with('error', 'User not found.');
+        }
+        $user->delete();
+
+        if ($user->profilePic != null) {
+            $fileToUpdate = public_path('images/') . $user->profilePic;
+            if (file_exists($fileToUpdate)) {
+                unlink($fileToUpdate);
+            }
+        }
+        return redirect('/');
+    }
 }

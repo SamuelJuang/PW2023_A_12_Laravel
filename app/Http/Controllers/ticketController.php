@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ticket;
+use App\Models\KeretaApi;
 use App\Models\Review;
 
 
@@ -61,4 +62,5 @@ class ticketController extends Controller
         $jadwal->save();
         return redirect()->route('profile');
     }
+
 }

@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Jadwal;
 use App\Models\Review;
+use App\Models\KeretaApi;
+use App\Models\User;
 
 class JadwalController extends Controller
 {
@@ -32,7 +34,26 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newData = $request->all();
+        try{
+            $validate = Validator::make($newData,[
+                'asal' => 'required',
+                'tujuan' => 'required',
+                'id_kereta' => 'required',
+                'kelas' => 'required',
+                'jam_berangkat' => 'required',
+                'jam_tiba' => 'required',
+                'harga' => 'required',
+                'jumlah_kursi'=>'required',
+                'tanggal_pergi'=>'required'
+            ]);
+            if($validate->fails()){
+                Session::flash('error', $validate->errors()->first());
+                return redirect('register');
+            }
+        }catch(\Exception $e){
+
+        }
     }
 
     /**
@@ -40,15 +61,36 @@ class JadwalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $jadwal = Jadwal::find($id);
+        return view('',compact('jadwal'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id, Request $request)
     {
-        //
+        $jadwal = Jadwal::find($id);
+        $newData = $request->all();
+        try{
+            $validate = Validator::make($newData,[
+                'asal' => 'required',
+                'tujuan' => 'required',
+                'id_kereta' => 'required',
+                'kelas' => 'required',
+                'jam_berangkat' => 'required',
+                'jam_tiba' => 'required',
+                'harga' => 'required',
+                'jumlah_kursi'=>'required',
+                'tanggal_pergi'=>'required'
+            ]);
+            if($validate->fails()){
+                Session::flash('error', $validate->errors()->first());
+                return redirect('register');
+            }
+        }catch(\Exception $e){
+
+        }
     }
 
     /**
@@ -64,7 +106,9 @@ class JadwalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $jadwal = Jadwal::find($id);
+        $jadwal->delete();
+        return;
     }
 
     public function showByDate(Request $request)
@@ -106,5 +150,12 @@ class JadwalController extends Controller
             'stasiunAsalOptions' => $stasiunAsalOptions,
             'stasiunTujuanOptions' => $stasiunTujuanOptions,
         ]);
+    }
+
+    public function showAdminFrontPage(){
+        $jadwal = Jadwal::all();
+        $kereta = KeretaApi::all();
+        $user = User::all();
+        return view('adminPage', compact('jadwal', 'kereta', 'user'));
     }
 }
