@@ -305,9 +305,10 @@
           
         </div>
         <div class="modal-footer">
-            <form action="">
-                <input type="hidden" id="hiddenIdJadwal">
-                <input type="hidden" id="hiddenJumlah">
+            <form action="{{route('storeTicket')}}" id="bayarForm" method="POST">
+                @csrf
+                <input type="hidden" id="hiddenIdJadwal" name="id_jadwal">
+                <input type="hidden" id="hiddenJumlah" name="jumlah">
                 <input type="hidden" value="Payment Success">
                 <button type="submit" class="btn btn-primary" disabled id="bayarNow" data-bs-dismiss="modal">Bayar Sekarang</button>
             </form>
@@ -396,7 +397,8 @@
 
 
     // js for video
-    document.getElementById("bayarNow").addEventListener("click", function () {
+    document.getElementById("bayarForm").addEventListener("submit", function (e) {
+        e.preventDefault();
         var overlay = document.getElementById("darkenScreen");
         var content = document.getElementById("videoContainer");
         var lottiePlayer = document.getElementById("lottiePlayer");
@@ -409,13 +411,12 @@
         lottiePlayer.addEventListener("complete", function () {
             overlay.style.display = "none";
             content.style.display = "none";
-            setTimeout(redirectHome,1150);
         });
-    });
 
-    function redirectHome(){
-        window.location.href = "{{ Route('profile')}}";
-    }
+        setTimeout(function () {
+            document.getElementById('bayarForm').submit();
+        }, 2000);
+    });
    
 
     window.addEventListener("pageshow", function(event) {

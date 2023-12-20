@@ -35,6 +35,9 @@ class ticketController extends Controller
         try{
             $ticket = Ticket::find($id);
             return view('DetailTicket',compact('ticket'));
+        }catch(\Exception $e){
+            return view('profile', ['tickets' => []]);
+            \Log::error($e->getMessage());
         }
     }
 
@@ -56,5 +59,6 @@ class ticketController extends Controller
         $jadwal = Jadwal::find($request->id_jadwal);
         $jadwal->jumlah_kursi = $jadwal->jumlah_kursi - $request->jumlah;
         $jadwal->save();
+        return route('profile');
     }
 }

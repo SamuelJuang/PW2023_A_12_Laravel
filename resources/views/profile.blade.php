@@ -143,11 +143,11 @@
                         <div class="card radio" style="max-width: 30rem; max-height: 17rem;">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between text-primary">
-                                    <p class="card-title" onclick="ticketDetailRedirect()">
+                                    <a class="card-title link-underline-light" href="{{route('showTicket',['id' => $item->id])}}">
                                         <strong>
                                             {{ $item->jadwal->kereta->namaKereta }}
                                         </strong>
-                                    </p>
+                                    </a>
                                     <p class="card-title">
                                        <strong>
                                         IDR {{ number_format($item->jadwal->harga) }}
