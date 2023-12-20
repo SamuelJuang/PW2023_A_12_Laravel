@@ -139,7 +139,7 @@
 
 <body>
     <br>
-    <div class="container mx-10">
+    <div class="container mx-10 mb-5">
         <div class="d-flex align-content-between">
             <div class="container-fluid">
                 <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
@@ -154,175 +154,180 @@
         </div>
         <hr class="w-10 margin-bottom:10px;">
     </div>
-    <div class="d-flex align-content-between">
-        <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
-            <div class="row">
+    <div class="d-flex" >
+        <div>
+            <div class="d-flex" style="margin-left: 50px;">
                 <div class="d-flex">
-                    <div class="d-flex">
-                        <h3 class="text-white mx-2"><strong>Jadwal</strong></h3>
-                            <div>
-                                <button onclick="redirectToTambahTiket()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
-                            </div>
-                            <div>
-                                <button onclick="redirectToEditTiket()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
-                            </div>
-                            <div>
-                                <button onclick="redirectToEditTiket()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
-                            </div>
+                    <h3 class="text-white mx-2"><strong>Jadwal</strong></h3>
+                    <div>
+                        <button onclick="redirectToTambahTiket()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                    </div>
+                    <div>
+                        <button onclick="redirectToEditTiket()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                    </div>
+                    <div>
+                        <button onclick="redirectToEditTiket()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
                     </div>
                 </div>
-                <!-- Jadwal -->
-                @forelse ($ticket as $item)
-                <div class="col-12 my-2 ticketSelectionContainer mx-auto">
-                    <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
-                    <label for="{{ $item['id'] }}" style="border-radius:7px;">
-                        <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between text-primary">
-                                    <p class="card-title">
-                                        <strong>
-                                            {{ $item['namakereta'] }}
-                                        </strong>
-                                    </p>
-                                    <p class="card-title">
-                                        <strong>
-                                            IDR {{ number_format($item['harga']) }}
-                                        </strong>
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                    <p class="card-subtitle text-secondary">
-                                        {{ $item['kelas'] }}
-                                    </p>
-                                    <p class="card-subtitle text-success">
-                                        <strong>
-                                            {{ $item['status'] }}
-                                        </strong>
-                                    </p>
-                                </div>
-                                <br>
-                                <p class="card-subtitle text-secondary">Rating :
-                                    <?php
-                                    for ($x = 0; $x <  $item['rating']; $x++) {
-                                    ?>
-                                        <i class="fas fa-star fa-xs" style="color: gold;"></i>
-                                    <?php }
-                                    ?>
-                                </p>
-                                <br>
-                                <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                    <p class="card-subtitle text-secondary">
-                                        <strong>
-                                            {{ $item['asal'] }}
-                                        </strong>
-                                    </p>
-                                    <p class="card-subtitle text-secondary">
-                                        <strong>
-                                            {{ $item['tujuan'] }}
-                                        </strong>
-                                    </p>
-                                </div>
-                                <br>
-
-                                <div class="d-flex justify-content-between py-2" style="opacity: 100%;">
-                                    <p class="card-subtitle text-primary pt-2">
-                                        <strong>
+            </div>
+            <div class="d-flex align-content-between" style="margin-right: 50px;">
+                <div class="container ms-5" style="width: 88%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+                    <!--  -->
+                    <div class="row">
+                        <!-- Jadwal -->
+                        @forelse ($ticket as $item)
+                        <div class="col-12 my-2 ticketSelectionContainer mx-auto">
+                            <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
+                            <label for="{{ $item['id'] }}" style="border-radius:7px;">
+                                <div class="card " style="width: 26rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between text-primary">
+                                            <p class="card-title">
+                                                <strong>
+                                                    {{ $item['namakereta'] }}
+                                                </strong>
+                                            </p>
+                                            <p class="card-title">
+                                                <strong>
+                                                    IDR {{ number_format($item['harga']) }}
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between" style="opacity: 100%;">
+                                            <p class="card-subtitle text-secondary">
+                                                {{ $item['kelas'] }}
+                                            </p>
+                                            <p class="card-subtitle text-success">
+                                                <strong>
+                                                    {{ $item['status'] }}
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <br>
+                                        <p class="card-subtitle text-secondary">Rating :
                                             <?php
-                                            echo date("h:i", $item['departDateTime'])
+                                            for ($x = 0; $x <  $item['rating']; $x++) {
                                             ?>
-                                        </strong>
-                                    </p>
-                                    <svg height="25" width="125">
-                                        <g fill="none" stroke="black" stroke-width="2">
-                                            <path stroke-dasharray="5,5" d="M5 20 l215 0" />
-                                        </g>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="35" viewBox="0 0 32 35" fill="none">
-                                        <g opacity="0.7">
-                                            <path d="M15.7944 0C8.04269 0 0.291016 0.906039 0.291016 7.24831V24.4631C0.291016 26.1451 1.00562 27.7583 2.27763 28.9477C3.54963 30.1371 5.27484 30.8053 7.07373 30.8053L4.16685 33.5234V34.4295H8.48841L12.3643 30.8053H19.6702L23.546 34.4295H27.4219V33.5234L24.515 30.8053C26.3139 30.8053 28.0391 30.1371 29.3111 28.9477C30.5831 27.7583 31.2977 26.1451 31.2977 24.4631V7.24831C31.2977 0.906039 24.36 0 15.7944 0ZM7.07373 27.1812C6.30278 27.1812 5.5634 26.8948 5.01826 26.3851C4.47311 25.8753 4.16685 25.1839 4.16685 24.4631C4.16685 23.7422 4.47311 23.0508 5.01826 22.5411C5.5634 22.0313 6.30278 21.7449 7.07373 21.7449C7.84468 21.7449 8.58406 22.0313 9.12921 22.5411C9.67435 23.0508 9.98061 23.7422 9.98061 24.4631C9.98061 25.1839 9.67435 25.8753 9.12921 26.3851C8.58406 26.8948 7.84468 27.1812 7.07373 27.1812ZM13.8564 14.4966H4.16685V7.24831H13.8564V14.4966ZM17.7323 14.4966V7.24831H27.4219V14.4966H17.7323ZM24.515 27.1812C23.7441 27.1812 23.0047 26.8948 22.4595 26.3851C21.9144 25.8753 21.6081 25.1839 21.6081 24.4631C21.6081 23.7422 21.9144 23.0508 22.4595 22.5411C23.0047 22.0313 23.7441 21.7449 24.515 21.7449C25.286 21.7449 26.0253 22.0313 26.5705 22.5411C27.1156 23.0508 27.4219 23.7422 27.4219 24.4631C27.4219 25.1839 27.1156 25.8753 26.5705 26.3851C26.0253 26.8948 25.286 27.1812 24.515 27.1812Z" fill="#252525" />
-                                        </g>
-                                    </svg>
-                                    <svg height="25" width="125">
-                                        <g fill="none" stroke="black" stroke-width="2">
-                                            <path stroke-dasharray="5,5" d="M5 20 l215 0" />
-                                        </g>
-                                    </svg>
-                                    <p class="card-subtitle text-primary pt-2">
-                                        <strong>
-                                            <?php
-                                            echo date("h:i", $item['arrivalDateTime'])
+                                                <i class="fas fa-star fa-xs" style="color: gold;"></i>
+                                            <?php }
                                             ?>
-                                        </strong>
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <small class="card-text ">
-                                        <?php
-                                        echo date("d M Y", $item['arrivalDateTime'])
-                                        ?>
-                                    </small>
-                                    <small class="card-title">
-                                        <?php
-                                        echo date("d M   Y", $item['arrivalDateTime'])
-                                        ?>
-                                    </small>
-                                </div>
+                                        </p>
+                                        <br>
+                                        <div class="d-flex justify-content-between" style="opacity: 100%;">
+                                            <p class="card-subtitle text-secondary">
+                                                <strong>
+                                                    {{ $item['asal'] }}
+                                                </strong>
+                                            </p>
+                                            <p class="card-subtitle text-secondary">
+                                                <strong>
+                                                    {{ $item['tujuan'] }}
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <br>
 
-                            </div>
+                                        <div class="d-flex justify-content-between py-2" style="opacity: 100%;">
+                                            <p class="card-subtitle text-primary pt-2">
+                                                <strong>
+                                                    <?php
+                                                    echo date("h:i", $item['departDateTime'])
+                                                    ?>
+                                                </strong>
+                                            </p>
+                                            <svg height="25" width="125">
+                                                <g fill="none" stroke="black" stroke-width="2">
+                                                    <path stroke-dasharray="5,5" d="M5 20 l215 0" />
+                                                </g>
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="35" viewBox="0 0 32 35" fill="none">
+                                                <g opacity="0.7">
+                                                    <path d="M15.7944 0C8.04269 0 0.291016 0.906039 0.291016 7.24831V24.4631C0.291016 26.1451 1.00562 27.7583 2.27763 28.9477C3.54963 30.1371 5.27484 30.8053 7.07373 30.8053L4.16685 33.5234V34.4295H8.48841L12.3643 30.8053H19.6702L23.546 34.4295H27.4219V33.5234L24.515 30.8053C26.3139 30.8053 28.0391 30.1371 29.3111 28.9477C30.5831 27.7583 31.2977 26.1451 31.2977 24.4631V7.24831C31.2977 0.906039 24.36 0 15.7944 0ZM7.07373 27.1812C6.30278 27.1812 5.5634 26.8948 5.01826 26.3851C4.47311 25.8753 4.16685 25.1839 4.16685 24.4631C4.16685 23.7422 4.47311 23.0508 5.01826 22.5411C5.5634 22.0313 6.30278 21.7449 7.07373 21.7449C7.84468 21.7449 8.58406 22.0313 9.12921 22.5411C9.67435 23.0508 9.98061 23.7422 9.98061 24.4631C9.98061 25.1839 9.67435 25.8753 9.12921 26.3851C8.58406 26.8948 7.84468 27.1812 7.07373 27.1812ZM13.8564 14.4966H4.16685V7.24831H13.8564V14.4966ZM17.7323 14.4966V7.24831H27.4219V14.4966H17.7323ZM24.515 27.1812C23.7441 27.1812 23.0047 26.8948 22.4595 26.3851C21.9144 25.8753 21.6081 25.1839 21.6081 24.4631C21.6081 23.7422 21.9144 23.0508 22.4595 22.5411C23.0047 22.0313 23.7441 21.7449 24.515 21.7449C25.286 21.7449 26.0253 22.0313 26.5705 22.5411C27.1156 23.0508 27.4219 23.7422 27.4219 24.4631C27.4219 25.1839 27.1156 25.8753 26.5705 26.3851C26.0253 26.8948 25.286 27.1812 24.515 27.1812Z" fill="#252525" />
+                                                </g>
+                                            </svg>
+                                            <svg height="25" width="125">
+                                                <g fill="none" stroke="black" stroke-width="2">
+                                                    <path stroke-dasharray="5,5" d="M5 20 l215 0" />
+                                                </g>
+                                            </svg>
+                                            <p class="card-subtitle text-primary pt-2">
+                                                <strong>
+                                                    <?php
+                                                    echo date("h:i", $item['arrivalDateTime'])
+                                                    ?>
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <small class="card-text ">
+                                                <?php
+                                                echo date("d M Y", $item['arrivalDateTime'])
+                                                ?>
+                                            </small>
+                                            <small class="card-title">
+                                                <?php
+                                                echo date("d M   Y", $item['arrivalDateTime'])
+                                                ?>
+                                            </small>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </label>
                         </div>
-                    </label>
+                        @endforeach
+                    </div>
                 </div>
-                @endforeach
             </div>
         </div>
-        <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
-            <div class="d-flex" >
+        <div>
+            <div class="d-flex" style="margin-left: 50px;">
                 <h3 class="text-white mx-2"><strong>User</strong></h3>
                 <div>
-                    <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                    <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
                 </div>
                 <div>
-                    <button onclick="redirectToEditUser()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                    <button onclick="redirectToEditUser()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px"></button>
                 </div>
                 <div>
-                    <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
+                    <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px"></button>
                 </div>
             </div>
-            <div class="d-flex">
-            </div>
-            <div class="row">
-                @forelse ($user as $item)
-                <div class="my-2 UserSelectionContainer mx-auto">
-                    <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
-                    <label for="{{ $item['username'] }}" style="border-radius:7px;">
-                        <div class="card " style="width: 30rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between text-primary">
-                                    <p class="card-title">
-                                        <strong>
-                                            {{ $item['username'] }}
-                                        </strong>
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                    <p class="card-subtitle text-secondary">
-                                        {{ $item['email'] }}
-                                    </p>
-                                    <p class="card-subtitle text-success">
-                                        <strong>
-                                            {{ $item['status'] }}
-                                        </strong>
-                                    </p>
+            <div class="container ms-5" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+                <div class="row">
+                    @forelse ($user as $item)
+                    <div class="my-2 UserSelectionContainer mx-auto">
+                        <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
+                        <label for="{{ $item['username'] }}" style="border-radius:7px;">
+                            <div class="card " style="width: 26rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between text-primary">
+                                        <p class="card-title">
+                                            <strong>
+                                                {{ $item['username'] }}
+                                            </strong>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between" style="opacity: 100%;">
+                                        <p class="card-subtitle text-secondary">
+                                            {{ $item['email'] }}
+                                        </p>
+                                        <p class="card-subtitle text-success">
+                                            <strong>
+                                                {{ $item['status'] }}
+                                            </strong>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </label>
+                        </label>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
-        <div class="container ms-5" style="width: 45%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
-            <div class="d-flex" >
+        <div>
+            <div class="d-flex" style="margin-left: 50px;">
                 <h3 class="text-white mx-2"><strong>Kereta Api</strong></h3>
                 <div>
                     <button onclick="redirectToTambahKereta()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
@@ -334,68 +339,70 @@
                     <button onclick="redirectToEditKereta()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
                 </div>
             </div>
-            <div class="d-flex">
-            </div>
-            <div class="row">
-                @forelse ($kereta as $item)
-                <div class="col-12 my-2 UserSelectionContainer mx-auto">
-                    <input type="radio" name="userSelection" id="{{ $item['namaKereta'] }}" value="{{ $item['id'] }}">
-                    <label for="{{ $item['namaKereta'] }}" style="border-radius:7px;">
-                        <div class="card " style="width: 30rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between text-primary">
-                                    <p class="card-title">
-                                        <strong>
-                                            {{ $item['namaKereta'] }}
-                                        </strong>
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                    <p class="card-subtitle text-secondary">
-                                        {{ $item['tipeKereta'] }}
-                                    </p>
-                                    <p class="card-subtitle text-success">
-                                        <strong>
-                                            {{ $item['status'] }}
-                                        </strong>
-                                    </p>
+            <div class="container ms-5" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+                <div class="d-flex">
+                </div>
+                <div class="row">
+                    @forelse ($kereta as $item)
+                    <div class="col-12 my-2 UserSelectionContainer mx-auto">
+                        <input type="radio" name="userSelection" id="{{ $item['namaKereta'] }}" value="{{ $item['id'] }}">
+                        <label for="{{ $item['namaKereta'] }}" style="border-radius:7px;">
+                            <div class="card " style="width: 26rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between text-primary">
+                                        <p class="card-title">
+                                            <strong>
+                                                {{ $item['namaKereta'] }}
+                                            </strong>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-between" style="opacity: 100%;">
+                                        <p class="card-subtitle text-secondary">
+                                            {{ $item['tipeKereta'] }}
+                                        </p>
+                                        <p class="card-subtitle text-success">
+                                            <strong>
+                                                {{ $item['status'] }}
+                                            </strong>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </label>
+                        </label>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
 
     <script>
         function redirectToTambahTiket() {
-            window.location.href = "/addTicket"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/addTicket";
         }
 
         function redirectToTambahUser() {
-            window.location.href = "/addUser"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/addUser";
         }
 
         function redirectToTambahKereta() {
-            window.location.href = "/addKereta"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/addKereta";
         }
 
         function redirectToEditTiket() {
-            window.location.href = "/editTiket"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/editTiket";
         }
 
         function redirectToEditStasiun() {
-            window.location.href = "/editStasiun"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/editStasiun";
         }
 
         function redirectToEditKereta() {
-            window.location.href = "/editKereta"; // Ganti dengan URL halaman login yang sesuai
+            window.location.href = "/editKereta";
         }
 
         function redirectToEditUser() {
-            window.location.href ="/editUser";
+            window.location.href = "/editUser";
         }
 
         function redirectHome() {
@@ -410,8 +417,8 @@
         });
 
         function checkTickets() {
-            var element2 = document.getElementById("editTiket")
-            if ($("input[name='ticketSelection']:checked")) {
+            var element2 = document.getElementById("editTiket");
+            if ($("input[name='ticketSelection']:checked").length > 0) {
                 element2.disabled = false;
             } else {
                 element2.disabled = true;
@@ -419,12 +426,46 @@
         }
 
         function checkUser() {
-            var element2 = document.getElementById("editUser")
-            if ($("input[name='UserSelection']:checked")) {
+            var element2 = document.getElementById("editUser");
+            if ($("input[name='userSelection']:checked").length > 0) {
                 element2.disabled = false;
             } else {
                 element2.disabled = true;
             }
+        }
+
+        function deleteTicket() {
+            var selectedTicketId = $("input[name='ticketSelection']:checked").val();
+
+            if (!selectedTicketId) {
+                alert("Harap pilih tiket yang akan dihapus.");
+                return;
+            }
+
+            var confirmDelete = confirm("Apakah Anda yakin ingin menghapus tiket ini?");
+            if (!confirmDelete) {
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "{{ url('/deleteTicket') }}",
+                data: {
+                    ticketId: selectedTicketId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert("Tiket berhasil dihapus!");
+                        redirectBack();
+                    } else {
+                        alert("Gagal menghapus tiket. Silakan coba lagi.");
+                    }
+                },
+                error: function() {
+                    alert("Terjadi kesalahan saat menghapus tiket. Silakan coba lagi.");
+                }
+            });
         }
     </script>
 </body>
