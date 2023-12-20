@@ -67,52 +67,46 @@
     </a>
         <div class="card mx-auto" style="width:32%; border-radius: 10px; max-height: 90vh;">
             <div class="card-body">
-                <h5 class="card-title fw-bold text-primary fs-3 mb-2">Solo</h5>
+                <h5 class="card-title fw-bold text-primary fs-3 mb-2">{{$ticket->jadwal->kereta->namaKereta}}</h5>
                <br>
                
-                <div class="d-flex">
-                    <h1 style="font-size: 12px;opacity: 0.5;">Stasiun Solo Balapan</h1>
-                    <h1 style="font-size: 12px;opacity: 0.5; margin-left: 35%;">Stasiun Tugu Jogja</h1>
+                <div class="d-flex justify-content-between">
+                    <h1 style="font-size: 12px;opacity: 0.5;">{{$ticket->jadwal->asal}}</h1>
+                    <h1 style="font-size: 12px;opacity: 0.5;">{{$ticket->jadwal->tujuan}}</h1>
                 </div>
-                <div class="d-flex" style="display: flex; align-items: center;">
-                    <p class="text-primary fw-bold" style="font-size: 14px; margin-left:12%;">08:10</p>
+                <div class="d-flex justify-content-between" style="display: flex; align-items: center;">
+                    <p class="text-primary fw-bold" style="font-size: 14px;"><?php echo substr($ticket->jadwal->jam_berangkat, 0, 5); ?></p>
                     <div style="width: 10px; height: 10px; background-color: #3498db; border-radius: 50%; margin-left:3%;"></div>
-                    <div style="width: 67px; height: 1px; opacity: 0.1;background: #252525;"></div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-train-freight-front" viewBox="0 0 16 16">
                         <path d="M5.065.158A1.5 1.5 0 0 1 5.736 0h4.528a1.5 1.5 0 0 1 .67.158l3.237 1.618a1.5 1.5 0 0 1 .83 1.342V13.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V3.118a1.5 1.5 0 0 1 .828-1.342L5.065.158ZM2 9.372V13.5A1.5 1.5 0 0 0 3.5 15h4V8h-.853a.5.5 0 0 0-.144.021L2 9.372ZM8.5 15h4a1.5 1.5 0 0 0 1.5-1.5V9.372l-4.503-1.35A.5.5 0 0 0 9.353 8H8.5v7ZM14 8.328v-5.21a.5.5 0 0 0-.276-.447l-3.236-1.618A.5.5 0 0 0 10.264 1H5.736a.5.5 0 0 0-.223.053L2.277 2.67A.5.5 0 0 0 2 3.118v5.21l1-.3V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3.028l1 .3Zm-2-.6V5H8.5v2h.853a1.5 1.5 0 0 1 .431.063L12 7.728ZM7.5 7V5H4v2.728l2.216-.665A1.5 1.5 0 0 1 6.646 7H7.5Zm-1-5a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm-3 8a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1Zm9 0a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1ZM5 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm7 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
                     </svg>
-                    <div style="width: 67px; height: 1px; opacity: 0.1;background: #252525;"></div>
-                    <div style="width: 10px; height: 10px; background-color: #3498db; border-radius: 50%; "></div>
-                    <p class="text-primary fw-bold" style="font-size: 14px; margin-left:3%;">08:45</p>
+                     <div style="width: 10px; height: 10px; background-color: #3498db; border-radius: 50%; "></div>
+                    <p class="text-primary fw-bold" style="font-size: 14px; margin-left:3%;"><?php echo substr($ticket->jadwal->jam_tiba, 0, 5); ?></p>
                 </div>
                 <br>
                 <div>
                     <hr class="dashed-hr mb-2" style="color: #252525; opacity: 0.3;">
                 </div>
                
-                <div class="d-flex">
+                <div class="d-flex justify-content-between">
                     <h1 style="opacity: 0.4; font-size: 10px;">Name</h1>
-                    <h1 style="opacity: 0.4; font-size: 10px; margin-left:70%">Ticket Number</h1>
+                    <h1 style="opacity: 0.4; font-size: 10px; margin-left:79%">Harga</h1>
                 </div>
-                <div class="d-flex mb-2" style="margin-top: -8px;">
-                    <h1 class="fw-bold" style="font-size: 12px;">Agatha</h1>
-                    <h1 class="fw-bold" style="font-size: 12px; margin-left:73%">VG1231</h1>
+                <div class="d-flex mb-2 justify-content-between" style="margin-top: -8px;">
+                    <h1 class="fw-bold" style="font-size: 12px;">{{$ticket->user->username}}</h1>
+                    <h1 class="fw-bold" style="font-size: 12px;"> IDR {{ number_format($ticket->jadwal->harga) }}</h1>
                 </div>
                 <div class="d-flex">
-                    <h1 style="opacity: 0.4; font-size: 10px;">Passanger</h1>
-                    <h1 style="opacity: 0.4; font-size: 10px; margin-left:76%">Seat</h1>
+                    <h1 style="opacity: 0.4; font-size: 10px;">Passenger(s)</h1>
                 </div>
                 <div class="d-flex mb-2" style="margin-top: -8px;">
-                    <h1 class="fw-bold" style="font-size: 12px;">1 Adult, 2 Infant</h1>
-                    <h1 class="fw-bold" style="font-size: 12px; margin-left:65%">12-f</h1>
+                    <h1 class="fw-bold" style="font-size: 12px;">{{$ticket->jumlah}}</h1>
                 </div>
                 <div class="d-flex">
                     <h1 style="opacity: 0.4; font-size: 10px;">Class</h1>
-                    <h1 style="opacity: 0.4; font-size: 10px; margin-left:77%">Baggage</h1>
                 </div>
                 <div class="d-flex mb-2" style="margin-top: -8px;">
-                    <h1 class="fw-bold" style="font-size: 12px;">Economy - A</h1>
-                    <h1 class="fw-bold" style="font-size: 12px; margin-left:69%">5 kg</h1>
+                    <h1 class="fw-bold" style="font-size: 12px;">{{$ticket->jadwal->kelas}}</h1>
                 </div>
                 <br>
                 

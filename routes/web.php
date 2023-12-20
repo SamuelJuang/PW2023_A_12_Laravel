@@ -21,29 +21,26 @@ use App\Http\Controllers\ReviewController;
 Route::get('/', [JadwalController::class,'ShowFrontPage'])->name('ShowFrontPage');
 
 Route::get('/logout', [LoginController::class,'actionLogout'])->middleware('auth')->name('logout');
-
 Route::get('/login', [LoginController::class , 'login'])->name('login');
 Route::post('/actionLogin',[LoginController::class, 'actionLogin'])->name('actionLogin');
 
-
-Route::get('/ticket_ketemu/', [JadwalController::class, 'showByDate'])->name('ticket_ketemu');
-
+Route::get('editProfile', [UserController::class, 'edit'])->name('editProfile');
+Route::post('updateprofile/{id}',[UserController::class,'update'])->name('updateprofile');
 
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionRegister'])->name('actionRegister');
 Route::get('register/verify/{verify_key}',[RegisterController::class, 'verify'])->name('verify');
 
-
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/profile',[ticketController::class,'showProfile'])->middleware('auth')->name('profile');
 
+Route::get('/ticket_ketemu/', [JadwalController::class, 'showByDate'])->name('ticket_ketemu');
+Route::get('/showTicket/{id}',[ticketController::class,'showTicket'])->middleware('auth')->name('showTicket');
+Route::post('/storeTicket',[ticketController::class,'store'])->middleware('auth')->name('storeTicket');
 
-Route::get('/DetailTicket', function () {
-    return view('DetailTicket');
+Route::get('/rating', function () {
+    return view('rating');
 });
+
 
 Route::get('/adminPage', function () {
     return view('adminPage',
@@ -143,9 +140,7 @@ Route::get('/adminPage', function () {
 );
 });
 
-Route::get('/rating', function () {
-    return view('rating');
-});
+
 
 Route::get('/reviews/{idKereta}', [ReviewController::class, 'showByKereta'])->name('reviews.byKereta');
 
@@ -156,10 +151,6 @@ Route::get('/editTiket', function () {
     return view('editTiket');
 });
 
-Route::get('register', [RegisterController::class, 'register'])->name('register');
-
-Route::get('editProfile', [UserController::class, 'edit'])->name('editProfile');
-Route::post('updateprofile/{id}',[UserController::class,'update'])->name('updateprofile');
 
 Route::get('/editUser', function () {
     return view('editUser');
