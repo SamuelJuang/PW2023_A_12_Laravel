@@ -49,5 +49,5 @@ Route::get('editKereta/{id}',[KeretaApiController::class,'show'])->name('editKer
 Route::put('/updateKereta/{id}',[KeretaApiController::class,'update'])->name('updateKereta');
 Route::delete('/deleteKereta/{id}',[KeretaApiController::class,'destroy'])->name('deleteKereta');
 
-Route::get('/reviewForAdmin',[ReviewController::class,'showForAdmin'])->name('reviewForAdmin');
+Route::get('/reviewForAdmin',[ReviewController::class,'index'])->name('reviewForAdmin');
 Route::delete('/deleteReview/{id}',[ReviewController::class,'destroy'])->name('deleteReview');
