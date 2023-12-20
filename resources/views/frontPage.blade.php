@@ -1,7 +1,7 @@
 @extends('PageNavFoot')
 @section('content')
 @auth
-<form action="{{ url('/ticketSearch') }}">
+<form action="{{ route('ticket_ketemu')}}" method="get">
 @else
 <form action="{{ url('/login') }}">
 @endif
@@ -44,16 +44,16 @@
             <div class="btn-group container-fluid">
                 <select name="StasiunAsal" id="StasiunAsal" class="form-select reg" required>
                     <option value="" hidden>Stasiun Asal</option>
-                    <option value="Stasiun Solo Balapan">Stasiun Solo Balapan</option>
-                    <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
-                    <option value="Stasiun Bandung">Stasiun Bandung</option>
+                    @foreach($stasiunAsalOptions as $value => $label)
+                    <option value="{{ $value }}">{{ $label }}</option>
+                    @endforeach
                 </select>
 
                 <select name="StasiunTujuan" id="StasiunTujuan" class="form-select reg" style="margin-left: 16px; " required>
                     <option value="" hidden>Stasiun Tujuan</option>
-                    <option value="Stasiun Solo Balapan">Stasiun Solo Balapan</option>
-                    <option value="Stasiun Yogyakarta">Stasiun Yogyakarta</option>
-                    <option value="Stasiun Bandung">Stasiun Bandung</option>
+                    @foreach($stasiunTujuanOptions as $value => $label)
+                        <option value="{{ $value }}">{{ $label }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

@@ -16,6 +16,7 @@ class CreateJadwalTable extends Migration
             $table->foreign('id_kereta')->references('id')->on('kereta_api')->onDelete('cascade')->onUpdate('cascade');
             $table->string('kelas');
             $table->time('jam_berangkat');
+            $table->time('jam_tiba');
             $table->integer('harga');
             $table->integer('jumlah_kursi');
             $table->dateTime('tanggal_pergi');

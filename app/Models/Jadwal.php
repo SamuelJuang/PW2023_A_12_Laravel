@@ -14,11 +14,13 @@ class Jadwal extends Model
     protected $fillable = [
         'asal',
         'tujuan',
-        'nama_kereta',
+        'id_kereta',
         'kelas',
         'jam_berangkat',
+        'jam_tiba',
         'harga',
         'jumlah_kursi',
+        'tanggal_pergi'
     ];
 
     public function kereta() {

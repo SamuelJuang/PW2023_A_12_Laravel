@@ -124,52 +124,56 @@
    <div class="container" style="width: 100%; height: 70vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
             <!-- Tickets -->
-            @forelse ($ticket as $item)
+            @forelse ($jadwal as $item)
                     <div class="col-md-12 col-lg-6 my-2 ticketSelectionContainer">
-                        <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
-                        <label for="{{ $item['id'] }}" style="border-radius:7px;">
+                        <input type="radio" name="ticketSelection" id="{{ $item->id }}" value="{{ $item->id }}">
+                        <label for="{{ $item->id }}" style="border-radius:7px;">
                             <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
                                         <p class="card-title" onclick="redirectToReviews()">
                                             <strong>    
-                                                {{ $item['namakereta'] }}
+                                                {{ $item->kereta->namaKereta }}
                                             </strong>
                                         </p>
                                         <p class="card-title">
                                         <strong>
-                                            IDR {{ number_format($item['harga']) }}
+                                            IDR {{ number_format($item->harga) }}
                                         </strong>
                                         </p>    
                                     </div>
                                     <div class="d-flex justify-content-between" style="opacity: 100%;">
                                         <p class="card-subtitle text-secondary">
-                                            {{ $item['kelas'] }}
+                                            {{ $item->kelas }}
                                         </p>
                                         <p class="card-subtitle text-success">
                                             <strong>
-                                                {{ $item['status'] }}
+                                                Available
                                             </strong>
                                         </p>
                                     </div>
                                     <br> <p class="card-subtitle text-secondary">Rating :
-                                    <?php
-                                        for ($x = 0; $x <  $item['rating'] ; $x++) {
+                                   @if($item->averageRating != null)
+                                   <?php
+                                   for ($x = 0; $x <  $item->averageRating ; $x++) {
                                     ?>
                                     <i class="fas fa-star fa-xs" style="color: gold;"></i>
                                             <?php }
                                     ?>
+                                    @else
+                                    Belum ada penilaian!
+                                    @endif
                                 </p>
                                 <br>
                                 <div class="d-flex justify-content-between" style="opacity: 100%;">
                                     <p class="card-subtitle text-secondary">
                                     <strong>
-                                        {{ $item['asal'] }}
+                                        {{ $item->asal }}
                                     </strong>
                                     </p>
                                     <p class="card-subtitle text-secondary">
                                         <strong>
-                                            {{ $item['tujuan'] }}
+                                            {{ $item->tujuan }}
                                         </strong>
                                     </p>
                                 </div>
@@ -178,9 +182,7 @@
                                 <div class="d-flex justify-content-between py-2" style="opacity: 100%;">
                                     <p class="card-subtitle text-primary pt-2">
                                     <strong>
-                                        <?php
-                                        echo date("h:i", $item['departDateTime'])
-                                        ?>
+                                        <?php echo substr($item->jam_berangkat, 0, 5); ?>
                                     </strong>
                                     </p>
                                     <svg height="25" width="125">
@@ -200,30 +202,20 @@
                                     </svg>
                                     <p class="card-subtitle text-primary pt-2">
                                         <strong>
-                                            <?php
-                                            echo date("h:i", $item['arrivalDateTime'])
-                                            ?>
+                                            <?php echo substr($item->jam_tiba, 0, 5); ?>
                                         </strong>
                                     </p>
                                 </div>
-                                <div class="d-flex justify-content-between">
-                                    <small class="card-text ">
-                                            <?php
-                                            echo date("d M Y", $item['arrivalDateTime'])
-                                            ?>
-                                    </small>
-                                    <small class="card-title">
-                                        <?php
-                                            echo date("d M   Y", $item['arrivalDateTime'])
-                                            ?>  
-                                    </small>
-                                </div>
-                                
+                               
                                 </div>
                             </div>
                         </label>
                     </div>
-            @endforeach
+            @empty
+                    <div class="text-white align-content-center">
+                        <p><strong><big>Tidak ada jadwal yang tersedia!</big></strong></p>
+                    </div>
+            @endforelse
         </div>
     </div>
     <div class="d-flex flex-row-reverse">
@@ -232,6 +224,8 @@
         </button>
     </div>
 </div>
+
+
 <!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-height: 500px;">

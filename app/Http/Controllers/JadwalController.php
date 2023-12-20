@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use App\Models\Jadwal;
+use App\Models\Review;
 
 class JadwalController extends Controller
 {
@@ -63,23 +67,44 @@ class JadwalController extends Controller
         //
     }
 
-    public function showByDate(String $berangkat, String $tiba, String $tgl)
+    public function showByDate(Request $request)
     {
+        $berangkat = request('StasiunAsal');
+        $tiba = request('StasiunTujuan');
+        $tgl = request('TglDepart');
+        $jml = request('jumlah');
         try { 
             $jadwal = jadwal::join(
-                'kereta', 'kereta.kode' , '=', 'jadwal.id_kereta'
+                'kereta_api', 'kereta_api.id' , '=', 'jadwal.id_kereta'
             )->where(
-                'jadwal.berangkat', '=', $berangkat
+                'jadwal.asal', '=', $berangkat
             )->where(
-                'jadwal.tiba', '=', $tiba
+                'jadwal.tujuan', '=', $tiba
             )->where(
-                'jadwal.tanggal', '=', $tgl
+                'jadwal.tanggal_pergi', '=', $tgl
+            )->where(
+                'jumlah_kursi','>=',$jml,
             )->get();
-            
-            if(!$jadwal) throw new \Exception("Jadwal tidak ditemukan");
-            }
-        catch(\Exception $e) {
-           
+
+            $jadwal->each(function ($item) {
+                $item->averageRating = Review::where('id_kereta','=',$item->id_kereta)->avg('rekomendasi');
+            });
+
+            return view('ticketKetemu', compact('jadwal'));
         }
+        catch(\Exception $e) {
+            return view('ticketKetemu', ['jadwal' => []]);
+            \Log::error($e->getMessage());
+        }
+    }
+
+    public function ShowFrontPage(){
+        $stasiunAsalOptions = Jadwal::pluck('asal', 'asal');
+        $stasiunTujuanOptions = Jadwal::pluck('tujuan', 'tujuan');
+
+        return view('frontPage', [
+            'stasiunAsalOptions' => $stasiunAsalOptions,
+            'stasiunTujuanOptions' => $stasiunTujuanOptions,
+        ]);
     }
 }

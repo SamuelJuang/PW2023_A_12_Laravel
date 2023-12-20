@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JadwalKeretaController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -16,96 +16,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    if(session('user') == 'admin'){
-        return view('adminPage',
-    [
-        'ticket' =>[
-        [
-            'id' => 1,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 5,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i") buat waktu
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 2,
-            'namakereta' => "SAF JAYA 2",
-            'kelas' => "Bisnis - A",
-            'harga' => 50000,
-            'status' => "Available",
-            'rating' => 4,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 3,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 3,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 4,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 5,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-    ],
-    'users'=>[
-        [
-            'id' => 1,
-            'username' => 'Sampjs',
-            'noTelp' => '081271231',
-            'email' => 'samuel@gmail.com',
-            'password' => '12345678',
-        ],
-        [
-            'id' => 2,
-            'username' => 'Agatha',
-            'noTelp' => '081312371',
-            'email' => 'agatha@gmail.com',
-            'password' => '12345678',
-        ],
-        [
-            'id' => 3,
-            'username' => 'Raff Gustafio',
-            'noTelp' => '081309123',
-            'email' => 'fio@gmail.com',
-            'password' => '12345678',
-        ],
-        [
-            'id' => 4,
-            'username' => 'hayo siapa',
-            'noTelp' => '081309123',
-            'email' => 'fio@gmail.com',
-            'password' => '12345678',
-        ],
-]
-    ],
-);
-    }else{
-        return view('frontPage');
-    }
-});
+Route::get('/', [JadwalController::class,'ShowFrontPage'])->name('ShowFrontPage');
 
 Route::get('/logout', [LoginController::class,'actionLogout'])->middleware('auth')->name('logout');
 
@@ -113,63 +24,7 @@ Route::get('/login', [LoginController::class , 'login'])->name('login');
 Route::post('/actionLogin',[LoginController::class, 'actionLogin'])->name('actionLogin');
 
 
-Route::get('/ticketSearch', function () {
-    return view('ticketKetemu',
-    [
-        'ticket' =>[
-        [
-            'id' => 1,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 5,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i") buat waktu
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 2,
-            'namakereta' => "SAF JAYA 2",
-            'kelas' => "Bisnis - A",
-            'harga' => 50000,
-            'status' => "Available",
-            'rating' => 4,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 3,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 3,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 4,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 5,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        ]
-    ]
-);
-});
-
+Route::get('/ticket_ketemu/', [JadwalController::class, 'showByDate'])->name('ticket_ketemu');
 
 
 Route::get('register', [RegisterController::class, 'register'])->name('register');
