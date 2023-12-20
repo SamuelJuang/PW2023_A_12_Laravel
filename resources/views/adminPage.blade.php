@@ -221,9 +221,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <small class="card-title">
-                                                <?php
-                                                echo date("d M   Y", $item['arrivalDateTime'])
-                                                ?>
+                                              {{ $item->tanggal_pergi}}
                                             </small>
                                         </div>
                                         <form
@@ -259,7 +257,7 @@
                 </div>
               
             </div>
-            <div class="container-fluid ms-3" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
+            <div class="container-fluid ms-3" style="width: 100%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
                 <div class="row">
                     @forelse ($user as $item)
                     <div class="my-2 UserSelectionContainer mx-auto">
