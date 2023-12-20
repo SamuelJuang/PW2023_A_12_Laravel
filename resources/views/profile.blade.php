@@ -97,15 +97,16 @@
     </script>
     @endif
     <div class="profile d-flex justify-content-center align-items-center">
-        @if(auth()->user()->profilePic)
-        <img src="{{ asset('images/' . auth()->user()->profilePic)}}" alt="ProfilePic" height="100" width="100" class="rounded-circle border border-light">@else
+        @if(auth()->user()->profilePic != null)
+        <img src="{{ asset('images/' . auth()->user()->profilePic)}}" alt="ProfilePic" height="100" width="100" class="rounded-circle border border-light">
+        @else
                <a href="{{ url('/profile') }}">
                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 79 79" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M53.8636 28.7273C53.8636 32.5367 52.3503 36.1902 49.6566 38.8839C46.9629 41.5776 43.3095 43.0909 39.5 43.0909C35.6905 43.0909 32.0371 41.5776 29.3434 38.8839C26.6497 36.1902 25.1364 32.5367 25.1364 28.7273C25.1364 24.9178 26.6497 21.2644 29.3434 18.5706C32.0371 15.8769 35.6905 14.3636 39.5 14.3636C43.3095 14.3636 46.9629 15.8769 49.6566 18.5706C52.3503 21.2644 53.8636 24.9178 53.8636 28.7273ZM46.6818 28.7273C46.6818 30.632 45.9252 32.4587 44.5783 33.8056C43.2315 35.1524 41.4047 35.9091 39.5 35.9091C37.5953 35.9091 35.7685 35.1524 34.4217 33.8056C33.0748 32.4587 32.3182 30.632 32.3182 28.7273C32.3182 26.8225 33.0748 24.9958 34.4217 23.649C35.7685 22.3021 37.5953 21.5455 39.5 21.5455C41.4047 21.5455 43.2315 22.3021 44.5783 23.649C45.9252 24.9958 46.6818 26.8225 46.6818 28.7273Z" fill="white"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M39.5 0C17.6852 0 0 17.6852 0 39.5C0 61.3148 17.6852 79 39.5 79C61.3148 79 79 61.3148 79 39.5C79 17.6852 61.3148 0 39.5 0ZM7.18182 39.5C7.18182 47.005 9.74214 53.9139 14.0333 59.4008C17.0469 55.4433 20.9346 52.236 25.3929 50.0297C29.8511 47.8233 34.7591 46.6775 39.7334 46.6818C44.6434 46.6772 49.4896 47.7933 53.9029 49.9452C58.3162 52.097 62.1801 55.2279 65.2001 59.0992C68.3115 55.0185 70.4064 50.2555 71.3115 45.2045C72.2166 40.1534 71.9059 34.9594 70.4051 30.0523C68.9044 25.1451 66.2567 20.6659 62.6811 16.9851C59.1055 13.3044 54.7048 10.528 49.8432 8.88574C44.9816 7.24343 39.7988 6.78241 34.7236 7.54081C29.6484 8.29922 24.8268 10.2552 20.6577 13.2471C16.4885 16.2389 13.0918 20.1804 10.7484 24.7457C8.40505 29.3109 7.18247 34.3685 7.18182 39.5ZM39.5 71.8182C32.081 71.8293 24.886 69.2771 19.1324 64.5933C21.4482 61.2779 24.5307 58.571 28.1175 56.7029C31.7043 54.8348 35.6893 53.8608 39.7334 53.8636C43.7271 53.8604 47.6639 54.8101 51.2169 56.6337C54.7699 58.4574 57.8365 61.1024 60.1621 64.3491C54.3638 69.185 47.0502 71.8288 39.5 71.8182Z" fill="white"/>
                 </svg>
               </a>
-              @endif
+        @endif
     </div>
     <div class="d-flex align-content-center fadeInAnimated">
         <div class="mx-auto text-white text-center">
@@ -137,29 +138,29 @@
     </div>
     <div class="container" style=" width: 75%; height: 30vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
-            @forelse ($ticket as $item)
+            @forelse ($tickets as $item)
                     <div class="col-6 my-2">
                         <div class="card radio" style="max-width: 30rem; max-height: 17rem;">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between text-primary">
                                     <p class="card-title" onclick="ticketDetailRedirect()">
                                         <strong>
-                                            {{ $item['namakereta'] }}
+                                            {{ $item->jadwal->kereta->namaKereta }}
                                         </strong>
                                     </p>
                                     <p class="card-title">
                                        <strong>
-                                        IDR {{ number_format($item['harga']) }}
+                                        IDR {{ number_format($item->jadwal->harga) }}
                                        </strong>
                                     </p>    
                                 </div>
                                 <div class="d-flex justify-content-between" style="opacity: 100%;">
                                     <p class="card-subtitle text-secondary">
-                                        {{ $item['kelas'] }}
+                                        {{ $item->jadwal->kelas }}
                                     </p>
                                     <p class="card-subtitle" style="color: purple;">
                                         <strong>
-                                            {{ $item['status'] }}
+                                            {{ $item->status }}
                                         </strong>
                                     </p>
                                 </div>
@@ -167,7 +168,7 @@
                                 <div class="d-flex" style="height: fit-content;">
                                     <p class="card-subtitle text-secondary">Rating :                                       
                                 
-                                    @if($item['rating'] == 0)
+                                    @if($item->rating == null)
                                     <?php
                                         for ($x = 0; $x < 5 ; $x++) {
                                     ?>
@@ -181,7 +182,7 @@
                                     </a>
                                     @else
                                     <?php
-                                        for ($x = 0; $x < $item['rating'] ; $x++) {
+                                        for ($x = 0; $x < $item->rating->rekomendasi ; $x++) {
                                     ?>
                                     <i class="fas fa-star fa-xs star" style="color: gold;"></i>
                                             <?php }
@@ -193,12 +194,12 @@
                             <div class="d-flex justify-content-between" style="opacity: 100%;">
                                 <p class="card-subtitle text-secondary">
                                    <strong>
-                                    {{ $item['asal'] }}
+                                    {{ $item->jadwal->asal }}
                                    </strong>
                                 </p>
                                 <p class="card-subtitle text-secondary">
                                     <strong>
-                                        {{ $item['tujuan'] }}
+                                        {{ $item->jadwal->tujuan }}
                                     </strong>
                                 </p>
                             </div>
@@ -207,9 +208,7 @@
                             <div class="d-flex justify-content-between py-2" style="opacity: 100%;">
                                 <p class="card-subtitle text-primary pt-2">
                                    <strong>
-                                    <?php
-                                    echo date("h:i", $item['departDateTime'])
-                                    ?>
+                                    <?php echo substr($item->jadwal->jam_berangkat, 0, 5); ?>
                                    </strong>
                                 </p>
                                 <svg height="25" width="125">
@@ -229,29 +228,24 @@
                                 </svg>
                                 <p class="card-subtitle text-primary pt-2">
                                     <strong>
-                                        <?php
-                                        echo date("h:i", $item['arrivalDateTime'])
-                                        ?>
+                                        <?php echo substr($item->jadwal->jam_tiba, 0, 5); ?>
                                     </strong>
                                 </p>
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <small class="card-text ">
-                                        <?php
-                                        echo date("d M Y", $item['arrivalDateTime'])
-                                        ?>
-                                </small>
+                            <div class="d-flex justify-content-center">
                                 <small class="card-title">
-                                    <?php
-                                        echo date("d M   Y", $item['arrivalDateTime'])
-                                        ?>  
+                                    <?php echo substr($item->jadwal->tanggal_pergi, 0, 10); ?>
                                 </small>
                             </div>
                             
                             </div>
                         </div>
                     </div>
-            @endforeach
+            @empty
+            <div class="col-12 align-items-center mt-3 text-secondary">
+                Belum ada ticket! ayo beli ticket dulu!
+            </div>
+            @endforelse
         </div>
     </div>
 

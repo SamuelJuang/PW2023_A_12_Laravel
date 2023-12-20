@@ -121,6 +121,7 @@
     }
 </style>
 <div class="container">
+    <form id="selectTicket">
    <div class="container" style="width: 100%; height: 70vh; overflow-y: auto; margin-bottom: 5vh;">
         <div class="row">
             <!-- Tickets -->
@@ -131,12 +132,12 @@
                             <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
-                                        <p class="card-title" onclick="redirectToReviews()">
+                                        <a class="card-title link-underline-light" href="{{ route('reviews.byKereta', ['idKereta' => $item->id_kereta]) }}">
                                             <strong>    
                                                 {{ $item->kereta->namaKereta }}
                                             </strong>
-                                        </p>
-                                        <p class="card-title">
+                                        </a>
+                                        <p class="card-title hargaTicket">
                                         <strong>
                                             IDR {{ number_format($item->harga) }}
                                         </strong>
@@ -219,10 +220,11 @@
         </div>
     </div>
     <div class="d-flex flex-row-reverse">
-        <button class="btn btn-primary px-5 mx-3" disabled data-bs-toggle = "modal" data-bs-target = "#exampleModal" id="bayar">
+        <button type="submit" class="btn btn-primary px-5 mx-3" disabled data-bs-toggle = "modal" data-bs-target = "#exampleModal" id="bayar">
             Bayar Tiket 
         </button>
     </div>
+</form>
 </div>
 
 
@@ -236,21 +238,19 @@
         </div>
         <div class="modal-body">
           <div class="d-flex justify-content-between flex-column">
-            <p><strong> SAF-JAYA- Jogja</strong></p>
+            <p><strong></strong></p>
             <div class="row">
                 <div class="col-6">
-                    <p> Ticket - Kelas </p>
+                    <p id="ticketInfo"> Ticket - Kelas </p>
                     <strong>Total Pembayaran </strong>
                 </div>
-                <div class="col-6">
-                    <p> Rp 20.000,-</p>
-                    <strong>Rp 20.000,-</strong>
+                <div class="col-6 mb-3">
+                    <p id="payment"></p>
                 </div>
                 <br>
                 <hr>
-                <div class="col-12 text-primary">
+                <div class="col-12 text-primary mb-4">
                     <strong>Metode Pembayaran</strong>
-                    <br>
                 </div>
                 <div class="col-6">
                     <div class="container rounded p-1 paymethodContainer" style="width: fit-content;">
@@ -305,7 +305,12 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" disabled id="bayarNow" data-bs-dismiss="modal">Bayar Sekarang</button>
+            <form action="">
+                <input type="hidden" id="hiddenIdJadwal">
+                <input type="hidden" id="hiddenJumlah">
+                <input type="hidden" value="Payment Success">
+                <button type="submit" class="btn btn-primary" disabled id="bayarNow" data-bs-dismiss="modal">Bayar Sekarang</button>
+            </form>
         </div>
       </div>
     </div>
@@ -318,6 +323,56 @@
     <dotlottie-player id="lottiePlayer" src="https://lottie.host/1f25b754-dfaf-4e88-955b-0b913c12c407/UXE2t7llC3.json" background="transparent" speed="0.8" style="width: 300px; height: 300px;" ></dotlottie-player>
     <p class="text-white ms-5"><strong>Pembayaran Anda Berhasil!</strong></p>
 </div>
+
+<script>
+    document.getElementById('selectTicket').addEventListener('submit', function (e) {
+        e.preventDefault(); 
+    
+
+        const selectedRadioButton = document.querySelector('input[name="ticketSelection"]:checked');
+
+        if (selectedRadioButton) {
+            // Get the parent container of the selected radio button
+            const container = selectedRadioButton.closest('.ticketSelectionContainer');
+
+            // Extract data from the container
+            const id = selectedRadioButton.value;
+            const namaKereta = container.querySelector('.card-title strong').textContent.trim();
+            const harga = container.querySelector('.hargaTicket strong').textContent.trim();
+            const kelas = container.querySelector('.card-subtitle.text-secondary').textContent.trim();
+            const status = container.querySelector('.card-subtitle.text-success strong').textContent.trim();
+            const rating = container.querySelector('.card-subtitle.text-secondary strong').textContent.trim();
+            const asal = container.querySelector('.card-subtitle.text-secondary strong').textContent.trim();
+            const tujuan = container.querySelector('.card-subtitle.text-secondary strong').textContent.trim();
+            const jamBerangkat = container.querySelector('.card-subtitle.text-primary strong').textContent.trim();
+            const jamTiba = container.querySelector('.card-subtitle.text-primary strong').textContent.trim();
+
+
+            console.log('ID:', id);
+            console.log('Nama Kereta:', namaKereta);
+            console.log('Harga:', harga);
+            console.log('Kelas:', kelas);
+            console.log('Status:', status);
+            console.log('Rating:', rating);
+            console.log('Asal:', asal);
+            console.log('Tujuan:', tujuan);
+            console.log('Jam Berangkat:', jamBerangkat);
+            console.log('Jam Tiba:', jamTiba);
+
+            ticketInfo.innerHTML = `<p><strong>${namaKereta} - ${kelas}</strong></p>`;
+
+            payment.innerHTML = `<p> ${harga}</p>
+                                <strong> ${harga}</strong>`;
+            const JadwalIdInput = document.getElementById('hiddenIdJadwal');
+            JadwalIdInput.value = id;
+            const jumlahInput = document.getElementById('hiddenJumlah');
+            jumlahInput.value = localStorage.getItem('key');
+            console.log(jumlahInput.value);
+         }
+            
+        $('#exampleModal').modal('show');
+    });
+</script>
  <script>
     function checkTickets() {
     var element2 = document.getElementById("bayar")
@@ -339,15 +394,6 @@
         }
     }
 
-    const toastTrigger = document.getElementById('liveToastBtn')
-    const toastLiveExample = document.getElementById('liveToast')
-    if (toastTrigger) {
-    toastTrigger.addEventListener('click', () => {
-        const toast = new bootstrap.Toast(toastLiveExample)
-
-        toast.show()
-    })
-    }
 
     // js for video
     document.getElementById("bayarNow").addEventListener("click", function () {
@@ -368,11 +414,9 @@
     });
 
     function redirectHome(){
-        window.location.href = "{{url('profile')}}";
+        window.location.href = "{{ Route('profile')}}";
     }
-    function redirectToReviews(){
-        window.location.href = "{{url('reviewKereta')}}";
-    }
+   
 
     window.addEventListener("pageshow", function(event) {
             if (event.persisted) {

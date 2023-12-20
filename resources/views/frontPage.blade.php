@@ -1,7 +1,7 @@
 @extends('PageNavFoot')
 @section('content')
 @auth
-<form action="{{ route('ticket_ketemu')}}" method="get">
+<form action="{{ route('ticket_ketemu')}}" method="get" id="form" name="form">
 @else
 <form action="{{ url('/login') }}">
 @endif
@@ -65,7 +65,17 @@
         <div class="row container-fluid" style="margin-top: 20px;">
             <button class="btn btn-primary ms-auto" style="width: 15%;" type="submit">
                 Cari Kereta
+                
             </button>
         </div>
 </form>
-    @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            const jumlah = document.getElementById("jumlah").value;
+            localStorage.setItem('key', jumlah);
+        });
+    });
+</script>
+@endsection

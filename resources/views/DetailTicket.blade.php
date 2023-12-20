@@ -68,17 +68,8 @@
         <div class="card mx-auto" style="width:32%; border-radius: 10px; max-height: 90vh;">
             <div class="card-body">
                 <h5 class="card-title fw-bold text-primary fs-3 mb-2">Solo</h5>
-                <div class="d-flex">
-                    <h6 class="card-subtitle mb-2" style="font-size: 12px;">Stasiun Solo Balapan</h6>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="9 " viewBox="0 0 18 17" fill="none" style="margin-left: 10px;">
-                        <path d="M1.125 9.71342L14.4675 9.71342L10.3837 15.0072C10.1928 15.2552 10.1009 15.5749 10.1284 15.8959C10.1558 16.217 10.3003 16.5131 10.53 16.7192C10.7597 16.9253 11.0559 17.0245 11.3534 16.9949C11.6509 16.9653 11.9253 16.8093 12.1163 16.5614L17.7413 9.27632C17.7791 9.21837 17.8129 9.1575 17.8425 9.09419C17.8425 9.03348 17.8425 8.99705 17.9213 8.93635C17.9722 8.79713 17.9989 8.64894 18 8.49924C17.9989 8.34955 17.9722 8.20135 17.9213 8.06214C17.9213 8.00143 17.9213 7.965 17.8425 7.9043C17.8129 7.84099 17.7791 7.78011 17.7413 7.72217L12.1163 0.437108C12.0105 0.300048 11.878 0.189826 11.7283 0.114278C11.5786 0.038732 11.4153 -0.000284785 11.25 5.11725e-06C10.9871 -0.000549945 10.7324 0.0982545 10.53 0.279264C10.4161 0.381194 10.3219 0.506377 10.2529 0.647643C10.1839 0.788909 10.1414 0.943481 10.1278 1.10251C10.1142 1.26154 10.1298 1.4219 10.1737 1.5744C10.2177 1.72691 10.289 1.86856 10.3837 1.99125L14.4675 7.28507L1.125 7.28506C0.82663 7.28506 0.540482 7.41299 0.329503 7.64069C0.118525 7.86839 -1.15477e-06 8.17722 -1.18224e-06 8.49924C-1.20971e-06 8.82126 0.118525 9.13009 0.329503 9.35779C0.540482 9.5855 0.82663 9.71342 1.125 9.71342Z" fill="#252525" />
-                    </svg>
-                    <h6 class="card-subtitle mb-3" style="font-size: 12px; margin-left: 10px"> Stasiun Tuju Joga</h6>
-                </div>
-                <div>
-                    <p class="card-text mb-3" style="font-size: 10px; color:black; opacity: 0.3;">Thu, 13 Sep 2023</p>
-                    <h1 class="mb-4" style="font-size: 12px;opacity: 0.5;">Nama Kereta : SAF-JAYA</h1>
-                </div>
+               <br>
+               
                 <div class="d-flex">
                     <h1 style="font-size: 12px;opacity: 0.5;">Stasiun Solo Balapan</h1>
                     <h1 style="font-size: 12px;opacity: 0.5; margin-left: 35%;">Stasiun Tugu Jogja</h1>
@@ -94,12 +85,11 @@
                     <div style="width: 10px; height: 10px; background-color: #3498db; border-radius: 50%; "></div>
                     <p class="text-primary fw-bold" style="font-size: 14px; margin-left:3%;">08:45</p>
                 </div>
+                <br>
                 <div>
                     <hr class="dashed-hr mb-2" style="color: #252525; opacity: 0.3;">
                 </div>
-                <div>
-                    <p style="margin-left: 39%; font-size: 8px; opacity: 0.5;">duration 35 minutes</p>
-                </div>
+               
                 <div class="d-flex">
                     <h1 style="opacity: 0.4; font-size: 10px;">Name</h1>
                     <h1 style="opacity: 0.4; font-size: 10px; margin-left:70%">Ticket Number</h1>
@@ -124,6 +114,8 @@
                     <h1 class="fw-bold" style="font-size: 12px;">Economy - A</h1>
                     <h1 class="fw-bold" style="font-size: 12px; margin-left:69%">5 kg</h1>
                 </div>
+                <br>
+                
                 <div>
                     <hr class="dashed-hr mb-2" style="color: #252525; opacity: 0.3;">
                 </div>
