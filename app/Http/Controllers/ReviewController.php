@@ -11,7 +11,23 @@ use Illuminate\Validation\Rule;
 use Session;
 
 class ReviewController extends Controller
-{
+{   
+     /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $reviews = Review::all();
+        return view('reviewForAdmin', compact('reviews'));
+    }
+
+
+    public function destroy(string $id)
+    {
+        $review= Review::find($id);
+        $revbiew->delete();
+        return;
+    }
     public function showByKereta($idKereta){
         $kereta = KeretaApi::where('id', $idKereta)->first();
         $reviews = Review::where('id_kereta', '=', $idKereta)->get();

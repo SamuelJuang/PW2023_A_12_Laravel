@@ -154,36 +154,42 @@
         </div>
         <hr class="w-10 margin-bottom:10px;">
     </div>
-    <div class="d-flex align-content-between">
+    <div class="d-flex" >
         <div>
             <div class="d-flex" style="margin-left: 50px;">
                 <div class="d-flex">
                     <h3 class="text-white mx-2"><strong>Jadwal</strong></h3>
                     <div>
-                        <button onclick="redirectToTambahTiket()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
+                        <button onclick="redirectToTambahTiket()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
+                    </div>
+                    <div>
+                        <button onclick="redirectToEditTiket()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                    </div>
+                    <div>
+                        <button onclick="redirectToEditTiket()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
                     </div>
                 </div>
             </div>
-            
             <div class="d-flex align-content-between" style="margin-right: 50px;">
-                <div class="container ms-5" style=" height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+                <div class="container ms-5" style="width: 70%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
                     <!--  -->
                     <div class="row">
                         <!-- Jadwal -->
-                        @forelse ($jadwal as $item)
+                        @forelse ($ticket as $item)
                         <div class="col-12 my-2 ticketSelectionContainer mx-auto">
+                            <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
                             <label for="{{ $item['id'] }}" style="border-radius:7px;">
-                                <div class="card " style="width: 20rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
+                                <div class="card " style="width: 17rem; height: 18rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between text-primary">
                                             <p class="card-title">
                                                 <strong>
-                                                    {{ $item->kereta->namaKereta }}
+                                                    {{ $item['namakereta'] }}
                                                 </strong>
                                             </p>
                                             <p class="card-title">
                                                 <strong>
-                                                    IDR {{ number_format($item->harga) }}
+                                                    IDR {{ number_format($item['harga']) }}
                                                 </strong>
                                             </p>
                                         </div>
@@ -191,7 +197,7 @@
                                           
                                             <p class="card-subtitle text-success">
                                                 <strong>
-                                                    {{ $item->status }}
+                                                    {{ $item['status'] }}
                                                 </strong>
                                             </p>
                                         </div>
@@ -199,12 +205,12 @@
                                         <div class="d-flex justify-content-between" style="opacity: 100%;">
                                             <p class="card-subtitle text-secondary">
                                                 <strong>
-                                                    {{ $item->asal }}
+                                                    {{ $item['asal'] }}
                                                 </strong>
                                             </p>
                                             <p class="card-subtitle text-secondary">
                                                 <strong>
-                                                    {{ $item->tujuan }}
+                                                    {{ $item['tujuan'] }}
                                                 </strong>
                                             </p>
                                         </div>
@@ -213,9 +219,13 @@
                                         <div class="d-flex justify-content-between py-2" style="opacity: 100%;">
                                             <p class="card-subtitle text-primary pt-2">
                                                 <strong>
-                                                    <?php echo substr($item->jam_berangkat, 0, 5); ?>
+                                                    <?php
+                                                    echo date("h:i", $item['departDateTime'])
+                                                    ?>
                                                      - 
-                                                     <?php echo substr($item->jam_tiba, 0, 5); ?>
+                                                    <?php
+                                                    echo date("h:i", $item['arrivalDateTime'])
+                                                    ?>
                                                 </strong>
                                             </p>
                                         </div>
@@ -226,22 +236,7 @@
                                                 ?>
                                             </small>
                                         </div>
-                                        <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
-                                            method="POST"
-                                        >
-                                            <a
-                                                href=""
-                                                ><i class="fa fa-pencil" style="color: blue;"></i></a
-                                            >
-                                            @csrf @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="btn btn-sm btn-link">
-                                                <i class="fa fa-trash" style="color: red;"></i>
-                                            </button>
-                                        </form>
+
                                     </div>
                                 </div>
                             </label>
@@ -257,44 +252,38 @@
                 <div>
                     <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
                 </div>
-              
+                <div>
+                    <button onclick="redirectToEditUser()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px"></button>
+                </div>
+                <div>
+                    <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px"></button>
+                </div>
             </div>
-            <div class="container-fluid ms-3" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
+            <div class="container ms-3" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
                 <div class="row">
                     @forelse ($user as $item)
                     <div class="my-2 UserSelectionContainer mx-auto">
+                        <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
                         <label for="{{ $item['username'] }}" style="border-radius:7px;">
-                            <div class="card " style="width: 20rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                            <div class="card " style="width: 17rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
                                         <p class="card-title">
                                             <strong>
-                                                {{ $item->username }}
+                                                {{ $item['username'] }}
                                             </strong>
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between" style="opacity: 100%;">
                                         <p class="card-subtitle text-secondary">
-                                            {{ $item->email }}
+                                            {{ $item['email'] }}
                                         </p>
-                                        
+                                        <p class="card-subtitle text-success">
+                                            <strong>
+                                                {{ $item['status'] }}
+                                            </strong>
+                                        </p>
                                     </div>
-                                    <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
-                                            method="POST"
-                                        >
-                                            <a
-                                                href=""
-                                                ><i class="fa fa-pencil" style="color: blue;"></i></a
-                                            >
-                                            @csrf @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="btn btn-sm btn-link">
-                                                <i class="fa fa-trash" style="color: red;"></i>
-                                            </button>
-                                        </form>
                                 </div>
                             </div>
                         </label>
@@ -304,51 +293,45 @@
             </div>
         </div>
         <div>
-            <div class="d-flex">
+            <div class="d-flex" style="margin-left: 50px;">
                 <h3 class="text-white mx-2"><strong>Kereta Api</strong></h3>
                 <div>
                     <button onclick="redirectToTambahKereta()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
                 </div>
-                
+                <div>
+                    <button onclick="redirectToEditKereta()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
+                </div>
+                <div>
+                    <button onclick="redirectToEditKereta()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
+                </div>
             </div>
-            <div class="container-fluid me-5" style=" height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+            <div class="container ms-5" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
                 <div class="d-flex">
                 </div>
                 <div class="row">
                     @forelse ($kereta as $item)
-                    <div class="col-12 my-2 UserSelectionContainer">
+                    <div class="col-12 my-2 UserSelectionContainer mx-auto">
+                        <input type="radio" name="userSelection" id="{{ $item['namaKereta'] }}" value="{{ $item['id'] }}">
                         <label for="{{ $item['namaKereta'] }}" style="border-radius:7px;">
-                            <div class="card " style="width: 17rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                            <div class="card " style="width: 17rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
                                         <p class="card-title">
                                             <strong>
-                                                {{ $item->namaKereta }}
+                                                {{ $item['namaKereta'] }}
                                             </strong>
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-between" style="opacity: 100%;">
                                         <p class="card-subtitle text-secondary">
-                                            {{ $item->tipeKereta }}
+                                            {{ $item['tipeKereta'] }}
                                         </p>
-                                        
+                                        <p class="card-subtitle text-success">
+                                            <strong>
+                                                {{ $item['status'] }}
+                                            </strong>
+                                        </p>
                                     </div>
-                                    <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
-                                            method="POST"
-                                        >
-                                            <a
-                                                href=""
-                                                ><i class="fa fa-pencil" style="color: blue;"></i></a
-                                            >
-                                            @csrf @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="btn btn-sm btn-link">
-                                                <i class="fa fa-trash" style="color: red;"></i>
-                                            </button>
-                                        </form>
                                 </div>
                             </div>
                         </label>
@@ -361,7 +344,7 @@
 
     <script>
         function redirectToTambahTiket() {
-            window.location.href ="{{ route('tambahJadwal') }}";
+            window.location.href = "/addTicket";
         }
 
         function redirectToTambahUser() {
@@ -399,7 +382,24 @@
             }
         });
 
-        
+        function checkTickets() {
+            var element2 = document.getElementById("editTiket");
+            if ($("input[name='ticketSelection']:checked").length > 0) {
+                element2.disabled = false;
+            } else {
+                element2.disabled = true;
+            }
+        }
+
+        function checkUser() {
+            var element2 = document.getElementById("editUser");
+            if ($("input[name='userSelection']:checked").length > 0) {
+                element2.disabled = false;
+            } else {
+                element2.disabled = true;
+            }
+        }
+
         function deleteTicket() {
             var selectedTicketId = $("input[name='ticketSelection']:checked").val();
 

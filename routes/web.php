@@ -7,17 +7,10 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ticketController;
 use App\Http\Controllers\ReviewController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\KeretaApiController;
 
+
+//fungsi-fungsi utama
 Route::get('/', [JadwalController::class,'ShowFrontPage'])->name('ShowFrontPage');
 
 Route::get('/logout', [LoginController::class,'actionLogout'])->middleware('auth')->name('logout');
@@ -39,134 +32,22 @@ Route::post('/storeTicket',[ticketController::class,'store'])->middleware('auth'
 
 Route::get('/rating/{id}',[ReviewController::class, 'inputReview'])->middleware('auth')->name('rating');
 Route::post('/InputReview',[ReviewController::class,'store'])->middleware('auth')->name('inputReview');
-
-
-Route::get('/adminPage', function () {
-    return view('adminPage',
-    [
-        'ticket' =>[
-        [
-            'id' => 1,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 5,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i") buat waktu
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 2,
-            'namakereta' => "SAF JAYA 2",
-            'kelas' => "Bisnis - A",
-            'harga' => 50000,
-            'status' => "Available",
-            'rating' => 4,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 3,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 3,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-        [
-            'id' => 4,
-            'namakereta' => "SAF JAYA",
-            'kelas' => "Ekonomi - A",
-            'harga' => 20000,
-            'status' => "Available",
-            'rating' => 5,
-            'asal' => "Stasiun Balapan Solo",
-            'departDateTime' => mktime(11, 14, 54, 8, 12, 2014), #manggil ini pakai date kyk echo date("h:i")
-            'tujuan' => "Stasiun Tugu Jogja",
-            'arrivalDateTime' => mktime(12, 14, 54, 8, 12, 2014),
-        ],
-    ],
-        'user'=>[
-            [
-                'id' => 1,
-                'username' => 'Fio',
-                'email' => 'fio@gmail.com',
-                'status' => 'New',
-            ],
-            [
-                'id' => 2,
-                'username' => 'Samuel',
-                'email' => 'samuel@gmail.com',
-                'status' => 'New',
-            ],
-            [
-                'id' => 3,
-                'username' => 'Agatha',
-                'email' => 'agatha@gmail.com',
-                'status' => 'New',
-            ],
-    ],
-        'kereta'=>[
-        [
-            'id' => 1,
-            'namaKereta' => 'SAF JAYA',
-            'tipeKereta' => 'Ekonomi - A',
-            'status' => 'New',
-        ],
-        [
-            'id' => 2,
-            'namaKereta' => 'SAF JAYA',
-            'tipeKereta' => 'Bisnis - A',
-            'status' => 'New',
-        ],
-        [
-            'id' => 3,
-            'namaKereta' => 'SAF JAYA',
-            'tipeKereta' => 'Bisnis - A',
-            'status' => 'New',
-        ],
-    ]
-
-    ]
-);
-});
-
-
-
 Route::get('/reviews/{idKereta}', [ReviewController::class, 'showByKereta'])->name('reviews.byKereta');
 
-Route::get('/adminFront', function () {
-    return view('adminFrontPage');
-});
-Route::get('/editTiket', function () {
-    return view('editTiket');
-});
 
 
-Route::get('/editUser', function () {
-    return view('editUser');
-});
+//ini buad admin
+Route::get('/adminPage',[JadwalController::class,'showAdminFrontPage'])->name('adminPage');
+Route::get('/tambahJadwal',[JadwalController::class,'create'])->name('tambahJadwal');
+Route::post('/storeJadwal',[JadwalController::class,'store'])->name('storeJadwal');
+Route::get('/editJadwal/{id}',[JadwalController::class,'show'])->name('editJadwal');
+Route::put('/updateJadwal/{id}',[JadwalController::class,'edit'])->name('updateJadwal');
+Route::delete('/deleteJadwal/{id}',[JadwalController::class,'destroy'])->name('deleteJadwal');
 
-Route::get('/editKereta', function () {
-    return view('editKereta');
-});
+Route::post('/storeKereta',[KeretaApiController::class,'store'])->name('storeKereta');
+Route::get('editKereta/{id}',[KeretaApiController::class,'show'])->name('editKereta');
+Route::put('/updateKereta/{id}',[KeretaApiController::class,'update'])->name('updateKereta');
+Route::delete('/deleteKereta/{id}',[KeretaApiController::class,'destroy'])->name('deleteKereta');
 
-Route::get('/addTicket', function () {
-    return view('addTicket');
-});
-
-Route::get('/addUser', function () {
-    return view('addUser');
-});
-
-Route::get('/addKereta', function () {
-    return view('addKereta');
-});
+Route::get('/reviewForAdmin',[ReviewController::class,'showForAdmin'])->name('reviewForAdmin');
+Route::delete('/deleteReview/{id}',[ReviewController::class,'destroy'])->name('deleteReview');

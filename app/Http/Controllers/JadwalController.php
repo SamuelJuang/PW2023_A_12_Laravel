@@ -10,6 +10,7 @@ use App\Models\Jadwal;
 use App\Models\Review;
 use App\Models\KeretaApi;
 use App\Models\User;
+use Session;
 
 class JadwalController extends Controller
 {
@@ -26,7 +27,8 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        $kereta = KeretaApi::all();
+        return view('addJadwalKereta',compact('kereta'));
     }
 
     /**
@@ -51,6 +53,18 @@ class JadwalController extends Controller
                 Session::flash('error', $validate->errors()->first());
                 return redirect('register');
             }
+            Jadwal::create([
+                'asal' => $request->asal,
+                'tujuan' => $request->tujuan,
+                'id_kereta' => $request->id_kereta,
+                'kelas' => $request->kelas,
+                'jam_berangkat' => $request->jam_berangkat,
+                'jam_tiba' => $request->jam_tiba,
+                'harga' => $request->harga,
+                'jumlah_kursi'=>$request->jumlah_kursi,
+                'tanggal_pergi'=>$request->tanggal_pergi
+            ]);
+            return redirect()->route('adminPage');
         }catch(\Exception $e){
 
         }
