@@ -12,10 +12,10 @@
                 <h5>Dengan fasilitas dan pelayanan yang anda dambakan</h5>
             </div>
         </div>
-        <div class="justify-content-center mx-5 mb-5">
+        <div class="justify-content-center mx-5 mb-2">
             <hr class="leftRightAnimated">
         </div>
-        <div class="row px-2 mb-5">
+        <div class="row px-2 mb-2">
             <div class="px-5">
                 <label for="jumlah" class="form-label" style="color: white; margin-left:82%">Penumpang</label>
                 <div class="btn-group float-end" style="max-width: 40vh;">
@@ -65,7 +65,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-6 mb-5">
+            <div class="col-6 mb-3">
                 <div class="btn-group container-fluid w-300">
                     <input name="TglDepart" id="TglDepart" class="form-control reg" type="date" required />
                 </div>

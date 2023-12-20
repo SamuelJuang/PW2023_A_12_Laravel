@@ -171,7 +171,7 @@
                 </div>
             </div>
             <div class="d-flex align-content-between" style="margin-right: 50px;">
-                <div class="container ms-5" style="width: 88%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+                <div class="container ms-5" style="width: 70%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
                     <!--  -->
                     <div class="row">
                         <!-- Jadwal -->
@@ -179,7 +179,7 @@
                         <div class="col-12 my-2 ticketSelectionContainer mx-auto">
                             <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
                             <label for="{{ $item['id'] }}" style="border-radius:7px;">
-                                <div class="card " style="width: 26rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
+                                <div class="card " style="width: 17rem; height: 18rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between text-primary">
                                             <p class="card-title">
@@ -281,7 +281,7 @@
             </div>
         </div>
         <div>
-            <div class="d-flex" style="margin-left: 50px;">
+            <div class="d-flex" style="margin-left: 22px;">
                 <h3 class="text-white mx-2"><strong>User</strong></h3>
                 <div>
                     <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
@@ -293,13 +293,13 @@
                     <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px"></button>
                 </div>
             </div>
-            <div class="container ms-5" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
+            <div class="container ms-3" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
                 <div class="row">
                     @forelse ($user as $item)
                     <div class="my-2 UserSelectionContainer mx-auto">
                         <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
                         <label for="{{ $item['username'] }}" style="border-radius:7px;">
-                            <div class="card " style="width: 26rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                            <div class="card " style="width: 17rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
                                         <p class="card-title">
@@ -347,7 +347,7 @@
                     <div class="col-12 my-2 UserSelectionContainer mx-auto">
                         <input type="radio" name="userSelection" id="{{ $item['namaKereta'] }}" value="{{ $item['id'] }}">
                         <label for="{{ $item['namaKereta'] }}" style="border-radius:7px;">
-                            <div class="card " style="width: 26rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
+                            <div class="card " style="width: 17rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
                                         <p class="card-title">
