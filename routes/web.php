@@ -44,6 +44,11 @@ Route::get('/editJadwal/{id}',[JadwalController::class,'show'])->name('editJadwa
 Route::put('/updateJadwal/{id}',[JadwalController::class,'edit'])->name('updateJadwal');
 Route::delete('/deleteJadwal/{id}',[JadwalController::class,'destroy'])->name('deleteJadwal');
 
+Route::get('/editUser/{id}',[UserController::class,'showToAdmin'])->name('editUser');
+Route::put('/updateUser/{id}',[UserController::class,'updateByAdmin'])->name('updateUser');
+Route::delete('/deleteUser/{id}',[UserController::class,'destroy'])->name('deleteUser');
+
+Route::get('/tambahKereta',[KeretaApiController::class,'create'])->name('tambahKereta');
 Route::post('/storeKereta',[KeretaApiController::class,'store'])->name('storeKereta');
 Route::get('editKereta/{id}',[KeretaApiController::class,'show'])->name('editKereta');
 Route::put('/updateKereta/{id}',[KeretaApiController::class,'update'])->name('updateKereta');

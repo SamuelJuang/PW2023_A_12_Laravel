@@ -51,7 +51,7 @@ class JadwalController extends Controller
             ]);
             if($validate->fails()){
                 Session::flash('error', $validate->errors()->first());
-                return redirect('register');
+                return redirect()->route('adminPage');
             }
             Jadwal::create([
                 'asal' => $request->asal,
@@ -76,7 +76,8 @@ class JadwalController extends Controller
     public function show(string $id)
     {
         $jadwal = Jadwal::find($id);
-        return view('',compact('jadwal'));
+        $kereta = KeretaApi::all();
+        return view('editJadwal',compact('jadwal','kereta'));
     }
 
     /**
@@ -100,8 +101,20 @@ class JadwalController extends Controller
             ]);
             if($validate->fails()){
                 Session::flash('error', $validate->errors()->first());
-                return redirect('register');
+                return redirect()->route('adminPage');
             }
+            $jadwal->asal = $request->asal;
+            $jadwal->tujuan = $request->tujuan;
+            $jadwal->id_kereta = $request->id_kereta;
+            $jadwal->kelas = $request->kelas;
+            $jadwal->jam_berangkat = $request->jam_berangkat;
+            $jadwal->jam_tiba = $request->jam_tiba;
+            $jadwal->harga = $request->harga;
+            $jadwal->jumlah_kursi = $request->jumlah_kursi;
+            $jadwal->tanggal_pergi = $request->tanggal_pergi;
+            $jadwal->save();
+
+            return redirect()->route('adminPage');
         }catch(\Exception $e){
 
         }
@@ -122,7 +135,7 @@ class JadwalController extends Controller
     {
         $jadwal = Jadwal::find($id);
         $jadwal->delete();
-        return;
+        return redirect()->route('adminPage');
     }
 
     public function showByDate(Request $request)

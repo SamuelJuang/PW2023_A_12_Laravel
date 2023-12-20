@@ -75,19 +75,21 @@
         </div>
     </div>
     <div class="text-white px-2 mx-5 mb-5">
-        <from class="editTiketContainer" action="">
+        <form class="editTiketContainer" action="{{route('storeKereta')}}" id="edit" method="POST">
+            @csrf
             <div class="d-flex">
                 <div style="margin-left: 15%;">
                     <label class="form-label" for="username">Nama Kereta api</label>
-                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-                    <label class="form-label" for="username">Kelas</label>
-                    <input class="form-control text-white" value="sampo" type="text" name="username" id="username" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
-        </from>
-        <div class="d-flex flex-row-reverse justify-center align-content-center" style="margin-top: 10%; margin-right: 18%;">
-            <button onclick="editedTicket()" class="btn btn-primary px-5" id="edit">
-                Tambah Kereta 
-            </button>
-        </div>
+                    <input class="form-control text-white" required value="{{old('namaKereta')}}" type="text" name="namaKereta" id="namaKereta" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <label class="form-label" for="username">Jenis Kereta</label>
+                    <input class="form-control text-white" required value="{{old('TipeKereta')}}" type="text" name="tipeKereta" id="tipeKereta" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <div class="d-flex flex-row-reverse justify-center align-content-center" style="margin-top: 10%; margin-right: 18%;">
+                        <button type="submit" class="btn btn-primary px-5" id="edit">
+                            Tambah Kereta 
+                        </button>
+                    </div>
+        </form>
+       
     </div>
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
@@ -110,30 +112,14 @@
         </div>
     </div>
     <script>
-       const toastTrigger = document.getElementById('edit')
+        const toastTrigger = document.getElementById('edit')
         const toastLiveExample = document.getElementById('liveToast1')
         if (toastTrigger) {
-        toastTrigger.addEventListener('click', () => {
+        toastTrigger.addEventListener('submit', () => {
             const toast = new bootstrap.Toast(toastLiveExample)
 
             toast.show()
         })
-        }
-        const toastTrigger2 = document.getElementById('hapus')
-        const toastLiveExample2 = document.getElementById('liveToast2')
-        if (toastTrigger2) {
-        toastTrigger2.addEventListener('click', () => {
-            const toast = new bootstrap.Toast(toastLiveExample2)
-
-            toast.show()
-        })
-        }
-        function editedTicket(){
-            setTimeout(redirectBack,1150);
-        }
-        
-        function redirectBack(){
-            window.location.href = "{{url('adminPage')}}";
         }
     </script>
     <div class="row g-2">

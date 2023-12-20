@@ -20,20 +20,25 @@ class KeretaApiController extends Controller
             ]);
             if($validate->fails()){
                 Session::flash('error', $validate->errors()->first());
-                return redirect('register');
+                return redirect()->route('adminPage');
             }
+            KeretaApi::create([
+                'namaKereta' => $request->namaKereta,
+                'tipeKereta' => $request->tipeKereta,
+            ]);
+            return redirect()->route('adminPage');
         }catch(\Exception $e){
-
+            return redirect()->route('adminPage');
         }
     }
 
     public function create(){
-
+        return view('addKereta');
     }
 
     public function show(String $id){
         $kereta = KeretaApi::find($id);
-        return view('',compact('kereta'));
+        return view('editKereta',compact('kereta'));
     }
 
     public function update(Request $request, string $id)
@@ -47,10 +52,15 @@ class KeretaApiController extends Controller
             ]);
             if($validate->fails()){
                 Session::flash('error', $validate->errors()->first());
-                return redirect('register');
+                return redirect()->route('adminPage');
             }
+            $kereta->update([
+                'namaKereta' => $request->namaKereta,
+                'tipeKereta' => $request->tipeKereta,
+            ]);
+            return redirect()->route('adminPage');
         }catch(\Exception $e){
-
+            return redirect()->route('adminPage');
         }
     }
 
@@ -58,6 +68,6 @@ class KeretaApiController extends Controller
     {
         $kereta = KeretaApi::find($id);
         $kereta->delete();
-        return;
+        return redirect()->route('adminPage');
     }
 }
