@@ -144,7 +144,7 @@
             <div class="container-fluid">
                 <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
             </div>
-            <div class="row container-fluid" style="margin-top: 3px;">
+             <div class="row container-fluid" style="margin-top: 3px;">
                 <form action="{{ url('/logout') }}">
                     <button class="btn btn-danger float-end my-3 rounded px-5 mx-5" type="submit">
                         Logout

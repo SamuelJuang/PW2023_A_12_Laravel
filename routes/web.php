@@ -180,4 +180,3 @@ Route::get('/addUser', function () {
 Route::get('/addKereta', function () {
     return view('addKereta');
 });
-
