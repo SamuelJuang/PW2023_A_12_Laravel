@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\KeretaApi;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -17,6 +18,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
+        //get review and user
         $reviews = Review::all();
         return view('adminReviewPage', compact('reviews'));
     }
@@ -25,8 +27,8 @@ class ReviewController extends Controller
     public function destroy(string $id)
     {
         $review= Review::find($id);
-        $revbiew->delete();
-        return;
+        $review->delete();
+        return redirect()->route('reviewForAdmin');
     }
     public function showByKereta($idKereta){
         $kereta = KeretaApi::where('id', $idKereta)->first();

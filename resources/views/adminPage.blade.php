@@ -140,19 +140,30 @@
 <body>
     <br>
     <div class="container mx-10 mb-5">
-        <div class="d-flex align-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <div class="container-fluid">
                 <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
             </div>
-             <div class="row container-fluid" style="margin-top: 3px;">
-                <form action="{{ url('/logout') }}">
-                    <button class="btn btn-danger float-end my-3 rounded px-5 mx-5" type="submit">
-                        Logout
-                    </button>
-                </form>
+            <div class="d-flex align-items-center">
+                <div class="row container-fluid" style="margin-top: 3px;">
+                    <form action="{{ url('/logout') }}">
+                        <button class="btn btn-danger float-end my-3 rounded px-5 mx-2" type="submit">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+                <div class="row container-fluid" style="margin-top: 3px;">
+                    <form action="{{ url('/reviewForAdmin') }}">
+                        <button class="btn btn-primary float-end my-3 rounded px-5 mx-2" type="submit">
+                            Review
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-        <hr class="w-10 margin-bottom:10px;">
+    </div>
+
+    <hr class="w-10 margin-bottom:10px;">
     </div>
     <div class="d-flex align-content-between">
         <div>
@@ -164,7 +175,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="d-flex align-content-between" style="margin-right: 50px;">
                 <div class="container ms-5" style=" height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
                     <!--  -->
@@ -188,7 +199,7 @@
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                          
+
                                             <p class="card-subtitle text-success">
                                                 <strong>
                                                     {{ $item->status }}
@@ -214,29 +225,20 @@
                                             <p class="card-subtitle text-primary pt-2">
                                                 <strong>
                                                     <?php echo substr($item->jam_berangkat, 0, 5); ?>
-                                                     - 
-                                                     <?php echo substr($item->jam_tiba, 0, 5); ?>
+                                                    -
+                                                    <?php echo substr($item->jam_tiba, 0, 5); ?>
                                                 </strong>
                                             </p>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <small class="card-title">
-                                              {{ $item->tanggal_pergi}}
+                                                {{ $item->tanggal_pergi}}
                                             </small>
                                         </div>
-                                        <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
-                                            method="POST"
-                                        >
-                                            <a
-                                                href=""
-                                                ><i class="fa fa-pencil" style="color: blue;"></i></a
-                                            >
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');" action="" method="POST">
+                                            <a href=""><i class="fa fa-pencil" style="color: blue;"></i></a>
                                             @csrf @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="btn btn-sm btn-link">
+                                            <button type="submit" class="btn btn-sm btn-link">
                                                 <i class="fa fa-trash" style="color: red;"></i>
                                             </button>
                                         </form>
@@ -255,7 +257,7 @@
                 <div>
                     <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
                 </div>
-              
+
             </div>
             <div class="container-fluid ms-3" style="width: 100%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
                 <div class="row">
@@ -275,24 +277,15 @@
                                         <p class="card-subtitle text-secondary">
                                             {{ $item->email }}
                                         </p>
-                                        
+
                                     </div>
-                                    <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
-                                            method="POST"
-                                        >
-                                            <a
-                                                href=""
-                                                ><i class="fa fa-pencil" style="color: blue;"></i></a
-                                            >
-                                            @csrf @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="btn btn-sm btn-link">
-                                                <i class="fa fa-trash" style="color: red;"></i>
-                                            </button>
-                                        </form>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');" action="" method="POST">
+                                        <a href=""><i class="fa fa-pencil" style="color: blue;"></i></a>
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-link">
+                                            <i class="fa fa-trash" style="color: red;"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </label>
@@ -307,7 +300,7 @@
                 <div>
                     <button onclick="redirectToTambahKereta()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
                 </div>
-                
+
             </div>
             <div class="container-fluid me-5" style=" height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
                 <div class="d-flex">
@@ -329,24 +322,15 @@
                                         <p class="card-subtitle text-secondary">
                                             {{ $item->tipeKereta }}
                                         </p>
-                                        
+
                                     </div>
-                                    <form
-                                            onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');"
-                                            action=""
-                                            method="POST"
-                                        >
-                                            <a
-                                                href=""
-                                                ><i class="fa fa-pencil" style="color: blue;"></i></a
-                                            >
-                                            @csrf @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="btn btn-sm btn-link">
-                                                <i class="fa fa-trash" style="color: red;"></i>
-                                            </button>
-                                        </form>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ingin menghapus Jadwal ini?');" action="" method="POST">
+                                        <a href=""><i class="fa fa-pencil" style="color: blue;"></i></a>
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-link">
+                                            <i class="fa fa-trash" style="color: red;"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </label>
@@ -356,10 +340,9 @@
             </div>
         </div>
     </div>
-
     <script>
         function redirectToTambahTiket() {
-            window.location.href ="{{ route('tambahJadwal') }}";
+            window.location.href = "{{ route('tambahJadwal') }}";
         }
 
         function redirectToTambahUser() {
@@ -397,7 +380,7 @@
             }
         });
 
-        
+
         function deleteTicket() {
             var selectedTicketId = $("input[name='ticketSelection']:checked").val();
 

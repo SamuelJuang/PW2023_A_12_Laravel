@@ -144,7 +144,7 @@
             <div class="container-fluid">
                 <h3 class="text-white mt-3"><strong>Halaman Admin</strong></h3>
             </div>
-             <div class="row container-fluid" style="margin-top: 3px;">
+            <div class="row container-fluid" style="margin-top: 3px;">
                 <form action="{{ url('/logout') }}">
                     <button class="btn btn-danger float-end my-3 rounded px-5 mx-5" type="submit">
                         Logout
@@ -154,194 +154,37 @@
         </div>
         <hr class="w-10 margin-bottom:10px;">
     </div>
-    <div class="d-flex" >
-        <div>
-            <div class="d-flex" style="margin-left: 50px;">
-                <div class="d-flex">
-                    <h3 class="text-white mx-2"><strong>Jadwal</strong></h3>
-                    <div>
-                        <button onclick="redirectToTambahTiket()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
-                    </div>
-                    <div>
-                        <button onclick="redirectToEditTiket()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
-                    </div>
-                    <div>
-                        <button onclick="redirectToEditTiket()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex align-content-between" style="margin-right: 50px;">
-                <div class="container ms-5" style="width: 70%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
-                    <!--  -->
-                    <div class="row">
-                        <!-- Jadwal -->
-                        @forelse ($ticket as $item)
-                        <div class="col-12 my-2 ticketSelectionContainer mx-auto">
-                            <input type="radio" name="ticketSelection" id="{{ $item['id'] }}" value="{{ $item['id'] }}">
-                            <label for="{{ $item['id'] }}" style="border-radius:7px;">
-                                <div class="card " style="width: 17rem; height: 18rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between text-primary">
-                                            <p class="card-title">
-                                                <strong>
-                                                    {{ $item['namakereta'] }}
-                                                </strong>
-                                            </p>
-                                            <p class="card-title">
-                                                <strong>
-                                                    IDR {{ number_format($item['harga']) }}
-                                                </strong>
-                                            </p>
-                                        </div>
-                                        <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                          
-                                            <p class="card-subtitle text-success">
-                                                <strong>
-                                                    {{ $item['status'] }}
-                                                </strong>
-                                            </p>
-                                        </div>
-                                        <br>
-                                        <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                            <p class="card-subtitle text-secondary">
-                                                <strong>
-                                                    {{ $item['asal'] }}
-                                                </strong>
-                                            </p>
-                                            <p class="card-subtitle text-secondary">
-                                                <strong>
-                                                    {{ $item['tujuan'] }}
-                                                </strong>
-                                            </p>
-                                        </div>
-                                        <br>
-
-                                        <div class="d-flex justify-content-between py-2" style="opacity: 100%;">
-                                            <p class="card-subtitle text-primary pt-2">
-                                                <strong>
-                                                    <?php
-                                                    echo date("h:i", $item['departDateTime'])
-                                                    ?>
-                                                     - 
-                                                    <?php
-                                                    echo date("h:i", $item['arrivalDateTime'])
-                                                    ?>
-                                                </strong>
-                                            </p>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <small class="card-title">
-                                                <?php
-                                                echo date("d M   Y", $item['arrivalDateTime'])
-                                                ?>
-                                            </small>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="d-flex" style="margin-left: 22px;">
-                <h3 class="text-white mx-2"><strong>User</strong></h3>
-                <div>
-                    <button onclick="redirectToTambahUser()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px"></button>
-                </div>
-                <div>
-                    <button onclick="redirectToEditUser()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px"></button>
-                </div>
-                <div>
-                    <button onclick="redirectToEditStasiun()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px"></button>
-                </div>
-            </div>
-            <div class="container ms-3" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh; margin-right:10px">
-                <div class="row">
-                    @forelse ($user as $item)
-                    <div class="my-2 UserSelectionContainer mx-auto">
-                        <input type="radio" name="userSelection" id="{{ $item['username'] }}" value="{{ $item['id'] }}">
-                        <label for="{{ $item['username'] }}" style="border-radius:7px;">
-                            <div class="card " style="width: 17rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between text-primary">
-                                        <p class="card-title">
-                                            <strong>
-                                                {{ $item['username'] }}
-                                            </strong>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                        <p class="card-subtitle text-secondary">
-                                            {{ $item['email'] }}
-                                        </p>
-                                        <p class="card-subtitle text-success">
-                                            <strong>
-                                                {{ $item['status'] }}
-                                            </strong>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="d-flex" style="margin-left: 50px;">
-                <h3 class="text-white mx-2"><strong>Kereta Api</strong></h3>
-                <div>
-                    <button onclick="redirectToTambahKereta()" class="btn btn-primary px-2 fa-solid fa-add" id="tambahTiket" style="margin-right:8px">
-                </div>
-                <div>
-                    <button onclick="redirectToEditKereta()" class="btn btn-primary px-2 fa-solid fa-edit" id="tambahTiket" style="margin-right:8px">
-                </div>
-                <div>
-                    <button onclick="redirectToEditKereta()" class="btn btn-danger px-2 fa-solid fa-trash" id="tambahTiket" style="margin-right:8px">
-                </div>
-            </div>
-            <div class="container ms-5" style="width: 83%; height: 50vh; overflow-y: auto; margin-bottom: 5vh;">
-                <div class="d-flex">
-                </div>
-                <div class="row">
-                    @forelse ($kereta as $item)
-                    <div class="col-12 my-2 UserSelectionContainer mx-auto">
-                        <input type="radio" name="userSelection" id="{{ $item['namaKereta'] }}" value="{{ $item['id'] }}">
-                        <label for="{{ $item['namaKereta'] }}" style="border-radius:7px;">
-                            <div class="card " style="width: 17rem; height: 5rem;" id="{{ $item['id'] }}" onclick="checkUser()">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between text-primary">
-                                        <p class="card-title">
-                                            <strong>
-                                                {{ $item['namaKereta'] }}
-                                            </strong>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-between" style="opacity: 100%;">
-                                        <p class="card-subtitle text-secondary">
-                                            {{ $item['tipeKereta'] }}
-                                        </p>
-                                        <p class="card-subtitle text-success">
-                                            <strong>
-                                                {{ $item['status'] }}
-                                            </strong>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+    <div class="carousel-caption" style="height: 50%; width: 80%; margin-top: 10px; margin-left: 10px;">
+        <table class="table" style="margin-top: -130px; margin-left:-75px">
+            <thead class="thead-dark" style="opacity: 0.5;">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Rekomendasi</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($reviews as $item)
+                <tr>
+                    <th scope="row">{{($loop->iteration)}}</th>
+                    <td>{{($item->user->username)}}</td>
+                    <td>{{($item->rekomendasi)}}</td>
+                    <td>{{($item->content)}}</td>
+                    <td class="text-center">
+                        <!-- button delete -->
+                        <form action="{{ url('/deleteReview/'.$item->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus review ini?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-
     <script>
         function redirectToTambahTiket() {
             window.location.href = "/addTicket";
