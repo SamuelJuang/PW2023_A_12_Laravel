@@ -59,6 +59,6 @@ class ticketController extends Controller
         $jadwal = Jadwal::find($request->id_jadwal);
         $jadwal->jumlah_kursi = $jadwal->jumlah_kursi - $request->jumlah;
         $jadwal->save();
-        return route('profile');
+        return redirect()->route('profile');
     }
 }

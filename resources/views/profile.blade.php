@@ -175,7 +175,7 @@
                                     <i class="fas fa-star fa-xs star" style="color: gold; opacity: 0.3;"></i>
                                             <?php }
                                     ?>
-                                    <a class="text-secondary my-1" href="{{url('/rating')}}">
+                                    <a class="text-secondary my-1" href="{{ route('rating', ['id' => $item->jadwal->id_kereta]) }}">
                                         <small style="font-size: smaller;">
                                             berikan rating?
                                         </small>

@@ -37,9 +37,8 @@ Route::get('/ticket_ketemu/', [JadwalController::class, 'showByDate'])->name('ti
 Route::get('/showTicket/{id}',[ticketController::class,'showTicket'])->middleware('auth')->name('showTicket');
 Route::post('/storeTicket',[ticketController::class,'store'])->middleware('auth')->name('storeTicket');
 
-Route::get('/rating', function () {
-    return view('rating');
-});
+Route::get('/rating/{id}',[ReviewController::class, 'inputReview'])->middleware('auth')->name('rating');
+Route::post('/InputReview',[ReviewController::class,'store'])->middleware('auth')->name('inputReview');
 
 
 Route::get('/adminPage', function () {

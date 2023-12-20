@@ -103,41 +103,48 @@
 </head>
 
 <body>
-    <a href=" {{url('/profile')}}">
+    <a href=" {{Route('profile')}}">
         <div class="vector">
             <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 32px;">
                 <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
             </svg>
         </div>
     </a>
-    <!-- main part of body -->
-    <div class="d-flex justify-content-center align-items-center flex-column">
-        <div class="text-white">
-            <p style="font-size: 56px;" class="text-center"><strong>SAF JAYA</strong></p>
-            <div class="rating d-flex justify-content-center" onclick="checkRated()">
-                <input type="radio" name="star" id="star1"/>
-                <label for="star1"><i class="fas fa-star fa-2x red" style="color: grey;"></i></label>
-                <input type="radio" name="star" id="star2"/>
-                <label for="star2"><i class="fas fa-star fa-2x orange" style="color: grey;"></i></label>
-                <input type="radio" name="star" id="star3"/>
-                <label for="star3"><i class="fas fa-star fa-2x yellow" style="color: grey;"></i></label>
-                <input type="radio" name="star" id="star4"/>
-                <label for="star4"><i class="fas fa-star fa-2x green" style="color: grey;"></i></label>
-                <input type="radio" name="star" id="star5"/>
-                <label for="star5"><i class="fas fa-star fa-2x blue" style="color: grey;"></i></label>
+    @if (session('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+    @endif
+    <form action="{{route('inputReview')}}" id="RatingForm" method="POST">
+        @csrf
+        <input type="hidden" value="{{$kereta->id}}" name="id_kereta">
+        <div class="d-flex justify-content-center align-items-center flex-column">
+            <div class="text-white">
+                <p style="font-size: 56px;" class="text-center"><strong>{{$kereta->namaKereta}}</strong></p>
+                <div class="rating d-flex justify-content-center" onclick="checkRated()">
+                    <input type="radio" name="rekomendasi" id="star1" value="1"/>
+                    <label for="star1"><i class="fas fa-star fa-2x red" style="color: grey;"></i></label>
+                    <input type="radio" name="rekomendasi" id="star2" value="2"/>
+                    <label for="star2"><i class="fas fa-star fa-2x orange" style="color: grey;"></i></label>
+                    <input type="radio" name="rekomendasi" id="star3" value="3"/>
+                    <label for="star3"><i class="fas fa-star fa-2x yellow" style="color: grey;"></i></label>
+                    <input type="radio" name="rekomendasi" id="star4" value="4"/>
+                    <label for="star4"><i class="fas fa-star fa-2x green" style="color: grey;"></i></label>
+                    <input type="radio" name="rekomendasi" id="star5" value="5"/>
+                    <label for="star5"><i class="fas fa-star fa-2x blue" style="color: grey;"></i></label>
+                </div>
+            </div>
+            <div class="comments mt-2" style="width: 40%;">
+                <p class="text-white float-start">Comment : </p>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="10" style="width: 100%;" placeholder="Deskripsikan pengalaman Anda!" required></textarea>
             </div>
         </div>
-        <div class="comments mt-2" style="width: 40%;">
-            <p class="text-white float-start">Comment : </p>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" style="width: 100%;" placeholder="Deskripsikan pengalaman Anda!"></textarea>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center my-2">
-        <button class="btn btn-primary px-5 mx-3" disabled id="submitRev">
-            Submit
-        </button>
-    </div>
-
+        <div class="d-flex justify-content-center my-2">
+            <button class="btn btn-primary px-5 mx-3" disabled id="submitRev">
+                Submit
+            </button>
+        </div>    
+    </form>
     <div class="row">
         <div class="col-sm-3">
             <div class="d-flex">
@@ -156,7 +163,6 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function checkRated() {
@@ -169,7 +175,8 @@
             }
         }
 
-        document.getElementById("submitRev").addEventListener("click", function () {
+        document.getElementById("RatingForm").addEventListener("submit", function (e) {
+            e.preventDefault();
             var overlay = document.getElementById("darkenScreen");
             var content = document.getElementById("videoContainer");
             var lottiePlayer = document.getElementById("lottiePlayer");
@@ -182,8 +189,11 @@
             lottiePlayer.addEventListener("complete", function () {
                 overlay.style.display = "none";
                 content.style.display = "none";
-                setTimeout(redirectHome,950);
             });
+
+            setTimeout(() => {
+                document.getElementById("RatingForm").submit();
+            }, 1000);
         });
 
         function redirectHome(){
