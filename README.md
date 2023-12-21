@@ -1,5 +1,5 @@
 
-## Kelas A Kelompok 12<br />
+## Kelas A Kelompok 12
 * Samuel Juang <br />
 * Agatha Andrea Situngkir<br />
 * Raff Gustafio Fernando Lobo<br />
