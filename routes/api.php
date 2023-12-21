@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/api/jadwals', [jadwalManualController::class, 'retrieveAllJadwals']);
+Route::get('/jadwals', [jadwalManualController::class, 'retrieveAllJadwals']);
 
-Route::get('/api/jadwals/{tgl}', [jadwalManualController::class, 'showByDate']);
+Route::get('/jadwals/{tgl}', [jadwalManualController::class, 'showByDate']);
