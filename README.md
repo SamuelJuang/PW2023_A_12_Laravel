@@ -1,8 +1,8 @@
 
-## Anggota Kelompok 12
-## Samuel Juang
-## Agatha Andrea Situngkir
-## Raff Gustafio Fernando Lobo
+## Kelas A Kelompok 12<br />
+* Samuel Juang <br />
+* Agatha Andrea Situngkir<br />
+* Raff Gustafio Fernando Lobo<br />
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
