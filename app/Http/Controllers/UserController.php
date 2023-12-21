@@ -73,6 +73,7 @@ class UserController extends Controller
         $validate = Validator::make($newData, [
             'username' => 'required|string|max:255',
             'no_telp' => 'required|string|max:15',
+            'email' => 'required|unique:users,email|max:255',
             'profilePic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -103,6 +104,7 @@ class UserController extends Controller
             'username' => $newData['username'],
             'profilePic' => $Newimage,
             'no_telp' => $newData['no_telp'],
+            'email' => $newData['email'],
         ]);
 
         return redirect()->route('adminPage');

@@ -109,7 +109,7 @@
                 method="POST"
                 enctype="multipart/form-data"
             >
-                @csrf
+                @csrf @method('PUT')
                 <div class="d-flex">
                     <div style="margin-left: 15%">
                         <label class="form-label" for="username"

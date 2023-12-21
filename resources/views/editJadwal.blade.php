@@ -96,7 +96,7 @@
                     <label class="form-label" for="tujuan" style="padding-top: 10px;">jam Tiba</label>
                     <input required value="{{old('jam_berangkat',$jadwal->jam_tiba)}}" class="form-control text-white" type="time" name="jam_tiba" id="jam_tiba" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="tglDept" style="padding-top: 10px;">Tanggal pergi</label>
-                    <input required value="{{old('tanggal_pergi',$jadwal->tanggal_pergi)}}" class="form-control text-white" type="date" name="tanggal_pergi" id="tanggal_pergi" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
+                    <input required value="{{ old('tanggal_pergi',date('Y-m-d', strtotime($jadwal->tanggal_pergi))) }}" class="form-control text-white" type="date" name="tanggal_pergi" id="tanggal_pergi" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                     <label class="form-label" for="harga" style="padding-top: 10px;">Harga</label>
                     <input required value="{{old('harga',$jadwal->harga)}}" class="form-control text-white" type="text" name="harga" id="harga" style="padding-top: 5px; width: 180%; background-color: transparent; border: 2px solid white; border-radius: 10px">
                 </div>
