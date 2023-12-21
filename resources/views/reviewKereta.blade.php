@@ -82,14 +82,8 @@
 </head>
 
 <body>
-    <a href=" {{Route('ShowFrontPage')}}">
-        <div class="vector">
-            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 45 45" fill="none" style="margin-top:32px ; margin-left: 32px;">
-                <path d="M45 19.6591V25.3409L10.9091 25.3409L26.5341 40.9659L22.5 45L0 22.5L22.5 0L26.5341 4.03409L10.9091 19.6591L45 19.6591Z" fill="white" />
-            </svg>
-        </div>
-    </a>
-    <div class="container-fluid" style="width: 75%;">
+   
+    <div class="container-fluid mt-5" style="width: 75%;">
         <div class="text-white">
             <h1><strong>Review Kereta {{ $kereta->namaKereta }}</strong></h1>
         </div>
@@ -130,7 +124,11 @@
                             </div>
                         </div>
                     </div>
-            @endforeach
+            @empty
+            <div class="d-flex text-white" style="height: fit-content;">
+                <p><strong>Belum Ada Rating untuk kereta ini!</strong></p>
+            </div>
+            @endforelse
         </div>
     </div>
 
@@ -142,11 +140,7 @@
             </footer>
         </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script>
-        function ticketDetailRedirect(){
-        window.location.href = "{{url('DetailTicket')}}";
-    }
-    </script>
+
 </body>
 
 </html>

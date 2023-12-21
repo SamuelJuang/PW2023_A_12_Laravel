@@ -145,9 +145,7 @@ class JadwalController extends Controller
         $tgl = request('TglDepart');
         $jml = request('jumlah');
         try { 
-            $jadwal = jadwal::join(
-                'kereta_api', 'kereta_api.id' , '=', 'jadwal.id_kereta'
-            )->where(
+            $jadwal = jadwal::where(
                 'jadwal.asal', '=', $berangkat
             )->where(
                 'jadwal.tujuan', '=', $tiba

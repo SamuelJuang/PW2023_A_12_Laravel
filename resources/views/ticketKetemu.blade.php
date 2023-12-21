@@ -129,7 +129,7 @@
                     <div class="col-md-12 col-lg-6 my-2 ticketSelectionContainer">
                         <input type="radio" name="ticketSelection" id="{{ $item->id }}" value="{{ $item->id }}">
                         <label for="{{ $item->id }}" style="border-radius:7px;">
-                            <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item['id'] }}" onclick="checkTickets()">
+                            <div class="card " style="width: 30rem; height: 17rem;" id="{{ $item->id }}" onclick="checkTickets()">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between text-primary">
                                         <a class="card-title link-underline-light" href="{{ route('reviews.byKereta', ['idKereta' => $item->id_kereta]) }}">
