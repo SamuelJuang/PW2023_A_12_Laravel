@@ -17,4 +17,3 @@
   * Semuanya : 
 * Routes API :
   *  GET /api/jadwals - get all jadwal
-  *  GET /api/jadwal{tgl} - get jadwal sesuai tanggal (yang ada di db 2023-12-12)
